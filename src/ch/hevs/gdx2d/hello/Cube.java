@@ -4,7 +4,9 @@ package ch.hevs.gdx2d.hello;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.math.Vector2;
 
+import ch.hevs.gdx2d.components.physics.primitives.PhysicsBox;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.physics.AbstractPhysicsObject;
@@ -37,15 +39,18 @@ public class Cube implements DrawableObject {
 		if (posx < -100) {
 			posx = (int) (Math.random() * 1000) + 1000;
 			posy = (int) (Math.random() * 100) + 150;
+			cube = new PhysicsBox("test", new Vector2(posx, 0), w, h + 2 * posy);
 		}
-		// cube = new PhysicsBox("test", new Vector2(posx, 0), w, h + 2 * posy);
+		 
 	}
 
 	public void drawC(GdxGraphics g) {
 		for (Cube c : cubes) {
 			c.draw(g);
 			c.posx -= 3;
+			
 		}
+		
 	}
 
 	public void onInit() {
