@@ -28,7 +28,6 @@ public class HelloWorld extends PortableApplication {
 	DebugRenderer dbgRenderer;
 	World world = PhysicsWorld.getInstance();
 	Bonhomme bonhomme = new Bonhomme();
-	Cube cube = new Cube();
 	Mur mur = new Mur();
 	int keycode;
 
@@ -36,16 +35,16 @@ public class HelloWorld extends PortableApplication {
 
 	public void onInit() {
 		bonhomme.onInit();
-		cube.onInit();
+		CubeManager.generateInitialCubes();
 		mur.onInit();
 		world.setGravity(new Vector2(0, -5));
-		new PhysicsScreenBoundaries(Bonhomme.SPRITE_WIDTH + 100, getWindowHeight());
+//		new PhysicsScreenBoundaries(Bonhomme.SPRITE_WIDTH + 100, getWindowHeight());
 		new PhysicsScreenBoundaries(this.getWindowWidth(), 100);
 		dbgRenderer = new DebugRenderer();
 	}
 
 	public void onPhysicRender() {
-		PhysicsWorld.updatePhysics();
+//		PhysicsWorld.updatePhysics();
 	}
 
 	@Override
@@ -53,12 +52,10 @@ public class HelloWorld extends PortableApplication {
 		g.clear();
 		dbgRenderer.render(world, g.getCamera().combined);
 		bonhomme.draw(g);
-		cube.draw(g);
+		CubeManager.drawCubes(g);
 		mur.draw(g);
 		bonhomme.onKeyUp(keycode);
 		bonhomme.moveBonhomme();
-		cube.drawC(g);
-		mur.drawM(g);
 		keycode = 0;
 		onPhysicRender();
 
