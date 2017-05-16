@@ -15,7 +15,7 @@ import ch.hevs.gdx2d.desktop.physics.DebugRenderer;
  * Hello World demo.
  *
  * @author Marco Goncalves (MG)
- * @author Gaël Genet (GG)
+ * @author Gaï¿½l Genet (GG)
  * @version 2.1
  */
 public class HelloWorld extends PortableApplication {
@@ -54,6 +54,7 @@ public class HelloWorld extends PortableApplication {
 		bonhomme.draw(g);
 		CubeManager.drawCubes(g);
 		mur.draw(g);
+		
 		bonhomme.onKeyUp(keycode);
 		bonhomme.moveBonhomme();
 		keycode = 0;
