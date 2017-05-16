@@ -12,41 +12,38 @@ import ch.hevs.gdx2d.lib.physics.AbstractPhysicsObject;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class Cube implements DrawableObject {
+	
 	int posx;
 	int posy;
-	int w;
-	int h;
+	int width;
+	int high;
 	Color c = Color.WHITE;
-//	private AbstractPhysicsObject cube;
 
 	public Cube(int initX, int initY, int initWidth, int initHeight, Color col) {
 		posx = initX;
 		posy = initY;
-		w = initWidth;
-		h = initHeight;
+		width = initWidth;
+		high = initHeight;
 		this.c = col;
-		Rectangle r = new Rectangle();
-//		cube = new PhysicsBox("test", new Vector2(posx, posy), w, h);
+		new Rectangle(initX, initY, initWidth, initHeight);
 	}
 
 	public void move(int dx){
-//		cube.setBodyLinearVelocity(dx, 0);
-//		Logger.log(cube.getBodyPosition().toString());
 		posx += dx;
 	}
 	
-	private void update() {
-		if (posx < -100) {
-			posx = (int) (Math.random() * 1000) + 1000;
-			posy = (int) (Math.random() * 100) + 150;
-		}
-		 
-	}
+//	private void update() {
+//		if (posx < -100) {
+//			posx = (int) (Math.random() * 1000) + 1000;
+//			posy = (int) (Math.random() * 100) + 150;
+//		}
+//		 
+//	}
 
 	@Override
 	public void draw(GdxGraphics g) {
-		g.drawFilledRectangle(posx, 0, w, 2 * posy + h, 0, c);
-		update();
+		g.drawFilledRectangle(posx, posy, width, high, 0, c);
+		//update();
 	}
 
 }
