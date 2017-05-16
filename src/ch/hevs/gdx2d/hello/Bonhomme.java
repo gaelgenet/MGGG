@@ -11,11 +11,14 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.physics.AbstractPhysicsObject;
 
-
 public class Bonhomme implements DrawableObject {
 
 	Vector2 position;
 	String name;
+
+	private final float Vin = 20, G = -9.81f, DT = 0.15f, V_boost = 50.f;
+	private float Vsqu = Vin, deltaPosY;
+
 	/**
 	 * The size of each sprite in the sheet
 	 */
@@ -41,9 +44,9 @@ public class Bonhomme implements DrawableObject {
 	static Spritesheet sprites;
 
 	public void moveBonhomme() {
-		
+
 		dt += Gdx.graphics.getDeltaTime();
-		
+
 		if (dt > FRAME_TIME) {
 			dt = 0;
 
@@ -54,7 +57,8 @@ public class Bonhomme implements DrawableObject {
 				textureY = (textureY + 1) % 4;
 			}
 			// System.out.println(textureY);
-	}}
+		}
+	}
 
 	public void collision(AbstractPhysicsObject other, float energy) {
 
@@ -62,31 +66,41 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10,500,SPRITE_WIDTH,SPRITE_HEIGHT);
-		
+		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, 200, SPRITE_WIDTH, SPRITE_HEIGHT);
+
 	}
 
 	public void onKeyUp(int keycode) {
 		switch (keycode) {
 		case Input.Keys.SPACE:
+			PhysBonhomme();
+			System.out.println("Squarre y : " + squarre.y);
 			
 			break;
+
 		default:
 			break;
 		}
 
 	}
 
+	public void PhysBonhomme() {
+		
+	
+			Vsqu = Vsqu + (DT * G);
+			deltaPosY = DT * Vsqu;
+			squarre.y = squarre.y + deltaPosY;
+			
+		
+	}
+
 	@Override
 	public void draw(GdxGraphics g) {
-		
-		
+
 		g.drawRectangle(squarre.x, squarre.y, SPRITE_WIDTH, SPRITE_HEIGHT, 0);
-		g.draw(sprites.sprites[textureY][currentFrame], squarre.x- (SPRITE_WIDTH / 2), squarre.y   - (SPRITE_HEIGHT / 2));
-
-
-		}
+		g.draw(sprites.sprites[textureY][currentFrame], squarre.x - (SPRITE_WIDTH / 2),
+				squarre.y - (SPRITE_HEIGHT / 2));
 
 	}
 
-
+}
