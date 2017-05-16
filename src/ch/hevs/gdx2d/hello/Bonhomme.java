@@ -2,6 +2,7 @@ package ch.hevs.gdx2d.hello;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
@@ -21,7 +22,7 @@ public class Bonhomme implements DrawableObject {
 	static int SPRITE_WIDTH = 128;
 	static int SPRITE_HEIGHT = 128;
 
-	protected AbstractPhysicsObject squarre;
+	protected Rectangle squarre;
 
 	/**
 	 * The currently selected sprite for animation
@@ -61,14 +62,14 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-		squarre = new PhysicsBox("squarre", new Vector2((SPRITE_WIDTH / 2) + 10, 500), SPRITE_HEIGHT, SPRITE_WIDTH, 1,
-				0, 0);
+		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10,500,SPRITE_WIDTH,SPRITE_HEIGHT);
+		
 	}
 
 	public void onKeyUp(int keycode) {
 		switch (keycode) {
 		case Input.Keys.SPACE:
-			squarre.applyBodyForceToCenter(new Vector2(0, 800f), true);
+			
 			break;
 		default:
 			break;
@@ -78,11 +79,10 @@ public class Bonhomme implements DrawableObject {
 
 	@Override
 	public void draw(GdxGraphics g) {
-		int posx = (int) squarre.getBodyPosition().x;
-		int posy = (int) squarre.getBodyPosition().y;
-
-		g.drawRectangle(posx, posy, SPRITE_WIDTH, SPRITE_HEIGHT, 0);
-		g.draw(sprites.sprites[textureY][currentFrame], posx - (SPRITE_WIDTH / 2), posy - (SPRITE_HEIGHT / 2));
+		
+		
+		g.drawRectangle(squarre.x, squarre.y, SPRITE_WIDTH, SPRITE_HEIGHT, 0);
+		g.draw(sprites.sprites[textureY][currentFrame], squarre.x- (SPRITE_WIDTH / 2), squarre.y   - (SPRITE_HEIGHT / 2));
 
 
 		}
