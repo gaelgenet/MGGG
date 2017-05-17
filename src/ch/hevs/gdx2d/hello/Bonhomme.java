@@ -15,8 +15,8 @@ public class Bonhomme implements DrawableObject {
 
 	Vector2 position;
 	String name;
-
-	private final float Vin = 20, G = -9.81f, DT = 0.15f, V_boost = 50.f;
+	HelloWorld h;
+	private final float Vin = 50, G = -9.81f, DT = 0.15f, V_boost = 50.f;
 	private float Vsqu = Vin, deltaPosY;
 
 	/**
@@ -42,6 +42,7 @@ public class Bonhomme implements DrawableObject {
 	int nFrames = 4;
 	double FRAME_TIME = 0.1; // Duration of each frame
 	static Spritesheet sprites;
+	boolean move = false;
 
 	public void moveBonhomme() {
 
@@ -73,9 +74,7 @@ public class Bonhomme implements DrawableObject {
 	public void onKeyUp(int keycode) {
 		switch (keycode) {
 		case Input.Keys.SPACE:
-			PhysBonhomme();
-			System.out.println("Squarre y : " + squarre.y);
-			
+//			h.move1=true;
 			break;
 
 		default:
@@ -84,15 +83,17 @@ public class Bonhomme implements DrawableObject {
 
 	}
 
-	public void PhysBonhomme() {
-		
-	
+	public void PhysBonhomme(boolean move) {
+			
+			if(move == true){
 			Vsqu = Vsqu + (DT * G);
 			deltaPosY = DT * Vsqu;
-			squarre.y = squarre.y + deltaPosY;
+			squarre.y = squarre.y + deltaPosY;}
+			
 			
 		
 	}
+	
 
 	@Override
 	public void draw(GdxGraphics g) {

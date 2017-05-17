@@ -30,6 +30,7 @@ public class HelloWorld extends PortableApplication {
 	Bonhomme bonhomme = new Bonhomme();
 	Mur mur = new Mur();
 	int keycode;
+	public boolean move1 = false;
 
 	@Override
 
@@ -55,7 +56,11 @@ public class HelloWorld extends PortableApplication {
 		CubeManager.drawCubes(g);
 		mur.draw(g);
 		
-		bonhomme.onKeyUp(keycode);
+		bonhomme.onKeyUp(keycode);   
+		bonhomme.PhysBonhomme(move1);
+		if(bonhomme.squarre.y <= 200){
+			move1 = false; 
+		}
 		bonhomme.moveBonhomme();
 		keycode = 0;
 		onPhysicRender();
