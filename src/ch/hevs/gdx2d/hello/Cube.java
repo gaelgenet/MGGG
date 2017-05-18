@@ -19,6 +19,7 @@ public class Cube implements DrawableObject {
 	int width;
 	int high;
 	Color c = Color.WHITE;
+	Rectangle rectangle;
 
 	public Cube(int initX, int initY, int initWidth, int initHeight, Color col) {
 		posx = initX;
@@ -26,10 +27,10 @@ public class Cube implements DrawableObject {
 		width = initWidth;
 		high = initHeight;
 		this.c = col;
-		new Rectangle(initX, initY, initWidth, initHeight);
+		rectangle = new Rectangle(initX, initY, initWidth, initHeight);
 	}
 
-	public void move(int dx){
+	public void move(float dx){
 		posx += dx;
 
 		
@@ -41,5 +42,7 @@ public class Cube implements DrawableObject {
 		g.drawFilledRectangle(posx, posy, width, high, 0, c);
 		//update();
 	}
+	
+
 
 }
