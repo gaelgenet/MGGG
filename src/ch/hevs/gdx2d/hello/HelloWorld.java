@@ -1,6 +1,5 @@
 package ch.hevs.gdx2d.hello;
 
-
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -29,46 +28,49 @@ public class HelloWorld extends PortableApplication {
 	World world = PhysicsWorld.getInstance();
 	Bonhomme bonhomme = new Bonhomme();
 	CubeManager cManager = new CubeManager();
+	Colision colision;
 	Mur mur = new Mur();
 	int keycode;
-	public boolean move1 = false;
+	public boolean move = false;
+	
 
 	@Override
 
 	public void onInit() {
 		bonhomme.onInit();
 		cManager.generatecube();
-		//cManager.onInit();
-		//cManager.generateInitialCubes();
-		mur.onInit();
+		cManager.generateInitialCubes();
+		// cManager.onInit();
+		
+		//mur.onInit();
 		world.setGravity(new Vector2(0, -5));
-//		new PhysicsScreenBoundaries(Bonhomme.SPRITE_WIDTH + 100, getWindowHeight());
+		// new PhysicsScreenBoundaries(Bonhomme.SPRITE_WIDTH + 100,
+		// getWindowHeight());
 		new PhysicsScreenBoundaries(this.getWindowWidth(), 100);
 		dbgRenderer = new DebugRenderer();
 	}
 
-	public void onPhysicRender() {
-//		PhysicsWorld.updatePhysics();
-	}
+
 
 	@Override
 	public void onGraphicRender(GdxGraphics g) {
 		g.clear();
 		dbgRenderer.render(world, g.getCamera().combined);
 		bonhomme.draw(g);
-		cManager.drawCubes(g);
-		mur.draw(g);
-		
-		bonhomme.onKeyUp(keycode);   
-		bonhomme.PhysBonhomme(move1);
-		if(bonhomme.squarre.y <= 200){
-			move1 = false; 
+		cManager.moveCube(g);
+		//mur.draw(g);
+
+		bonhomme.onKeyUp(keycode);
+		bonhomme.PhysBonhomme();
+		if (bonhomme.squarre.y <= 200) {
+			move = false;
 		}
 		bonhomme.moveBonhomme();
 		keycode = 0;
-		
+
 		cManager.generatecube();
-		onPhysicRender();
+		cManager.distroyCube();
+	
 
 	}
 
