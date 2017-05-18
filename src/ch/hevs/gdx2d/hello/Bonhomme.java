@@ -16,8 +16,8 @@ public class Bonhomme implements DrawableObject {
 	Vector2 position;
 	String name;
 	HelloWorld h;
-	private final float Vin = 50, G = -9.81f, DT = 0.15f, V_boost = 50.f;
-	private float Vsqu = Vin, deltaPosY;
+	private final float Vinit = 80, Gravity = -9.81f, DT = 0.3f, V_boost = 50.f;
+	private float Vsquarre = Vinit, deltaPosY;
 
 	/**
 	 * The size of each sprite in the sheet
@@ -67,14 +67,14 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, 200, SPRITE_WIDTH, SPRITE_HEIGHT);
+		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, 150, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
 
 	public void onKeyUp(int keycode) {
 		switch (keycode) {
 		case Input.Keys.SPACE:
-//			h.move1=true;
+			move = true;
 			break;
 
 		default:
@@ -83,17 +83,21 @@ public class Bonhomme implements DrawableObject {
 
 	}
 
-	public void PhysBonhomme(boolean move) {
-			
+	public void PhysBonhomme() {
+
 			if(move == true){
-			Vsqu = Vsqu + (DT * G);
-			deltaPosY = DT * Vsqu;
-			squarre.y = squarre.y + deltaPosY;}
+				Vsquarre = Vsquarre + (DT * Gravity);
+				deltaPosY = DT * Vsquarre;
+				squarre.y = squarre.y + deltaPosY;}
 			
+			if (squarre.y <= 150) {
+				squarre.y = 150;
+				Vsquarre=Vinit;
+				move = false;
 			
-		
+		}
+
 	}
-	
 
 	@Override
 	public void draw(GdxGraphics g) {
