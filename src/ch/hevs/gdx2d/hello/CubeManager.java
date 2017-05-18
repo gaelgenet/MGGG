@@ -1,32 +1,63 @@
 package ch.hevs.gdx2d.hello;
 
-import java.util.ArrayList;
+import java.util.Random;
+import java.util.Vector;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
 import ch.hevs.gdx2d.lib.GdxGraphics;
+import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class CubeManager {
-	
-	static Cube cube;
-	//static ArrayList<Cube> cubes = new ArrayList<Cube>();
 
-	static public void drawCubes(GdxGraphics g) {
-//		for (Cube c : cubes) {
-			cube.draw(g);
-			cube.move(-3);
+	Vector<Cube> cubes = new Vector<Cube>();
+	
+	float dt;
+	int posx = 1000;
+	int posy = 0;
+	int width;
+	int high;
+	int speed = -1;
+	float speedTime;
+	
+	Color c = Color.WHITE;
+
+	Random r = new Random();
+	
+	void generatecube() {
+		dt += Gdx.graphics.getDeltaTime();
+		
+	//	Logger.log("Current time " + dt);
+		if (dt > 3) {
+		//	Logger.log("Generating a CUBBEEEEE!");
+			dt = 0;
+			width = (int) (Math.min(Math.random() * 1000, 500));
+			high = (int) (Math.min(Math.random() * 1000, 600));
+			
+			cubes.add(new Cube(posx, posy, width, high, new Color(r.nextInt())));
 		}
 
+	}
 
-	public static void generateInitialCubes() {
-		Cube c1 = new Cube(1000, 175, 120, 175, Color.MAGENTA);
-//		Cube c2 = new Cube(1500, 300, 100, 40, Color.GREEN);
-//		Cube c3 = new Cube(2000, 350, 150, 100, Color.BLUE);
-//		Cube c4 = new Cube(2500, 250, 300, 80, Color.MAROON);
-		//cubes.add(c1);
-//		cubes.add(c2);
-//		cubes.add(c3);
-//		cubes.add(c4);
+	public void drawCubes(GdxGraphics g) {
+		speedTime += Gdx.graphics.getDeltaTime();
+	//	Logger.log("pouet"+speedTime);
+		
+		if(speedTime>5){
+			speed -= 2;
+			speedTime = 0;
+		}
+		
+		for(Cube c: cubes){
+			c.draw(g);
+			c.move(speed);
+		}
+		Logger.log("salut" + speed + "");
+	}
+
+	public void generateInitialCubes() {
+
 	}
 
 }
