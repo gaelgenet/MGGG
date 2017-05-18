@@ -53,17 +53,13 @@ public class Bonhomme implements DrawableObject {
 			dt = 0;
 
 			currentFrame = (currentFrame + 1) % nFrames;
-			System.out.println("c :" + currentFrame);
+			//System.out.println("c :" + currentFrame);
 
 			if (currentFrame % 4 == 0) {
 				textureY = (textureY + 1) % 4;
 			}
 			// System.out.println(textureY);
 		}
-	}
-
-	public void collision(AbstractPhysicsObject other, float energy) {
-
 	}
 
 	public void onInit() {
@@ -109,5 +105,7 @@ public class Bonhomme implements DrawableObject {
 				squarre.y - (SPRITE_HEIGHT / 2));
 
 	}
+	
+
 
 }
