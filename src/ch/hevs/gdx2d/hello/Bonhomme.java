@@ -16,6 +16,7 @@ public class Bonhomme implements DrawableObject {
 	Vector2 position;
 	String name;
 	HelloWorld h;
+	CubeManager cube;
 	private final float Vinit = 80, Gravity = -9.81f, DT = 0.3f, V_boost = 50.f;
 	private float Vsquarre = Vinit, deltaPosY;
 
@@ -90,8 +91,9 @@ public class Bonhomme implements DrawableObject {
 				deltaPosY = DT * Vsquarre;
 				squarre.y = squarre.y + deltaPosY;}
 			
-			if (squarre.y <= 150) {
-				squarre.y = 150;
+			if (squarre.y <= 150 ) {
+				if (squarre.y <= 150){
+				squarre.y = 150;}
 				Vsquarre=Vinit;
 				move = false;
 			
