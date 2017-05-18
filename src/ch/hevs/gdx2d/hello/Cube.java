@@ -1,6 +1,7 @@
 
 package ch.hevs.gdx2d.hello;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -30,15 +31,10 @@ public class Cube implements DrawableObject {
 
 	public void move(int dx){
 		posx += dx;
+
+		
 	}
 	
-//	private void update() {
-//		if (posx < -100) {
-//			posx = (int) (Math.random() * 1000) + 1000;
-//			posy = (int) (Math.random() * 100) + 150;
-//		}
-//		 
-//	}
 
 	@Override
 	public void draw(GdxGraphics g) {
