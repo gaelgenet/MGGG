@@ -44,6 +44,7 @@ public class Bonhomme implements DrawableObject {
 	double FRAME_TIME = 0.1; // Duration of each frame
 	static Spritesheet sprites;
 	boolean move = false;
+	int cubeHeigh = 178;
 
 	public void moveBonhomme() {
 
@@ -53,7 +54,7 @@ public class Bonhomme implements DrawableObject {
 			dt = 0;
 
 			currentFrame = (currentFrame + 1) % nFrames;
-			//System.out.println("c :" + currentFrame);
+			// System.out.println("c :" + currentFrame);
 
 			if (currentFrame % 4 == 0) {
 				textureY = (textureY + 1) % 4;
@@ -64,7 +65,7 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, 150, SPRITE_WIDTH, SPRITE_HEIGHT);
+		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, 300, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
 
@@ -79,20 +80,26 @@ public class Bonhomme implements DrawableObject {
 		}
 
 	}
+	
+	public void collision(){
+		
+	}
 
 	public void PhysBonhomme() {
 
-			if(move == true){
-				Vsquarre = Vsquarre + (DT * Gravity);
-				deltaPosY = DT * Vsquarre;
-				squarre.y = squarre.y + deltaPosY;}
-			
-			if (squarre.y <= 150 ) {
-				if (squarre.y <= 150){
-				squarre.y = 150;}
-				Vsquarre=Vinit;
-				move = false;
-			
+		if (move == true) {
+			Vsquarre = Vsquarre + (DT * Gravity);
+			deltaPosY = DT * Vsquarre;
+			squarre.y = squarre.y + deltaPosY;
+		}
+
+		if (squarre.y <= cubeHeigh) {
+			if (squarre.y <= cubeHeigh) {
+				squarre.y = cubeHeigh;
+			}
+			Vsquarre = Vinit;
+			move = false;
+
 		}
 
 	}
@@ -105,7 +112,5 @@ public class Bonhomme implements DrawableObject {
 				squarre.y - (SPRITE_HEIGHT / 2));
 
 	}
-	
-
 
 }
