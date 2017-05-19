@@ -62,7 +62,7 @@ public class CubeManager {
 
 		if (speedTime > 7) {
 			speed -= 0.5;
-			variablespeed -= 0.2;
+			variablespeed -= 0.1;
 			speedTime = 0;
 		}
 
