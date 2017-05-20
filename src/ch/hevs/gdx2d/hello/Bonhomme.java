@@ -15,8 +15,8 @@ public class Bonhomme implements DrawableObject {
 
 	Vector2 position;
 	String name;
-	HelloWorld h;
-	CubeManager cube;
+	HelloWorld hello;
+	CubeManager cube = new CubeManager();
 	private final float Vinit = 80, Gravity = -9.81f, DT = 0.3f, V_boost = 50.f;
 	private float Vsquarre = Vinit, deltaPosY;
 
@@ -65,7 +65,7 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, 300, SPRITE_WIDTH, SPRITE_HEIGHT);
+		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
 
@@ -74,7 +74,9 @@ public class Bonhomme implements DrawableObject {
 		case Input.Keys.SPACE:
 			move = true;
 			break;
-
+		case Input.Keys.W:
+			move = true;
+			break;
 		default:
 			break;
 		}
@@ -92,8 +94,15 @@ public class Bonhomme implements DrawableObject {
 			deltaPosY = DT * Vsquarre;
 			squarre.y = squarre.y + deltaPosY;
 		}
-
-		if (squarre.y <= cubeHeigh) {
+//		//ESSAI COLLISION 
+//		if(squarre.y <= hello.cManager.cubes.get(0).high && squarre.x >= hello.cManager.cubes.get(0).posx){
+//			squarre.y =  hello.cManager.cubes.get(0).high;
+//			Vsquarre = Vinit;
+//			move = false;
+//		}
+		
+		
+		if (squarre.y <= cubeHeigh  ){
 			if (squarre.y <= cubeHeigh) {
 				squarre.y = cubeHeigh;
 			}
