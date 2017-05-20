@@ -28,7 +28,7 @@ public class HelloWorld extends PortableApplication {
 	World world = PhysicsWorld.getInstance();
 	Bonhomme bonhomme = new Bonhomme();
 	CubeManager cManager = new CubeManager();
-	Colision colision;
+//	Colision colision;
 	Mur mur = new Mur();
 	int keycode;
 	public boolean move = false;
@@ -59,17 +59,15 @@ public class HelloWorld extends PortableApplication {
 		bonhomme.draw(g);
 		cManager.moveCube(g);
 		//mur.draw(g);
+		cManager.generatecube();
+		cManager.distroyCube();
 
 		bonhomme.onKeyUp(keycode);
 		bonhomme.PhysBonhomme();
-		if (bonhomme.squarre.y <= 200) {
-			move = false;
-		}
+		
 		bonhomme.moveBonhomme();
 		keycode = 0;
 
-		cManager.generatecube();
-		cManager.distroyCube();
 	
 
 	}
