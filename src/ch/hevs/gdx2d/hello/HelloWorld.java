@@ -65,6 +65,9 @@ public class HelloWorld extends PortableApplication {
 		bonhomme.onKeyUp(keycode);
 		bonhomme.PhysBonhomme();
 		
+		if(cManager.cubes.get(0).posx <= bonhomme.squarre.x && bonhomme.squarre.y <= cManager.cubes.get(0).high){
+			System.out.println("true");
+		}
 		bonhomme.moveBonhomme();
 		keycode = 0;
 
