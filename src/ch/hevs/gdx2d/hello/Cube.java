@@ -13,33 +13,22 @@ import ch.hevs.gdx2d.lib.physics.AbstractPhysicsObject;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class Cube implements DrawableObject {
-	
-	int posx;
-	int posy;
-	int width;
-	int high;
 	Color c = Color.WHITE;
 	Rectangle rectangle;
 
 	public Cube(int initX, int initY, int initWidth, int initHeight, Color col) {
-		posx = initX;
-		posy = initY;
-		width = initWidth;
-		high = initHeight;
 		this.c = col;
 		rectangle = new Rectangle(initX, initY, initWidth, initHeight);
 	}
 
 	public void move(float dx){
-		posx += dx;
-
-		
+		rectangle.x += dx;
 	}
 	
 
 	@Override
 	public void draw(GdxGraphics g) {
-		g.drawFilledRectangle(posx, posy, width, high, 0, c);
+		g.drawFilledRectangle(rectangle.x, rectangle.y, rectangle.width, rectangle.height, 0, c);
 		//update();
 	}
 	
