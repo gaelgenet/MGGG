@@ -15,6 +15,7 @@ import ch.hevs.gdx2d.lib.utils.Logger;
 public class Cube implements DrawableObject {
 	Color c = Color.WHITE;
 	Rectangle rectangle;
+	static boolean play = true;
 
 	public Cube(int initX, int initY, int initWidth, int initHeight, Color col) {
 		this.c = col;
@@ -22,7 +23,8 @@ public class Cube implements DrawableObject {
 	}
 
 	public void move(float dx){
-		rectangle.x += dx;
+		if (play){
+		rectangle.x += dx;}
 	}
 	
 
