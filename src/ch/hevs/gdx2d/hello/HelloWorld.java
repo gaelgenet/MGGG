@@ -29,6 +29,7 @@ public class HelloWorld extends PortableApplication {
 	World world = PhysicsWorld.getInstance();
 	Bonhomme bonhomme = new Bonhomme();
 	CubeManager cManager = new CubeManager();
+	KeyListener keyListener;
 	Collision collision;
 	Mur mur = new Mur();
 	int keycode;
@@ -55,11 +56,11 @@ public class HelloWorld extends PortableApplication {
 		g.clear();
 		dbgRenderer.render(world, g.getCamera().combined);
 		bonhomme.draw(g);
-		cManager.moveCube(g);
+		cManager.speedCube(g);
 		// mur.draw(g);
 		cManager.generatecube();
 		cManager.distroyCube();
-		bonhomme.onKeyDown(keycode);
+		KeyListener.onKeyDown(keycode);
 		bonhomme.PhysBonhomme();
 
 //		for (Cube c : cManager.cubes)
