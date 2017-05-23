@@ -17,8 +17,6 @@ public class Bonhomme implements DrawableObject {
 	String name;
 	HelloWorld hello;
 	CubeManager cube = new CubeManager();
-	private final float Vinit = 80, Gravity = -9.81f, DT = 0.3f, V_boost = 50.f;
-	private float Vsquarre = Vinit, deltaPosY;
 
 	/**
 	 * The size of each sprite in the sheet
@@ -43,8 +41,15 @@ public class Bonhomme implements DrawableObject {
 	int nFrames = 4;
 	double FRAME_TIME = 0.1; // Duration of each frame
 	static Spritesheet sprites;
-	boolean move = false;
+	static boolean move = false;
 	int cubeHeigh = 178;
+	
+	
+	/**
+	 * physic of the squarre
+	 */
+	private final float Vinit = 80, Gravity = -9.81f, DT = 0.3f, V_boost = 50.f;
+	private float Vsquarre = Vinit, deltaPosY;
 
 	public void moveBonhomme() {
 
@@ -69,26 +74,7 @@ public class Bonhomme implements DrawableObject {
 
 	}
 
-	public void onKeyDown(int keycode) {
-		switch (keycode) {
-		case Input.Keys.SPACE:
-			move = true;
-			break;
-		case Input.Keys.W:
-			move = true;
-			break;
-		default:
-			break;
-		}
-
-	}
-
-	public void collision() {
-
-	}
-
 	public void PhysBonhomme() {
-
 		if (move == true) {
 			Vsquarre = Vsquarre + (DT * Gravity);
 			deltaPosY = DT * Vsquarre;
