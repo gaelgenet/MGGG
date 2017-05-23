@@ -50,7 +50,7 @@ public class CubeManager {
 	}
 
 	void distroyCube() {
-		if (cubes.get(0).posx < -300) {
+		if (cubes.get(0).rectangle.x< -300) {
 			//Logger.log("cube"+cubes.get(0)+"is destroyed");
 			cubes.remove(0);
 		}
