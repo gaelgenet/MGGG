@@ -69,7 +69,7 @@ public class Bonhomme implements DrawableObject {
 
 	}
 
-	public void onKeyUp(int keycode) {
+	public void onKeyDown(int keycode) {
 		switch (keycode) {
 		case Input.Keys.SPACE:
 			move = true;
@@ -82,9 +82,9 @@ public class Bonhomme implements DrawableObject {
 		}
 
 	}
-	
-	public void collision(){
-		
+
+	public void collision() {
+
 	}
 
 	public void PhysBonhomme() {
@@ -94,18 +94,10 @@ public class Bonhomme implements DrawableObject {
 			deltaPosY = DT * Vsquarre;
 			squarre.y = squarre.y + deltaPosY;
 		}
-//		//ESSAI COLLISION 
-//		if(squarre.y <= hello.cManager.cubes.get(0).high && squarre.x >= hello.cManager.cubes.get(0).posx){
-//			squarre.y =  hello.cManager.cubes.get(0).high;
-//			Vsquarre = Vinit;
-//			move = false;
-//		}
-		
-		
-		if (squarre.y <= cubeHeigh  ){
-			if (squarre.y <= cubeHeigh) {
-				squarre.y = cubeHeigh;
-			}
+
+//réinitialiser la posY du cube après la gravité
+		if (squarre.y <= cubeHeigh) {
+			squarre.y = cubeHeigh;
 			Vsquarre = Vinit;
 			move = false;
 
