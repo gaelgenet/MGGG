@@ -21,6 +21,7 @@ public class CubeManager {
 	int heigh;
 	float speed = -4;
 	float variablespeed = 3;
+	static boolean play = true;
 
 	Color c = Color.WHITE;
 
@@ -31,7 +32,7 @@ public class CubeManager {
 		dt += Gdx.graphics.getDeltaTime();
 
 		// Logger.log("Current time " + dt);
-		if (dt > variablespeed) {
+		if (play == true && dt > variablespeed) {
 			// Logger.log("Generating a CUBBEEEEE!");
 			dt = 0;
 			width = (int) (Math.random() * 1000);
@@ -56,11 +57,11 @@ public class CubeManager {
 		}
 	}
 
-	public void moveCube(GdxGraphics g) {
+	public void speedCube(GdxGraphics g) {
 		speedTime += Gdx.graphics.getDeltaTime();
 		//Logger.log("pouet" + speedTime);
 
-		if (speedTime > 7) {
+		if (play == true && speedTime > 7) {
 			speed -= 0.5;
 			variablespeed -= 0.1;
 			speedTime = 0;
