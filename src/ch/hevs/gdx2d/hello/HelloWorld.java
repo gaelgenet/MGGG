@@ -10,6 +10,7 @@ import ch.hevs.gdx2d.lib.physics.PhysicsWorld;
 import ch.hevs.gdx2d.lib.utils.Logger;
 import ch.hevs.gdx2d.desktop.PortableApplication;
 import ch.hevs.gdx2d.desktop.physics.DebugRenderer;
+import ch.hevs.gdx2d.hello.Collision.CollisionType;
 
 /**
  * Hello World demo.
@@ -52,6 +53,12 @@ public class HelloWorld extends PortableApplication {
 	}
 
 	@Override
+	public void onKeyDown(int keycode) {
+		super.onKeyDown(keycode);
+		bonhomme.jump();
+	}
+	
+	@Override
 	public void onGraphicRender(GdxGraphics g) {
 		g.clear();
 		dbgRenderer.render(world, g.getCamera().combined);
@@ -60,20 +67,15 @@ public class HelloWorld extends PortableApplication {
 		// mur.draw(g);
 		cManager.generatecube();
 		cManager.distroyCube();
-		KeyListener.onKeyDown(keycode);
-		bonhomme.PhysBonhomme();
+		bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme), cManager);
 
 //		for (Cube c : cManager.cubes)
+			Logger.log("position of the cube " + cManager.cubes.get(0).rectangle.x);
 			Logger.log("Collision " + Collision.collides(cManager.cubes.get(0), bonhomme));
 			//Logger.log("Collision " + Collision.collides(cManager.cubes.get(1), bonhomme));
 
 		bonhomme.moveBonhomme();
 		keycode = 0;
-	}
-
-	public void onKeyUp(int keycode) {
-		this.keycode = keycode;
-
 	}
 
 	public static void main(String[] args) {
