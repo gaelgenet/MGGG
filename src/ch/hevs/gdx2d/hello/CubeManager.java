@@ -46,12 +46,14 @@ public class CubeManager {
 			}
 
 			cubes.add(new Cube(posx, posy, width, heigh, new Color(r.nextInt())));
+			System.out.println(cubes.get(0).rectangle.width);
+			System.out.println(cubes.get(0).rectangle.height);
 		}
 
 	}
 
 	void distroyCube() {
-		if (cubes.get(0).rectangle.x< -300) {
+		if (cubes.get(0).rectangle.x< -(cubes.get(0).rectangle.width/2)) {
 			//Logger.log("cube"+cubes.get(0)+"is destroyed");
 			cubes.remove(0);
 		}

@@ -6,7 +6,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
+import ch.hevs.gdx2d.components.geometry.Point;
 import ch.hevs.gdx2d.components.physics.primitives.PhysicsBox;
+import ch.hevs.gdx2d.hello.Collision.CollisionType;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.physics.AbstractPhysicsObject;
@@ -17,6 +19,7 @@ public class Bonhomme implements DrawableObject {
 	String name;
 	HelloWorld hello;
 	CubeManager cube = new CubeManager();
+	
 
 	/**
 	 * The size of each sprite in the sheet
@@ -43,6 +46,7 @@ public class Bonhomme implements DrawableObject {
 	static Spritesheet sprites;
 	static boolean move = false;
 	int cubeHeigh = 178;
+	int cubeNewHeight;
 	
 	
 	/**
@@ -74,7 +78,13 @@ public class Bonhomme implements DrawableObject {
 
 	}
 
-	public void PhysBonhomme() {
+	public void jump(){
+		move = true;
+	}
+
+	public void physics_update(Collision.CollisionType collide, CubeManager cube) {
+		
+		cubeNewHeight = (int) cube.cubes.get(0).rectangle.height/2 + (SPRITE_HEIGHT/2);
 		if (move == true) {
 			Vsquarre = Vsquarre + (DT * Gravity);
 			deltaPosY = DT * Vsquarre;
@@ -86,9 +96,13 @@ public class Bonhomme implements DrawableObject {
 			squarre.y = cubeHeigh;
 			Vsquarre = Vinit;
 			move = false;
-
 		}
-
+		
+//		if(collide == CollisionType.TOP){
+//			squarre.y = cubeNewHeight;
+//			Vsquarre = Vinit;
+//			move = false;
+//		}
 	}
 
 	@Override
