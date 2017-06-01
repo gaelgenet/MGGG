@@ -41,8 +41,8 @@ public class CubeManager {
 			}
 			heigh = (int) (Math.random() * 1000);
 
-			if (heigh < 200 || heigh > 700) {
-				heigh = 500;
+			if (heigh < 200 || heigh > 900) {
+				heigh = 800;
 			}
 
 			cubes.add(new Cube(posx, posy, width, heigh, new Color(r.nextInt())));
@@ -77,7 +77,9 @@ public class CubeManager {
 	}
 
 	public void generateInitialCubes() {
+		cubes.add(new Cube(0,posy,700,400, new Color(r.nextInt())));
 		cubes.add(new Cube(posx, posy, 400, 400, new Color(r.nextInt())));
+		
 
 	}
 
