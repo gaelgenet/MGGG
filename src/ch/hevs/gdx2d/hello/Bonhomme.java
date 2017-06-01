@@ -2,6 +2,7 @@ package ch.hevs.gdx2d.hello;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Cubemap.CubemapSide;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -12,6 +13,7 @@ import ch.hevs.gdx2d.hello.Collision.CollisionType;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.physics.AbstractPhysicsObject;
+import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class Bonhomme implements DrawableObject {
 
@@ -74,13 +76,21 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
+		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh + 100, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
 
 	public void jump(Collision.CollisionType collide){
 		if( collide != CollisionType.LEFT ){
 		move = true;}
+	}
+	
+	public boolean dead(boolean dead){
+		Cube.play = false;
+		CubeManager.play = false;
+		Logger.log("tu es mort");
+		return true;
+		
 	}
 
 	public void physics_update(Collision.CollisionType collide, CubeManager cube) {
@@ -96,7 +106,7 @@ public class Bonhomme implements DrawableObject {
 		}
 //réinitialiser la posY du cube après la gravité
 		if (squarre.y <= cubeHeigh) {
-			squarre.y = cubeHeigh+1;
+			squarre.y = cubeHeigh;
 			Vsquarre = Vinit;
 			move = false;
 		}
@@ -105,6 +115,11 @@ public class Bonhomme implements DrawableObject {
 			squarre.y = cubeNewHeight;
 			Vsquarre = Vinit;
 			move = false;
+		}
+		
+		if(collide == CollisionType.LEFT || squarre.y == cubeHeigh){			
+			dead(true);  
+			
 		}
 	}
 
