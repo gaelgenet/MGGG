@@ -12,13 +12,15 @@ public class Collision {
 		Point basDroit = new Point((int) bonhomme.squarre.x + (Bonhomme.SPRITE_WIDTH / 2),
 				(int) bonhomme.squarre.y - (Bonhomme.SPRITE_HEIGHT / 2));
 
-		if (basDroit.x >= cube.rectangle.width / 2) {
-			if (basDroit.y == cube.rectangle.height / 2) {
+		if ((bonhomme.squarre.x + (Bonhomme.SPRITE_WIDTH / 2)) >= cube.rectangle.x - (cube.rectangle.width / 2)) {
+			if ((bonhomme.squarre.y - (Bonhomme.SPRITE_HEIGHT / 2)) >= (cube.rectangle.height / 2)-25 && (bonhomme.squarre.y - (Bonhomme.SPRITE_HEIGHT / 2)) < (cube.rectangle.height / 2) ) {
 				return CollisionType.TOP;
 			}
-			return CollisionType.LEFT;
+			else if(bonhomme.squarre.y - (Bonhomme.SPRITE_HEIGHT / 2) < (cube.rectangle.height / 2)){
+			return CollisionType.LEFT;}
 
 		}
+		
 		return CollisionType.NONE;
 
 		// if (bonhomme.squarre.y - (Bonhomme.SPRITE_HEIGHT / 2) <=

@@ -1,5 +1,7 @@
 package ch.hevs.gdx2d.hello;
 
+import java.awt.event.KeyListener;
+
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -55,7 +57,7 @@ public class HelloWorld extends PortableApplication {
 	@Override
 	public void onKeyDown(int keycode) {
 		super.onKeyDown(keycode);
-		bonhomme.jump();
+		bonhomme.jump(Collision.collides(cManager.cubes.get(0),bonhomme)) ;
 	}
 	
 	@Override

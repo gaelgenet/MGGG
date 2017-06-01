@@ -78,31 +78,34 @@ public class Bonhomme implements DrawableObject {
 
 	}
 
-	public void jump(){
-		move = true;
+	public void jump(Collision.CollisionType collide){
+		if( collide != CollisionType.LEFT ){
+		move = true;}
 	}
 
 	public void physics_update(Collision.CollisionType collide, CubeManager cube) {
 		
 		cubeNewHeight = (int) cube.cubes.get(0).rectangle.height/2 + (SPRITE_HEIGHT/2);
+		
 		if (move == true) {
 			Vsquarre = Vsquarre + (DT * Gravity);
 			deltaPosY = DT * Vsquarre;
 			squarre.y = squarre.y + deltaPosY;
+		
+		
 		}
-
 //réinitialiser la posY du cube après la gravité
 		if (squarre.y <= cubeHeigh) {
-			squarre.y = cubeHeigh;
+			squarre.y = cubeHeigh+1;
 			Vsquarre = Vinit;
 			move = false;
 		}
 		
-//		if(collide == CollisionType.TOP){
-//			squarre.y = cubeNewHeight;
-//			Vsquarre = Vinit;
-//			move = false;
-//		}
+		if(collide == CollisionType.TOP){
+			squarre.y = cubeNewHeight;
+			Vsquarre = Vinit;
+			move = false;
+		}
 	}
 
 	@Override
