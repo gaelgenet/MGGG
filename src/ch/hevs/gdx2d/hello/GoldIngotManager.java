@@ -8,15 +8,16 @@ import ch.hevs.gdx2d.hello.Collision.CollisionScore;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class GoldIngotManager {
+	
 Vector<GoldIngot> ingot = new Vector<GoldIngot>();
 	
 
 	float dt;
 	float speedTime;
-	int posx = 1000;
+	int posx = 1150;
 	int posy = 0;
 
-	float speed = -4;
+	float speed = -4f;
 	float variablespeed = 2f;
 	int nbreIngot =0;
 	
@@ -28,14 +29,11 @@ Vector<GoldIngot> ingot = new Vector<GoldIngot>();
 		if ( dt > variablespeed) {
 			
 			dt = 0;
-//			posx = (int) ((Math.random() * 1000)+1000);
-//			if (posx < 1200|| posx > 1999) {
-//				posx = 1500     ;
-//			}
+
 			posy = (int) (Math.random() * 800);
 
-			if (posy < 300 || posy > 700) {
-				posy = 450;
+			if (posy < 350 || posy > 650) {
+				posy = 500;
 			}
 
 			ingot.add(new GoldIngot(posx, posy));
@@ -55,13 +53,24 @@ Vector<GoldIngot> ingot = new Vector<GoldIngot>();
 	}
 	
 	public void moveingot(GdxGraphics g) {
+		
+		speedTime += Gdx.graphics.getDeltaTime();
+		
+		//Logger.log("pouet" + speedTime);
+
+		if (speedTime > 7) {
+			//speed -= 0.1;
+			//variablespeed -= 0.1;
+			speedTime = 0;
+		}
+		
 		for (GoldIngot i : ingot) {
 			i.draw(g);
 			i.updateSquarre();
-			i.moveIngot();
+			i.moveIngot(speed);
 		}}
 		public void generatefirstingot(){
-			ingot.add(new GoldIngot(800,400));
+			ingot.add(new GoldIngot(500,400));
 			ingot.add(new GoldIngot(1200,500));
 			
 		}
