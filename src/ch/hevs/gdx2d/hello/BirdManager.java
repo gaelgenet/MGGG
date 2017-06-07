@@ -18,7 +18,7 @@ public class BirdManager {
 	int posy = 0;
 
 	float speed = -4;
-	float variablespeed = 4f;
+	float variablespeed = 3f;
 	
 
 	
@@ -61,8 +61,8 @@ public class BirdManager {
 		b.moveBird();
 	}}
 	public void generatefirstbird(){
-		birdes.add(new Bird(1500,300));
-		birdes.add(new Bird(2000,300));
+		birdes.add(new Bird(1200,300));
+		birdes.add(new Bird(1800,300));
 		
 	}
 	

@@ -18,12 +18,13 @@ public class InGameScreen extends RenderingScreen {
 	Collision collision;
 	GoldIngot ingot;
 	BirdManager bird;
+	Bachground background;
 	int keycode;
 	public boolean move = false;
 	static boolean change = true;
 	int score= 0;
 
-	BitmapImage background;
+	
 
 	@Override
 	public void onInit() {
@@ -32,11 +33,13 @@ public class InGameScreen extends RenderingScreen {
 		collision = new Collision();
 		ingot = new GoldIngot();
 		bird = new BirdManager();
+		background = new Bachground();
 		// background = new BitmapImage("data/images/background.png");
 		bonhomme.onInit();
 		cManager.generateInitialCubes();
 		ingot.onInit();
 		bird.generatefirstbird();
+		background.onInit();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
 		// Check if game over and switch to ending screen if necessary
 //		if (bonhomme.dead == true) {
@@ -48,6 +51,7 @@ public class InGameScreen extends RenderingScreen {
 	@Override
 	public void onGraphicRender(GdxGraphics g) {
 		g.clear();
+		background.draw(g);
 		bonhomme.draw(g);
 		bird.generateBird();
 		bird.moveTotalBird(g);
@@ -57,6 +61,7 @@ public class InGameScreen extends RenderingScreen {
 		cManager.distroyCube();
 		ingot.drawingPositionIngot(cManager);
 		ingot.draw(g);
+		
 	
 		bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme), cManager);
 
