@@ -9,10 +9,15 @@ public class Collision {
 		NONE, TOP, LEFT, END
 	};
 
-	public static CollisionType collides(Cube cube, Bonhomme bonhomme) {
+	public static CollisionType collides(Cube cube, Bonhomme bonhomme,float bonhommeSpeedX) {
 		// Point basDroit = new Point((int) bonhomme.squarre.x + (Bonhomme.SPRITE_WIDTH / 4), (int) bonhomme.squarre.y - (Bonhomme.SPRITE_HEIGHT / 2));
 
-		
+		if((bonhomme.square.x - (Bonhomme.SPRITE_WIDTH / 4)) <= (cube.rectangle.x + (cube.rectangle.width / 2)) && (bonhomme.square.x - (Bonhomme.SPRITE_WIDTH / 4)) - bonhommeSpeedX > (cube.rectangle.x + (cube.rectangle.width / 2))){
+			if(!bonhomme.move){
+				Logger.log("Collision end");
+				return CollisionType.END;
+			}
+		}
 		if ((bonhomme.square.x + (Bonhomme.SPRITE_WIDTH / 4)) >= cube.rectangle.x - (cube.rectangle.width / 2) && (bonhomme.square.x - (Bonhomme.SPRITE_WIDTH / 4)) <= cube.rectangle.x + (cube.rectangle.width / 2)) {
 			if ((bonhomme.square.y - (Bonhomme.SPRITE_HEIGHT / 2)) >= (cube.rectangle.height / 2) - 20
 					&& (bonhomme.square.y - (Bonhomme.SPRITE_HEIGHT / 2)) < (cube.rectangle.height / 2) - 2) {
@@ -22,13 +27,8 @@ public class Collision {
 				Logger.log("Collision left");
 				return CollisionType.LEFT;
 			}}
-		if((bonhomme.square.x - (Bonhomme.SPRITE_WIDTH / 4)) > (cube.rectangle.x + (cube.rectangle.width / 2)) && (bonhomme.square.y - (Bonhomme.SPRITE_HEIGHT / 2)) == (cube.rectangle.height / 2)){
-			Logger.log("Collision end");
-			return CollisionType.END;
-		}
-			
-			
 
+		
 		return CollisionType.NONE;
 
 	}

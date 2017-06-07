@@ -20,7 +20,7 @@ public class CubeManager {
 	int width;
 	int heigh;
 	float speed = -4;
-	float variablespeed = 2f;
+	float variablespeed = 1.9f;
 	static boolean play = true;
 
 	Color c = Color.WHITE;
@@ -42,7 +42,7 @@ public class CubeManager {
 			}
 			heigh = (int) (Math.random() * 1000);
 
-			if (heigh < 300 || heigh > 900) {
+			if (heigh < 300 || heigh > 850) {
 				heigh = 500;
 			}
 

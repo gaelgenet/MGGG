@@ -51,7 +51,7 @@ public class BirdManager {
 	}
 
 	void distroyBird() {
-		if (birdes.get(0).posX< 0) {
+		if (birdes.get(0).posX< -100) {
 			birdes.remove(0);
 		}
 	}

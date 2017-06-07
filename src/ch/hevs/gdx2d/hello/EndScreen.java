@@ -43,6 +43,8 @@ public class EndScreen extends RenderingScreen {
 
 		// Switch to in game screen
 		if(keycode == Input.Keys.ENTER)
+			Cube.play = true;
+			CubeManager.play = true;
 			Screens.getInstance().s.activateScreen(1);
 		
 	}

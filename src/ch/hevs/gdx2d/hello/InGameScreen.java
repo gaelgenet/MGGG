@@ -22,7 +22,7 @@ public class InGameScreen extends RenderingScreen {
 	int keycode;
 	public boolean move = false;
 	static boolean change = true;
-	int score= 0;
+	
 
 	
 
@@ -61,9 +61,7 @@ public class InGameScreen extends RenderingScreen {
 		cManager.distroyCube();
 		ingot.drawingPositionIngot(cManager);
 		ingot.draw(g);
-		
-	
-		bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme), cManager);
+		bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme,cManager.speed), cManager);
 
 		// for (Cube c : cManager.cubes)
 		//Logger.log("position of the cube " + cManager.cubes.get(0).rectangle.height);
@@ -74,10 +72,7 @@ public class InGameScreen extends RenderingScreen {
 		bonhomme.moveBonhomme();
 		keycode = 0;
 		
-		if(Collision.collides(cManager.cubes.get(0), bonhomme)== CollisionType.TOP){
-			score++;
-		}
-		g.drawString(700, 700, "score : " + score);
+		g.drawString(700, 700, "score : " + bonhomme.score);
 	}
 
 	@Override
@@ -87,7 +82,7 @@ public class InGameScreen extends RenderingScreen {
 
 		// jump
 		case Input.Keys.SPACE:
-			bonhomme.jump(Collision.collides(cManager.cubes.get(0), bonhomme));
+			bonhomme.jump(Collision.collides(cManager.cubes.get(0), bonhomme,cManager.speed));
 			break;
 
 		// pause-play

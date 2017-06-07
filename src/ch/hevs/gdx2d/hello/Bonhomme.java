@@ -22,8 +22,8 @@ public class Bonhomme implements DrawableObject {
 	/**
 	 * The size of each sprite in the sheet
 	 */
-	static int SPRITE_WIDTH = 128;
-	static int SPRITE_HEIGHT = 128;
+	static int SPRITE_WIDTH = 64;
+	static int SPRITE_HEIGHT = 96;
 
 	protected Rectangle square;
 
@@ -31,7 +31,7 @@ public class Bonhomme implements DrawableObject {
 	 * The currently selected sprite for animation
 	 */
 	int textureX = 0;
-	int textureY = 0;
+	int textureY = 3;
 
 	/**
 	 * Animation related parameters
@@ -44,8 +44,9 @@ public class Bonhomme implements DrawableObject {
 	static Spritesheet sprites;
 	static boolean move = false;
 	boolean dead = false;
-	int cubeHeigh = 264;
+	int cubeHeigh = 248;
 	int cubeNewHeight;
+	int score= 0;
 
 	/**
 	 * physic of the squarre
@@ -64,15 +65,15 @@ public class Bonhomme implements DrawableObject {
 			currentFrame = (currentFrame + 1) % nFrames;
 			// System.out.println("c :" + currentFrame);
 
-			if (currentFrame % 4 == 0) {
-				textureY = (textureY + 1) % 4;
+//			if (currentFrame % 4 == 0) {
+//				textureY = (textureY + 1) % 4;
 			}
 			// System.out.println(textureY);
-		}
+		//}
 	}
 
 	public void onInit() {
-		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+		sprites = new Spritesheet("data/images/man.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 		square = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
@@ -86,6 +87,7 @@ public class Bonhomme implements DrawableObject {
 	public void dead() {
 			Cube.play = false;
 			CubeManager.play = false;
+			move = false;
 			Logger.log("tu es mort");
 			Vsquarre = 0;
 			//dead = true;
@@ -103,16 +105,11 @@ public class Bonhomme implements DrawableObject {
 			square.y = square.y + deltaPosY;
 
 		}
-		//// réinitialiser la posY du cube après la gravité
-		// if (squarre.y <= cubeHeigh) {
-		// squarre.y = cubeHeigh;
-		// Vsquarre = Vinit;
-		// move = false;
-		// }
 
 		if (collide == CollisionType.TOP) {
 			square.y = cubeNewHeight;
 			Vsquarre = Vinit;
+			score++;
 			move = false;
 		}
 		if (collide == CollisionType.END) {
@@ -121,16 +118,15 @@ public class Bonhomme implements DrawableObject {
 		}
 		if ((collide == CollisionType.LEFT || square.y <= 100)) {
 			dead();
-
+			
 		}
 	}
 
 	@Override
 	public void draw(GdxGraphics g) {
 
-		// g.drawRectangle(squarre.x, squarre.y, SPRITE_WIDTH, SPRITE_HEIGHT,
-		// 0);
-		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2));
+		//g.drawRectangle(square.x, square.y, square.width, square.height,0);
+		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2)-10);
 
 	}
 
