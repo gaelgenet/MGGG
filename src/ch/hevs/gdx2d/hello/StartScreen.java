@@ -35,7 +35,7 @@ public class StartScreen extends RenderingScreen {
 		// Display start screen
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT/2 +100 , "MGGG", startTitle);
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT/2, "Mister Good Game Gold");
-		g.drawStringCentered(20, "hello ! press enter to play");
+		g.drawStringCentered(20, "Press enter to play");
 	}
 
 	@Override

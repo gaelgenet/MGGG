@@ -46,7 +46,7 @@ public class Bonhomme implements DrawableObject {
 	boolean dead = false;
 	int cubeHeigh = 248;
 	int cubeNewHeight;
-	int score= 0;
+	public static int score= 0;
 
 	/**
 	 * physic of the squarre
@@ -103,6 +103,7 @@ public class Bonhomme implements DrawableObject {
 			Vsquarre = (int) (Vsquarre + (DT * Gravity));
 			deltaPosY = (int) (DT * Vsquarre);
 			square.y = square.y + deltaPosY;
+			Logger.log("posisiton y : " + square.y);
 
 		}
 

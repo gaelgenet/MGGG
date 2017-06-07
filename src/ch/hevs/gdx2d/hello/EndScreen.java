@@ -34,18 +34,23 @@ public class EndScreen extends RenderingScreen {
 		
 		// Display ending screen
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT/2 +100 , "Game over", endTitle);
+		g.drawStringCentered(50, "score : " + Bonhomme.score);
 		g.drawStringCentered(20, "presse enter to play again");
 	}
 
 	@Override
 	public void onKeyDown(int keycode) {
-		super.onKeyDown(keycode);
-
-		// Switch to in game screen
-		if(keycode == Input.Keys.ENTER)
+		switch(keycode){
+		
+		case Input.Keys.ENTER:
 			Cube.play = true;
 			CubeManager.play = true;
+			Bonhomme.score = 0;
 			Screens.getInstance().s.activateScreen(1);
+			break;
+		default:
+			break;
+		}
 		
 	}
 }
