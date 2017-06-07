@@ -32,4 +32,18 @@ public class Collision {
 		return CollisionType.NONE;
 
 	}
+	public enum CollisionScore{
+		IN, OUT
+	};
+	public static CollisionScore scored(GoldIngot ingot, Bonhomme bonhomme) {
+		
+		
+		if(bonhomme.square.overlaps(ingot.square)){
+			return CollisionScore.IN;}
+		return CollisionScore.OUT;
+		
+		
+		
+		
+	}
 }

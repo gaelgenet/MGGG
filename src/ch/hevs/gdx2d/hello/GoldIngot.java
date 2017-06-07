@@ -18,21 +18,34 @@ public class GoldIngot implements DrawableObject {
 	
 	int posX;
 	int posY;
-	int ale;
+	int ale = 1;;
+	int increment = 1;
 	
-
-	public void onInit() {
-		ingot = new BitmapImage("data/images/gold.png");
-		square = new Rectangle();
-		square.height= 25;
-		square.width =25;
+	
+public GoldIngot(int posX, int posY){
+	this.posX = posX;
+	this.posY = posY;
+	square = new Rectangle();
+	
+	square.height= 25;
+	square.width =25;
+	ingot = new BitmapImage("data/images/gold.png");
+	
+}
+	
+	public void moveIngot(){
 		
+		if(ale%25==0){
+			increment *=-1;
 		}
+		posX -= 4;
+
+		posY += increment*2;
+		ale++;
+	}
 	
-	public void drawingPositionIngot(CubeManager c){
+	public void updateSquarre(){
 		
-		posY = (int) (c.cubes.get(0).rectangle.height/2 + ingot.getImage().getHeight()/4);
-		posX = (int) (c.cubes.get(0).rectangle.x + c.cubes.get(0).rectangle.width/4);
 		square.x = posX;
 		square.y = posY;
 		}

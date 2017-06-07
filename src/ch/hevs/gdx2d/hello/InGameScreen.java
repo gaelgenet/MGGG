@@ -16,9 +16,10 @@ public class InGameScreen extends RenderingScreen {
 	CubeManager cManager;
 	KeyListener keyListener;
 	Collision collision;
-	GoldIngot ingot;
+	GoldIngotManager ingots;
 	BirdManager bird;
 	Bachground background;
+	
 	int keycode;
 	public boolean move = false;
 	static boolean change = true;
@@ -31,14 +32,15 @@ public class InGameScreen extends RenderingScreen {
 		bonhomme = new Bonhomme();
 		cManager = new CubeManager();
 		collision = new Collision();
-		ingot = new GoldIngot();
+		ingots = new GoldIngotManager();
 		bird = new BirdManager();
 		background = new Bachground();
 		// background = new BitmapImage("data/images/background.png");
 		bonhomme.onInit();
 		cManager.generateInitialCubes();
-		ingot.onInit();
+		
 		bird.generatefirstbird();
+		ingots.generatefirstingot();
 		background.onInit();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
 		// Check if game over and switch to ending screen if necessary
@@ -53,15 +55,17 @@ public class InGameScreen extends RenderingScreen {
 		g.clear();
 		background.draw(g);
 		bonhomme.draw(g);
+		ingots.generateIngot();
+		ingots.moveingot(g);
 		bird.generateBird();
 		bird.moveTotalBird(g);
 		bird.distroyBird();
 		cManager.speedCube(g);
 		cManager.generatecube();
 		cManager.distroyCube();
-		ingot.drawingPositionIngot(cManager);
-		ingot.draw(g);
 		bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme,cManager.speed), cManager);
+		ingots.comptableIngotAndDostroy(Collision.scored(ingots.ingot.elementAt(0),bonhomme));
+		
 
 		// for (Cube c : cManager.cubes)
 		//Logger.log("position of the cube " + cManager.cubes.get(0).rectangle.height);
@@ -73,6 +77,7 @@ public class InGameScreen extends RenderingScreen {
 		keycode = 0;
 		
 		g.drawString(700, 700, "score : " + bonhomme.score);
+		g.drawString(600, 680, "Nombre of COOINS : "+ ingots.nbreIngot);
 	}
 
 	@Override
