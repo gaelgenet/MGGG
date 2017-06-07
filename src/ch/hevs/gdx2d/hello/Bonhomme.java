@@ -1,18 +1,15 @@
 package ch.hevs.gdx2d.hello;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Cubemap.CubemapSide;
+
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
-import ch.hevs.gdx2d.components.geometry.Point;
-import ch.hevs.gdx2d.components.physics.primitives.PhysicsBox;
+
 import ch.hevs.gdx2d.hello.Collision.CollisionType;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
-import ch.hevs.gdx2d.lib.physics.AbstractPhysicsObject;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class Bonhomme implements DrawableObject {
@@ -21,7 +18,6 @@ public class Bonhomme implements DrawableObject {
 	String name;
 	HelloWorld hello;
 	CubeManager cube = new CubeManager();
-	
 
 	/**
 	 * The size of each sprite in the sheet
@@ -29,7 +25,7 @@ public class Bonhomme implements DrawableObject {
 	static int SPRITE_WIDTH = 128;
 	static int SPRITE_HEIGHT = 128;
 
-	protected Rectangle squarre;
+	protected Rectangle square;
 
 	/**
 	 * The currently selected sprite for animation
@@ -47,15 +43,16 @@ public class Bonhomme implements DrawableObject {
 	double FRAME_TIME = 0.1; // Duration of each frame
 	static Spritesheet sprites;
 	static boolean move = false;
-	int cubeHeigh = 178;
+	boolean dead = false;
+	int cubeHeigh = 264;
 	int cubeNewHeight;
-	
-	
+
 	/**
 	 * physic of the squarre
 	 */
-	private final float Vinit = 80, Gravity = -9.81f, DT = 0.3f, V_boost = 50.f;
-	private float Vsquarre = Vinit, deltaPosY;
+	private final int Vinit = 90, Gravity = -10, V_boost = 5;
+	float DT = 0.25f;
+	private int Vsquarre = Vinit, deltaPosY;
 
 	public void moveBonhomme() {
 
@@ -76,59 +73,64 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		sprites = new Spritesheet("data/images/smurf.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-		squarre = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh + 100, SPRITE_WIDTH, SPRITE_HEIGHT);
+		square = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
 
-	public void jump(Collision.CollisionType collide){
-		if( collide != CollisionType.LEFT ){
-		move = true;}
+	public void jump(Collision.CollisionType collide) {
+		if (collide != CollisionType.LEFT) {
+			move = true;
+		}
 	}
-	
-	public boolean dead(boolean dead){
-		Cube.play = false;
-		CubeManager.play = false;
-		Logger.log("tu es mort");
-		return true;
-		
-	}
+
+	public void dead() {
+			Cube.play = false;
+			CubeManager.play = false;
+			Logger.log("tu es mort");
+			Vsquarre = 0;
+			//dead = true;
+			Screens.getInstance().s.activateNextScreen();
+			
+		}
 
 	public void physics_update(Collision.CollisionType collide, CubeManager cube) {
-		
-		cubeNewHeight = (int) cube.cubes.get(0).rectangle.height/2 + (SPRITE_HEIGHT/2);
-		
+
+		cubeNewHeight = (int) cube.cubes.get(0).rectangle.height / 2 + (SPRITE_HEIGHT / 2);
+
 		if (move == true) {
-			Vsquarre = Vsquarre + (DT * Gravity);
-			deltaPosY = DT * Vsquarre;
-			squarre.y = squarre.y + deltaPosY;
-		
-		
+			Vsquarre = (int) (Vsquarre + (DT * Gravity));
+			deltaPosY = (int) (DT * Vsquarre);
+			square.y = square.y + deltaPosY;
+
 		}
-//réinitialiser la posY du cube après la gravité
-		if (squarre.y <= cubeHeigh) {
-			squarre.y = cubeHeigh;
+		//// réinitialiser la posY du cube après la gravité
+		// if (squarre.y <= cubeHeigh) {
+		// squarre.y = cubeHeigh;
+		// Vsquarre = Vinit;
+		// move = false;
+		// }
+
+		if (collide == CollisionType.TOP) {
+			square.y = cubeNewHeight;
 			Vsquarre = Vinit;
 			move = false;
 		}
-		
-		if(collide == CollisionType.TOP){
-			squarre.y = cubeNewHeight;
-			Vsquarre = Vinit;
-			move = false;
+		if (collide == CollisionType.END) {
+			Vsquarre = -(Vinit / 2);
+			move = true;
 		}
-		
-		if(collide == CollisionType.LEFT || squarre.y == cubeHeigh){			
-			dead(true);  
-			
+		if ((collide == CollisionType.LEFT || square.y <= 100)) {
+			dead();
+
 		}
 	}
 
 	@Override
 	public void draw(GdxGraphics g) {
 
-		g.drawRectangle(squarre.x, squarre.y, SPRITE_WIDTH, SPRITE_HEIGHT, 0);
-		g.draw(sprites.sprites[textureY][currentFrame], squarre.x - (SPRITE_WIDTH / 2),
-				squarre.y - (SPRITE_HEIGHT / 2));
+		// g.drawRectangle(squarre.x, squarre.y, SPRITE_WIDTH, SPRITE_HEIGHT,
+		// 0);
+		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2));
 
 	}
 

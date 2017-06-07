@@ -20,7 +20,7 @@ public class CubeManager {
 	int width;
 	int heigh;
 	float speed = -4;
-	float variablespeed = 3;
+	float variablespeed = 2f;
 	static boolean play = true;
 
 	Color c = Color.WHITE;
@@ -35,14 +35,15 @@ public class CubeManager {
 		if (play == true && dt > variablespeed) {
 			// Logger.log("Generating a CUBBEEEEE!");
 			dt = 0;
+			
 			width = (int) (Math.random() * 1000);
-			if (width < 200 || width > 500) {
-				width = 500;
+			if (width < 200 || width > 600) {
+				width = 200;
 			}
 			heigh = (int) (Math.random() * 1000);
 
-			if (heigh < 200 || heigh > 900) {
-				heigh = 800;
+			if (heigh < 300 || heigh > 900) {
+				heigh = 500;
 			}
 
 			cubes.add(new Cube(posx, posy, width, heigh, new Color(r.nextInt())));
@@ -53,7 +54,7 @@ public class CubeManager {
 	}
 
 	void distroyCube() {
-		if (cubes.get(0).rectangle.x< -(cubes.get(0).rectangle.width/2)) {
+		if (cubes.get(0).rectangle.x < -(cubes.get(0).rectangle.width/2)) {
 			//Logger.log("cube"+cubes.get(0)+"is destroyed");
 			cubes.remove(0);
 		}
@@ -77,8 +78,8 @@ public class CubeManager {
 	}
 
 	public void generateInitialCubes() {
-		cubes.add(new Cube(0,posy,700,400, new Color(r.nextInt())));
-		cubes.add(new Cube(posx, posy, 400, 400, new Color(r.nextInt())));
+		cubes.add(new Cube(0,posy,1300,400, new Color(Color.YELLOW)));
+		cubes.add(new Cube(posx, posy, 400, 400, new Color(Color.YELLOW)));
 		
 
 	}
