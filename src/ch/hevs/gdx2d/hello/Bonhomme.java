@@ -50,6 +50,7 @@ public class Bonhomme implements DrawableObject {
 	int cubeNewHeight;
 	public static int score= 0;
 	public static int sex = 0;
+	public static int offset = 20;
 
 	/**
 	 * physic of the squarre
@@ -59,7 +60,7 @@ public class Bonhomme implements DrawableObject {
 	private int Vsquarre = Vinit, deltaPosY;
 
 	public void moveBonhomme() {
-
+		
 		dt += Gdx.graphics.getDeltaTime();
 
 		if (dt > FRAME_TIME) {
@@ -77,9 +78,7 @@ public class Bonhomme implements DrawableObject {
 
 	public void onInit() {
 		switch (sex){
-
 		
-		case 0:			
 		case 1:
 			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
@@ -89,9 +88,10 @@ public class Bonhomme implements DrawableObject {
 			break;
 			
 		default:
+			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;}
 		
-		square = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
+		square = new Rectangle((SPRITE_WIDTH / 2) + offset, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
 

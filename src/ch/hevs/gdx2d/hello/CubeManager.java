@@ -14,7 +14,7 @@ public class CubeManager {
 	Vector<Cube> cubes = new Vector<Cube>();
 
 	float dt;
-	float speedTime;
+	static float speedTime;
 	int posx = 1000;
 	int posy = 0;
 	int width;
@@ -65,7 +65,7 @@ public class CubeManager {
 		//Logger.log("pouet" + speedTime);
 
 		if (play == true && speedTime > 7) {
-			speed -= 0.1;
+			speed -= 0.2;
 			//variablespeed -= 0.1;
 			speedTime = 0;
 		}

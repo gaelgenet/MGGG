@@ -48,10 +48,7 @@ public class EndScreen extends RenderingScreen {
 		switch(keycode){
 		
 		case Input.Keys.ENTER:
-			Cube.play = true;
-			CubeManager.play = true;
-			Bonhomme.score = 0;
-			Screens.getInstance().s.activateScreen(0);
+			Restart.restart();
 			break;
 		default:
 			break;

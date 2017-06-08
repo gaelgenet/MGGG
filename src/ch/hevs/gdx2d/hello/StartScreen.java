@@ -47,10 +47,7 @@ public class StartScreen extends RenderingScreen {
 		g.drawStringCentered(20, "Press enter to play");
 
 		switch (Bonhomme.sex) {
-		
-		case 0:
-			break;
-
+	
 		case 1:
 			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to be Gaël");
 			break;
