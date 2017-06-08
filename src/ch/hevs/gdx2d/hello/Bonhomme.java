@@ -128,7 +128,6 @@ public class Bonhomme implements DrawableObject {
 
 		//g.drawRectangle(square.x, square.y, square.width, square.height,0);
 		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2)-10);
-
 	}
 
 }
