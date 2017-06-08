@@ -9,7 +9,11 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 public class GoldIngot implements DrawableObject {
 
 	static BitmapImage ingot;
+	static BitmapImage silver;
+	static BitmapImage saphir;
+
 	Rectangle square;
+	Bonhomme b = new Bonhomme();
 
 	int posX;
 	int posY;
@@ -19,13 +23,21 @@ public class GoldIngot implements DrawableObject {
 	public GoldIngot(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
+
 		square = new Rectangle();
 
 		square.height = 25;
-		square.width = 25;
-		ingot = new BitmapImage("data/images/gold.png");
 
+		square.width = 25;
+
+		silver = new BitmapImage("data/images/silver.png");
+
+		saphir = new BitmapImage("data/images/saphir.png");
+
+		ingot = new BitmapImage("data/images/gold.png");
 	}
+
+	
 
 	public void moveIngot(float speed) {
 
@@ -46,7 +58,15 @@ public class GoldIngot implements DrawableObject {
 
 	@Override
 	public void draw(GdxGraphics g) {
-		g.drawTransformedPicture(posX, posY, 0, 0.25f, ingot);
+		if (b.score >= 50) {
+			g.drawTransformedPicture(posX, posY, 0, 0.25f, saphir);
+		}
+		if (b.score >= 20 && b.score < 50) {
+			g.drawTransformedPicture(posX, posY, 0, 0.25f, silver);
+		}
+		if (b.score < 20) {
+			g.drawTransformedPicture(posX, posY, 0, 0.25f, ingot);
+		}
 
 	}
 

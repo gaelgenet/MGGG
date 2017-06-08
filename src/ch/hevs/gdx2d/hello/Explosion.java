@@ -55,7 +55,11 @@ public class Explosion  implements DrawableObject{
 	@Override
 	public void draw(GdxGraphics g) {
 		// TODO Auto-generated method stub
-		g.draw(explose.sprites[textureY][currentFrame],400,400);
+		
+		g.draw(explose.sprites[textureY][currentFrame],200,200);
+		g.draw(explose.sprites[textureY][currentFrame],550,200);
+		g.draw(explose.sprites[textureY][currentFrame],200,550);
+		g.draw(explose.sprites[textureY][currentFrame],550,550);
 		
 	}
 
