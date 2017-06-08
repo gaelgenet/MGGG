@@ -52,7 +52,7 @@ public class StartScreen extends RenderingScreen {
 			break;
 
 		case 1:
-			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to be a Gaël");
+			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to be Gaël");
 			break;
 
 		case 2:
@@ -73,9 +73,11 @@ public class StartScreen extends RenderingScreen {
 			break;
 
 		case Input.Keys.NUMPAD_1:
+		case Input.Keys.NUM_1:
 			Bonhomme.sexe = 1;
 			break;
 		case Input.Keys.NUMPAD_2:
+		case Input.Keys.NUM_2:
 			Bonhomme.sexe = 2;
 			break;
 
