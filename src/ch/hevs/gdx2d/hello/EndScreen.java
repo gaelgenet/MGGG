@@ -15,10 +15,13 @@ public class EndScreen extends RenderingScreen {
 	
 	public BitmapFont endTitle;
 	FileHandle titleFont;
+	Explosion explose = new Explosion();
+	
 
 	@Override
 	public void onInit() {
 		titleFont = Gdx.files.internal("data/fonts/titleFont.ttf");
+		explose.onInit();
 		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(titleFont);
 		parameter.size = generator.scaleForPixelHeight(100);
@@ -33,6 +36,8 @@ public class EndScreen extends RenderingScreen {
 		g.resetCamera();
 		
 		// Display ending screen
+		explose.draw(g);
+		explose.moveSprite();
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT/2 +100 , "Game over", endTitle);
 		g.drawStringCentered(50, "score : " + Bonhomme.score);
 		g.drawStringCentered(20, "presse enter to play again");
