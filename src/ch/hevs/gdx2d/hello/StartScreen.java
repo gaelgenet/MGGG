@@ -46,7 +46,7 @@ public class StartScreen extends RenderingScreen {
 				textTitle);
 		g.drawStringCentered(20, "Press enter to play");
 
-		switch (Bonhomme.sexe) {
+		switch (Bonhomme.sex) {
 		
 		case 0:
 			break;
@@ -74,11 +74,11 @@ public class StartScreen extends RenderingScreen {
 
 		case Input.Keys.NUMPAD_1:
 		case Input.Keys.NUM_1:
-			Bonhomme.sexe = 1;
+			Bonhomme.sex = 1;
 			break;
 		case Input.Keys.NUMPAD_2:
 		case Input.Keys.NUM_2:
-			Bonhomme.sexe = 2;
+			Bonhomme.sex = 2;
 			break;
 
 		default:

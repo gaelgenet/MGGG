@@ -2,6 +2,7 @@ package ch.hevs.gdx2d.hello;
 
 import com.badlogic.gdx.Input;
 import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
+import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
 import ch.hevs.gdx2d.components.physics.utils.PhysicsScreenBoundaries;
 import ch.hevs.gdx2d.components.screen_management.RenderingScreen;
 import ch.hevs.gdx2d.hello.Collision.CollisionType;
@@ -65,19 +66,18 @@ public class InGameScreen extends RenderingScreen {
 		cManager.distroyCube();
 		bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme,cManager.speed), cManager);
 		ingots.comptableIngotAndDostroy(Collision.scored(ingots.ingot.elementAt(0),bonhomme));
-		
-
-		// for (Cube c : cManager.cubes)
-		//Logger.log("position of the cube " + cManager.cubes.get(0).rectangle.height);
-		
-		// Logger.log("Collision " + Collision.collides(cManager.cubes.get(1),
-		// bonhomme));
 
 		bonhomme.moveBonhomme();
 		keycode = 0;
 		
+		if(Bonhomme.sex == 3){
+		Bonhomme.sprites = new Spritesheet("data/images/superllamaSmall.png", Bonhomme.SPRITE_WIDTH, Bonhomme.SPRITE_HEIGHT);
+		Bonhomme.nFrames = 8;
+		
+	}
+		
 		g.drawString(700, 700, "score : " + bonhomme.score);
-		g.drawString(600, 680, "Nombre of COOINS : "+ ingots.nbreIngot);
+		g.drawString(600, 680, "Nombre of COINS : "+ ingots.nbreIngot);
 	}
 
 	@Override

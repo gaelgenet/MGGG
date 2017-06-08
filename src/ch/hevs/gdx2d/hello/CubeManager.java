@@ -78,7 +78,8 @@ public class CubeManager {
 	}
 
 	public void generateInitialCubes() {
-		cubes.add(new Cube(0,posy,1300,400, new Color(Color.YELLOW)));
+		cubes.add(new Cube(200,posy,400,400, new Color(Color.YELLOW)));
+		cubes.add(new Cube(650,posy,200,400, new Color(Color.YELLOW)));
 		cubes.add(new Cube(posx, posy, 200, 400, new Color(Color.YELLOW)));
 		
 

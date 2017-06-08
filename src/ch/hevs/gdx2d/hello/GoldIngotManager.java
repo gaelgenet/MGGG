@@ -50,6 +50,10 @@ Vector<GoldIngot> ingot = new Vector<GoldIngot>();
 		if(ingot.get(0).posX < -15){
 			ingot.remove(0);
 		}
+		
+		if(nbreIngot % 20 == 0){
+			Bonhomme.sex = 3;
+		}
 	}
 	
 	public void moveingot(GdxGraphics g) {

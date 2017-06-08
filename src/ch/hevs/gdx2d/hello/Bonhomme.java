@@ -1,5 +1,7 @@
 package ch.hevs.gdx2d.hello;
 
+import java.awt.Frame;
+
 import com.badlogic.gdx.Gdx;
 
 import com.badlogic.gdx.math.Rectangle;
@@ -39,7 +41,7 @@ public class Bonhomme implements DrawableObject {
 
 	float dt = 0;
 	int currentFrame = 0;
-	int nFrames = 4;
+	static int nFrames = 4;
 	double FRAME_TIME = 0.1; // Duration of each frame
 	static Spritesheet sprites;
 	static boolean move = false;
@@ -47,7 +49,7 @@ public class Bonhomme implements DrawableObject {
 	int cubeHeigh = 234;
 	int cubeNewHeight;
 	public static int score= 0;
-	public static int sexe = 0;
+	public static int sex = 0;
 
 	/**
 	 * physic of the squarre
@@ -74,13 +76,10 @@ public class Bonhomme implements DrawableObject {
 	}
 
 	public void onInit() {
-		switch (sexe){
+		switch (sex){
 
 		
-		case 0:
-			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-			break;
-			
+		case 0:			
 		case 1:
 			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
@@ -88,7 +87,9 @@ public class Bonhomme implements DrawableObject {
 		case 2:
 			sprites = new Spritesheet("data/images/womanSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
-		}
+			
+		default:
+			break;}
 		
 		square = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
 
