@@ -51,7 +51,7 @@ public class EndScreen extends RenderingScreen {
 			Cube.play = true;
 			CubeManager.play = true;
 			Bonhomme.score = 0;
-			Screens.getInstance().s.activateScreen(1);
+			Screens.getInstance().s.activateScreen(0);
 			break;
 		default:
 			break;

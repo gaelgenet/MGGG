@@ -20,7 +20,7 @@ public class CubeManager {
 	int width;
 	int heigh;
 	float speed = -4;
-	float variablespeed = 2f;
+	float variablespeed = 1.8f;
 	static boolean play = true;
 
 	Color c = Color.WHITE;
@@ -36,11 +36,11 @@ public class CubeManager {
 			// Logger.log("Generating a CUBBEEEEE!");
 			dt = 0;
 			
-			width = (int) (Math.random() * 600);
+			width = 200;
 			
-			if (width <= 250 || width >= 400) {
-				width = 250;
-			}
+//			if (width <= 250 || width >= 400) {
+//				width = 250;
+//			}
 			heigh = (int) (Math.random() * 700);
 
 			if (heigh <= 350 || heigh >= 600) {

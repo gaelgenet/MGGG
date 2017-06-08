@@ -23,7 +23,7 @@ public class Bonhomme implements DrawableObject {
 	 * The size of each sprite in the sheet
 	 */
 	static int SPRITE_WIDTH = 64;
-	static int SPRITE_HEIGHT = 96;
+	static int SPRITE_HEIGHT = 68;
 
 	protected Rectangle square;
 
@@ -31,7 +31,7 @@ public class Bonhomme implements DrawableObject {
 	 * The currently selected sprite for animation
 	 */
 	int textureX = 0;
-	int textureY = 3;
+	int textureY = 0;
 
 	/**
 	 * Animation related parameters
@@ -44,9 +44,10 @@ public class Bonhomme implements DrawableObject {
 	static Spritesheet sprites;
 	static boolean move = false;
 	boolean dead = false;
-	int cubeHeigh = 248;
+	int cubeHeigh = 234;
 	int cubeNewHeight;
 	public static int score= 0;
+	public static int sexe = 0;
 
 	/**
 	 * physic of the squarre
@@ -73,7 +74,22 @@ public class Bonhomme implements DrawableObject {
 	}
 
 	public void onInit() {
-		sprites = new Spritesheet("data/images/man.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+		switch (sexe){
+
+		
+		case 0:
+			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+			break;
+			
+		case 1:
+			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+			break;
+			
+		case 2:
+			sprites = new Spritesheet("data/images/womanSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+			break;
+		}
+		
 		square = new Rectangle(SPRITE_WIDTH / 2 + 10, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
@@ -127,7 +143,7 @@ public class Bonhomme implements DrawableObject {
 	public void draw(GdxGraphics g) {
 
 		//g.drawRectangle(square.x, square.y, square.width, square.height,0);
-		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2)-10);
+		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2));
 	}
 
 }

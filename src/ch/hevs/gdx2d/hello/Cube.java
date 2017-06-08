@@ -41,7 +41,7 @@ public class Cube implements DrawableObject {
 		float x = rectangle.x;
 		float y = rectangle.y;
 		g.drawFilledRectangle(rectangle.x, rectangle.y, rectangle.width, rectangle.height, 0, c); 
-		g.draw(img.getImage(), x-rectangle.width/2, y, rectangle.width, rectangle.height/2, offX, offY, (int)rectangle.width, (int)rectangle.height/2, false, false);
+		g.draw(img.getImage(), x-rectangle.width/2, y, rectangle.width, rectangle.height/2, offX, offY, (int)rectangle.width, (int)rectangle.height/3, false, false);
 		//update();
 	}
 	
