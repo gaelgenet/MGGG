@@ -35,7 +35,7 @@ public class DragonBonus implements DrawableObject {
 
 	
 
-	public void moveIngot(float speed) {
+	public void moveDragonBonus(float speed) {
 
 		if (ale % 30 == 0) {
 			increment *= -1;

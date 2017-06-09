@@ -17,7 +17,7 @@ public class InGameScreen extends RenderingScreen {
 	CubeManager cManager;
 	KeyListener keyListener;
 	Collision collision;
-	GoldIngotManager ingots;
+	IngotManager ingots;
 	BirdManager bird;
 	Bachground background;
 	DragonBonusManager dragonManager;
@@ -32,7 +32,7 @@ public class InGameScreen extends RenderingScreen {
 		bonhomme = new Bonhomme();
 		cManager = new CubeManager();
 		collision = new Collision();
-		ingots = new GoldIngotManager();
+		ingots = new IngotManager();
 		bird = new BirdManager();
 		background = new Bachground();
 		// background = new BitmapImage("data/images/background.png");
@@ -69,24 +69,25 @@ public class InGameScreen extends RenderingScreen {
 		if (DragonBonusManager.dragon == false) {
 			bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme, cManager.speed), cManager);
 		}
+		//Logger.log("dragon: " + DragonBonusManager.activeDragonBonus);
 		
-		if(DragonBonusManager.activeBonus == true){
-			//dragonManager.generateBonus();
-			dragonManager.generatefirstBonus();
-			dragonManager.moveBonus(g);
+		if(DragonBonusManager.activeDragonBonus == true){
+			dragonManager.generateBonus();
 			dragonManager.Destroy(Collision.bonus(dragonManager.bonus.elementAt(0), bonhomme));
+			dragonManager.moveBonus(g);
+
 		}
 		
 
 		bonhomme.moveBonhomme();
 		keycode = 0;
-		Logger.log("salut : " + Bonhomme.sex);
+		//Logger.log("salut : " + Bonhomme.sex);
 
 		if (Bonhomme.sex == 3) {
 			Bonhomme.offset = 200;
 			Bonhomme.SPRITE_WIDTH = 150;
 			Bonhomme.SPRITE_HEIGHT = 147;
-			DragonBonusManager.dragon = false;
+			DragonBonusManager.dragon = true;
 			// Bonhomme.cubeHeight =
 			Bonhomme.sprites = new Spritesheet("data/images/dragon1.png", Bonhomme.SPRITE_WIDTH,
 					Bonhomme.SPRITE_HEIGHT);

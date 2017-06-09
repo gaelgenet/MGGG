@@ -9,35 +9,35 @@ import ch.hevs.gdx2d.hello.Collision.CollisionGold;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class DragonBonusManager {
-	
+
 	Vector<DragonBonus> bonus = new Vector<DragonBonus>();
 
-	int posx = 1000;
+	int posx = 500;
 	int posy = 500;
 
 	float speed = -4f;
 	static boolean dragon = false;
-	static boolean activeBonus = false;
-	
+	static boolean activeDragonBonus = false;
+
 	void generateBonus() {
-		posy = 500;
+		
 		bonus.add(new DragonBonus(posx, posy));
 
 	}
 
 	public void Destroy(Collision.CollisionBonus collide) {
 		
-		if (collide == CollisionBonus.IN) {
-			bonus.remove(0);
-			DragonBonusManager.dragon = true;
+			if (collide == CollisionBonus.IN) {
+				bonus.remove(0);
+				DragonBonusManager.dragon = true;
+				Bonhomme.sex = 3;
 			}
-		
-		
-		if (bonus.get(0).posX < -15) {
-			bonus.remove(0);
+
+			if (bonus.get(0).posX < -15) {
+				bonus.remove(0);
+			}
 		}
 
-	}
 
 	public void moveBonus(GdxGraphics g) {
 
@@ -48,13 +48,15 @@ public class DragonBonusManager {
 		for (DragonBonus i : bonus) {
 			i.draw(g);
 			i.updateSquarre();
-			i.moveIngot(speed);
+			i.moveDragonBonus(speed);
 		}
 	}
 
 	public void generatefirstBonus() {
-		bonus.add(new DragonBonus(500, 400));
-		//bonus.add(new DragonBonus(1200, 500));
+		
+			bonus.add(new DragonBonus(500, 400));
+		
+		// bonus.add(new DragonBonus(1200, 500));
 
 	}
 

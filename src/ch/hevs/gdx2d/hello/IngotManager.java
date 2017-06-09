@@ -8,9 +8,9 @@ import ch.hevs.gdx2d.hello.Collision.CollisionGold;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
-public class GoldIngotManager {
+public class IngotManager {
 
-	Vector<GoldIngot> ingot = new Vector<GoldIngot>();
+	Vector<IngotBonus> ingot = new Vector<IngotBonus>();
 
 
 	float dt;
@@ -20,7 +20,8 @@ public class GoldIngotManager {
 
 	float speed = -4f;
 	float variablespeed = 2f;
-	int nbreIngot = 19;
+	public static int nbreIngot = 19;
+	
 
 	void generateIngot() {
 		dt += Gdx.graphics.getDeltaTime();
@@ -35,7 +36,7 @@ public class GoldIngotManager {
 //				posy = 500;
 //			}
 
-			ingot.add(new GoldIngot(posx, posy));
+			ingot.add(new IngotBonus(posx, posy));
 
 		}
 
@@ -48,9 +49,13 @@ public class GoldIngotManager {
 			ingot.remove(0);
 			
 			if (nbreIngot % 20 == 0) {
-				DragonBonusManager.activeBonus = true;
-				//DragonBonusManager.dragon =true;
+				DragonBonusManager.activeDragonBonus = true;
+				Logger.log("dragon bonus activated");
+				//DragonBonusManager.activeBonus =true;
 				//Bonhomme.sex = 3;
+			}
+			else if(nbreIngot%6 == 0 && DragonBonusManager.activeDragonBonus == true){
+				DragonBonusManager.activeDragonBonus = false;
 			}
 		}
 		if (ingot.get(0).posX < -15) {
@@ -71,7 +76,7 @@ public class GoldIngotManager {
 			speedTime = 0;
 		}
 
-		for (GoldIngot i : ingot) {
+		for (IngotBonus i : ingot) {
 			i.draw(g);
 			i.updateSquarre();
 			i.moveIngot(speed);
@@ -79,8 +84,8 @@ public class GoldIngotManager {
 	}
 
 	public void generatefirstingot() {
-		ingot.add(new GoldIngot(500, 400));
-		ingot.add(new GoldIngot(1200, 500));
+		ingot.add(new IngotBonus(500, 400));
+		ingot.add(new IngotBonus(1200, 500));
 
 	}
 

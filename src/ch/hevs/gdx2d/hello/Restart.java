@@ -10,6 +10,8 @@ public class Restart {
 		Bonhomme.SPRITE_HEIGHT = 68;
 		Bonhomme.SPRITE_WIDTH = 64;
 		Bonhomme.offset = 10;
+		DragonBonusManager.activeDragonBonus = false;
+		DragonBonusManager.dragon = false;
 		Screens.getInstance().s.activateScreen(0);
 	}
 

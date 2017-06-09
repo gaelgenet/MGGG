@@ -5,8 +5,9 @@ import com.badlogic.gdx.math.Rectangle;
 import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
+import ch.hevs.gdx2d.lib.utils.Logger;
 
-public class GoldIngot implements DrawableObject {
+public class IngotBonus implements DrawableObject {
 
 	static BitmapImage ingot;
 	static BitmapImage silver;
@@ -14,13 +15,14 @@ public class GoldIngot implements DrawableObject {
 
 	Rectangle square;
 	Bonhomme b = new Bonhomme();
+	IngotManager bonusManager;
 
 	int posX;
 	int posY;
 	int ale = 1;;
 	int increment = 1;
 
-	public GoldIngot(int posX, int posY) {
+	public IngotBonus(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
 
@@ -61,10 +63,10 @@ public class GoldIngot implements DrawableObject {
 		if (b.score >= 50) {
 			g.drawTransformedPicture(posX, posY, 0, 0.25f, saphir);
 		}
-		if (b.score >= 20 && b.score < 50) {
+		else if (b.score >= 20 && b.score < 50) {
 			g.drawTransformedPicture(posX, posY, 0, 0.25f, silver);
 		}
-		if (b.score < 20) {
+		else if (b.score < 20) {
 			g.drawTransformedPicture(posX, posY, 0, 0.25f, ingot);
 		}
 

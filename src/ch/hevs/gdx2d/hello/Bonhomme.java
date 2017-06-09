@@ -120,7 +120,7 @@ public class Bonhomme implements DrawableObject {
 			Vsquarre = (int) (Vsquarre + (DT * Gravity));
 			deltaPosY = (int) (DT * Vsquarre);
 			square.y = square.y + deltaPosY;
-			Logger.log("posisiton y : " + square.y);
+			//Logger.log("posisiton y : " + square.y);
 
 		}
 

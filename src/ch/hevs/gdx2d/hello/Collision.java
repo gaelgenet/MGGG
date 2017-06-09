@@ -43,7 +43,7 @@ public class Collision {
 		IN, OUT
 	};
 
-	public static CollisionGold scored(GoldIngot ingot, Bonhomme bonhomme) {
+	public static CollisionGold scored(IngotBonus ingot, Bonhomme bonhomme) {
 
 		if (bonhomme.square.overlaps(ingot.square)) {
 			return CollisionGold.IN;
