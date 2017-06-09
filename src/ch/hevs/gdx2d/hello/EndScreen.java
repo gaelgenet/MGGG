@@ -38,6 +38,7 @@ public class EndScreen extends RenderingScreen {
 		// Display ending screen
 		explose.draw(g);
 		explose.moveSprite();
+		explose.loser(g);
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT/2 +100 , "Game over", endTitle);
 		g.drawStringCentered(50, "score : " + Bonhomme.score);
 		g.drawStringCentered(20, "presse enter to play again");
