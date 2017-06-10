@@ -7,12 +7,10 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class DragonBonus implements DrawableObject {
-	
-	static BitmapImage dragonBonus;
 
+	static BitmapImage dragonBonus = new BitmapImage("data/images/dragonEgg.png");
 
 	Rectangle square;
-	
 
 	int posX;
 	int posY;
@@ -20,6 +18,7 @@ public class DragonBonus implements DrawableObject {
 	int increment = 1;
 
 	public DragonBonus(int posX, int posY) {
+
 		this.posX = posX;
 		this.posY = posY;
 
@@ -29,11 +28,7 @@ public class DragonBonus implements DrawableObject {
 
 		square.width = 25;
 
-		dragonBonus = new BitmapImage("data/images/dragonEgg.png");
-
 	}
-
-	
 
 	public void moveDragonBonus(float speed) {
 
@@ -54,7 +49,7 @@ public class DragonBonus implements DrawableObject {
 
 	@Override
 	public void draw(GdxGraphics g) {
-			g.drawTransformedPicture(posX, posY, 0, 0.3f, dragonBonus);
-		}
+		g.drawTransformedPicture(posX, posY, 0, 0.3f, dragonBonus);
+	}
 
 }

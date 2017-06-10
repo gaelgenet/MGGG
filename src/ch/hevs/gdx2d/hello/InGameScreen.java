@@ -22,11 +22,12 @@ public class InGameScreen extends RenderingScreen {
 	BirdManager bird;
 	Bachground background;
 	DragonBonusManager dragonManager;
+	StorageBonhomme storageBonhomme;
+
 
 	int keycode;
 	public boolean move = false;
 	static boolean change = true;
-
 
 	@Override
 	public void onInit() {
@@ -37,22 +38,18 @@ public class InGameScreen extends RenderingScreen {
 		eggs = new EggDofusManager();
 		bird = new BirdManager();
 		background = new Bachground();
-		// background = new BitmapImage("data/images/background.png");
+		dragonManager = new DragonBonusManager();
+		storageBonhomme = new StorageBonhomme();
+
 		bonhomme.onInit();
 		cManager.generateInitialCubes();
-		dragonManager = new DragonBonusManager();
-
 		bird.generatefirstbird();
 		ingots.generatefirstingot();
 		eggs.generatefirstegg();
 		background.onInit();
-		background.onInit2();
+		dragonManager.generatefirstBonus();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
-		// Check if game over and switch to ending screen if necessary
-		// if (bonhomme.dead == true) {
-		// Logger.log("bonjour");
-		// Screens.getInstance().s.activateNextScreen();
-		// }
+
 	}
 
 	@Override
@@ -66,49 +63,41 @@ public class InGameScreen extends RenderingScreen {
 		cManager.speedCube(g);
 		cManager.generatecube();
 		cManager.distroyCube();
-		if(bonhomme.sex == 4 ){
-			eggs.generateEgg();
-			eggs.moveegg(g);
-			eggs.comptableEggAndDestroy(Collision.scored1(eggs.eggs.elementAt(0), bonhomme));
-		}
-		else{
+
+		dragonManager.generateBonus();
+		dragonManager.moveBonus(g);
+		dragonManager.Destroy(Collision.bonus(dragonManager.bonus.lastElement(), bonhomme));
+
+		switch (StartScreen.world) {
+
+		default:
+		case 0:
 			ingots.generateIngot();
 			ingots.moveingot(g);
 			ingots.comptableIngotAndDestroy(Collision.scored(ingots.ingot.elementAt(0), bonhomme));
-			
+			g.drawString(600, 680, "Nombre of COINS : " + ingots.nbreIngot);
+			break;
+
+		case 1:
+			eggs.generateEgg();
+			eggs.moveegg(g);
+			eggs.comptableEggAndDestroy(Collision.scored1(eggs.eggs.elementAt(0), bonhomme));
+			g.drawString(600, 680, "Nombre of EGGS : " + eggs.nbreEgg);
+			break;
 		}
+
 		if (DragonBonusManager.dragon == false) {
 			bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme, cManager.speed), cManager);
 		}
-		//Logger.log("dragon: " + DragonBonusManager.activeDragonBonus);
-		
-		if(DragonBonusManager.activeDragonBonus == true){
-			
-			dragonManager.generateBonus();
-			dragonManager.Destroy(Collision.bonus(dragonManager.bonus.elementAt(0), bonhomme));
-
-			dragonManager.moveBonus(g);
-		}
-		
 
 		bonhomme.moveBonhomme();
 		keycode = 0;
-		//Logger.log("salut : " + Bonhomme.sex);
+		// Logger.log("salut : " + Bonhomme.sex);
 
-		if (Bonhomme.sex == 3) {
-			Bonhomme.offset = 200;
-			Bonhomme.SPRITE_WIDTH = 150;
-			Bonhomme.SPRITE_HEIGHT = 147;
-			DragonBonusManager.dragon = true;
-			// Bonhomme.cubeHeight =
-			Bonhomme.sprites = new Spritesheet("data/images/dragon1.png", Bonhomme.SPRITE_WIDTH,
-					Bonhomme.SPRITE_HEIGHT);
-
-		}
+		storageBonhomme.storage();
 
 		g.drawString(700, 700, "score : " + bonhomme.score);
-		g.drawString(600, 680, "Nombre of COINS : " + ingots.nbreIngot);
-		g.drawString(600, 660, "Nombre of EGGS : " + eggs.nbreEgg);
+
 	}
 
 	@Override

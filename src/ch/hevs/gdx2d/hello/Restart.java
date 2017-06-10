@@ -6,6 +6,8 @@ public class Restart {
 		Cube.play = true;
 		CubeManager.play = true;
 		Bonhomme.score = 0;
+		EggDofusManager.nbreEgg = 0;
+		IngotManager.nbreIngot = 0;
 		Bonhomme.sex = 0;
 		Bonhomme.SPRITE_HEIGHT = 68;
 		Bonhomme.SPRITE_WIDTH = 64;

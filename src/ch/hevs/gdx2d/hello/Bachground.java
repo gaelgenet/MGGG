@@ -15,20 +15,28 @@ public class Bachground implements DrawableObject {
 	float posXseconddofusground;
 	int scaleBG = 3;
 	double scaleBDG = 2.5;
-	Bonhomme b ;
+	StartScreen s;
 
 	public void onInit() {
-		background = new BitmapImage("data/images/background.jpg");
-		posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
-		posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + background.getImage().getWidth() * scaleBG);
+		
+		switch (StartScreen.world){
+		default:
+		case 0:
+			background = new BitmapImage("data/images/background.jpg");
+			posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
+			posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + background.getImage().getWidth() * scaleBG);
+			break;
+			
+		case 1:
+			backdofus = new BitmapImage("data/images/background doffus.jpg");
+			posXseconddofusground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + backdofus.getImage().getWidth() * scaleBDG);
+			posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
+			break;
+		}
+		
 	}
-	public void onInit2(){
-		backdofus = new BitmapImage("data/images/background doffus.jpg");
-		posXseconddofusground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + backdofus.getImage().getWidth() * scaleBDG);
-		posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
-	}
-
 	
+
 	@Override
 	public void draw(GdxGraphics g) {
 		// TODO Auto-generated method stub
@@ -48,17 +56,23 @@ public class Bachground implements DrawableObject {
 			
 		}
 		
-		if(b.sex == 4 || b.sex==3 ){
+		switch (s.world){
+		
+		default:
+		case 0:
+			g.drawTransformedPicture(posXfirstbackground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBG, background);
+			g.drawTransformedPicture(posXsecondbackground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBG, background);
+			posXfirstbackground -= 3;
+			posXsecondbackground -= 3;
+			break;
+			
+		case 1:
 			g.drawTransformedPicture(posXfirstdofusground, HelloWorld.WINDOWS_HEIGHT / 2, 0, (float) scaleBDG, backdofus);
 			g.drawTransformedPicture(posXseconddofusground, HelloWorld.WINDOWS_HEIGHT / 2, 0, (float) scaleBDG, backdofus);
 			posXfirstdofusground-=3;
 			posXseconddofusground-=3;
+			break;
 		}
-		else{
-		g.drawTransformedPicture(posXfirstbackground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBG, background);
-		g.drawTransformedPicture(posXsecondbackground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBG, background);
-		posXfirstbackground -= 3;
-		posXsecondbackground -= 3;}
 
 	}
 

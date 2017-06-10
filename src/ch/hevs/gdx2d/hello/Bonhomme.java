@@ -51,6 +51,7 @@ public class Bonhomme implements DrawableObject {
 	public static int score= 0;
 	public static int sex = 0;
 	public static int offset = 20;
+	public static float positionBonhomme = 0;
 
 	/**
 	 * physic of the squarre
@@ -60,6 +61,8 @@ public class Bonhomme implements DrawableObject {
 	private int Vsquarre = Vinit, deltaPosY;
 
 	public void moveBonhomme() {
+		
+		positionBonhomme = square.x + (square.width/2);
 		
 		dt += Gdx.graphics.getDeltaTime();
 
@@ -84,6 +87,11 @@ public class Bonhomme implements DrawableObject {
 			break;
 			
 		case 2:
+			sprites = new Spritesheet("data/images/womanSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+			break;
+			
+		case 4:
+		//dofus spritesheet:
 			sprites = new Spritesheet("data/images/womanSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
 			
@@ -120,7 +128,6 @@ public class Bonhomme implements DrawableObject {
 			Vsquarre = (int) (Vsquarre + (DT * Gravity));
 			deltaPosY = (int) (DT * Vsquarre);
 			square.y = square.y + deltaPosY;
-			//Logger.log("posisiton y : " + square.y);
 
 		}
 

@@ -26,7 +26,6 @@ public class EndScreen extends RenderingScreen {
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(titleFont);
 		parameter.size = generator.scaleForPixelHeight(100);
 		parameter.color = Color.WHITE;
-		
 		endTitle = generator.generateFont(parameter);
 	}
 

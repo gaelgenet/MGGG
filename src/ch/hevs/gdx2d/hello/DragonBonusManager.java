@@ -3,41 +3,46 @@ package ch.hevs.gdx2d.hello;
 import java.util.Vector;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g3d.decals.PluggableGroupStrategy;
 
 import ch.hevs.gdx2d.hello.Collision.CollisionBonus;
 import ch.hevs.gdx2d.hello.Collision.CollisionGold;
 import ch.hevs.gdx2d.lib.GdxGraphics;
+import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class DragonBonusManager {
 
 	Vector<DragonBonus> bonus = new Vector<DragonBonus>();
 
-	int posx = 500;
-	int posy = 500;
+	int posx = 1000;
+	int posy = 550;
 
 	float speed = -4f;
 	static boolean dragon = false;
 	static boolean activeDragonBonus = false;
+	static int lastWidth = 0;
+	static int lastHeight = 0;
 
 	void generateBonus() {
-		
-		bonus.add(new DragonBonus(posx, posy));
+
+		if (activeDragonBonus == true) {
+			bonus.add(new DragonBonus(posx, posy));
+			activeDragonBonus = false;
+		}
 
 	}
 
 	public void Destroy(Collision.CollisionBonus collide) {
-		
-			if (collide == CollisionBonus.IN) {
-				bonus.remove(0);
-				DragonBonusManager.dragon = true;
-				Bonhomme.sex = 3;
-			}
 
-			if (bonus.get(0).posX < -15) {
-				bonus.remove(0);
-			}
+		if (collide == CollisionBonus.IN) {
+			bonus.remove(bonus.lastElement());
+			Bonhomme.sex = 3;
 		}
 
+//		if (bonus.get(0).posX < -1000) {
+//			bonus.remove(0);
+//		}
+	}
 
 	public void moveBonus(GdxGraphics g) {
 
@@ -53,10 +58,8 @@ public class DragonBonusManager {
 	}
 
 	public void generatefirstBonus() {
-		
-			bonus.add(new DragonBonus(500, 400));
-		
-		// bonus.add(new DragonBonus(1200, 500));
+
+		bonus.add(new DragonBonus(-20, 500));
 
 	}
 

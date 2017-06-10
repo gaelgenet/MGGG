@@ -8,12 +8,12 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class EggDofus implements DrawableObject {
 
-	static BitmapImage egg1;
-	static BitmapImage egg2;
-	static BitmapImage egg3;
-	static BitmapImage egg4;
-	static BitmapImage egg5;
-	static BitmapImage egg6;
+	static BitmapImage egg1 = new BitmapImage("data/images/dofusemeraude.png");
+	static BitmapImage egg2 = new BitmapImage("data/images/o1.png");
+	static BitmapImage egg3 = new BitmapImage("data/images/o3.png");
+	static BitmapImage egg4 = new BitmapImage("data/images/o3.png");
+	static BitmapImage egg5 = new BitmapImage("data/images/o4.png");
+	static BitmapImage egg6 = new BitmapImage("data/images/o5.png");
 
 	Rectangle square;
 	Bonhomme b = new Bonhomme();
@@ -33,17 +33,6 @@ public class EggDofus implements DrawableObject {
 		square.height = 25;
 
 		square.width = 25;
-
-		egg1 = new BitmapImage("data/images/dofusemeraude.png");
-
-		egg2 = new BitmapImage("data/images/o1.png");
-
-		egg3 = new BitmapImage("data/images/o2.png");
-		egg4 = new BitmapImage("data/images/o3.png");
-
-		egg5 = new BitmapImage("data/images/o4.png");
-
-		egg6 = new BitmapImage("data/images/o5.png");
 	}
 
 	
