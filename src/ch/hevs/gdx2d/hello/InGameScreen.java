@@ -18,6 +18,7 @@ public class InGameScreen extends RenderingScreen {
 	KeyListener keyListener;
 	Collision collision;
 	IngotManager ingots;
+	EggDofusManager eggs;
 	BirdManager bird;
 	Bachground background;
 	DragonBonusManager dragonManager;
@@ -33,6 +34,7 @@ public class InGameScreen extends RenderingScreen {
 		cManager = new CubeManager();
 		collision = new Collision();
 		ingots = new IngotManager();
+		eggs = new EggDofusManager();
 		bird = new BirdManager();
 		background = new Bachground();
 		// background = new BitmapImage("data/images/background.png");
@@ -42,7 +44,9 @@ public class InGameScreen extends RenderingScreen {
 
 		bird.generatefirstbird();
 		ingots.generatefirstingot();
+		eggs.generatefirstegg();
 		background.onInit();
+		background.onInit2();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
 		// Check if game over and switch to ending screen if necessary
 		// if (bonhomme.dead == true) {
@@ -56,26 +60,34 @@ public class InGameScreen extends RenderingScreen {
 		g.clear();
 		background.draw(g);
 		bonhomme.draw(g);
-		ingots.generateIngot();
-		ingots.moveingot(g);
 		bird.generateBird();
 		bird.moveTotalBird(g);
 		bird.distroyBird();
 		cManager.speedCube(g);
 		cManager.generatecube();
 		cManager.distroyCube();
-		ingots.comptableIngotAndDestroy(Collision.scored(ingots.ingot.elementAt(0), bonhomme));
-		
+		if(bonhomme.sex == 4 ){
+			eggs.generateEgg();
+			eggs.moveegg(g);
+			eggs.comptableEggAndDestroy(Collision.scored1(eggs.eggs.elementAt(0), bonhomme));
+		}
+		else{
+			ingots.generateIngot();
+			ingots.moveingot(g);
+			ingots.comptableIngotAndDestroy(Collision.scored(ingots.ingot.elementAt(0), bonhomme));
+			
+		}
 		if (DragonBonusManager.dragon == false) {
 			bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme, cManager.speed), cManager);
 		}
 		//Logger.log("dragon: " + DragonBonusManager.activeDragonBonus);
 		
 		if(DragonBonusManager.activeDragonBonus == true){
+			
 			dragonManager.generateBonus();
 			dragonManager.Destroy(Collision.bonus(dragonManager.bonus.elementAt(0), bonhomme));
-			dragonManager.moveBonus(g);
 
+			dragonManager.moveBonus(g);
 		}
 		
 
@@ -96,6 +108,7 @@ public class InGameScreen extends RenderingScreen {
 
 		g.drawString(700, 700, "score : " + bonhomme.score);
 		g.drawString(600, 680, "Nombre of COINS : " + ingots.nbreIngot);
+		g.drawString(600, 660, "Nombre of EGGS : " + eggs.nbreEgg);
 	}
 
 	@Override

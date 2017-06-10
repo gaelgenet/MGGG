@@ -51,6 +51,18 @@ public class Collision {
 		return CollisionGold.OUT;
 
 	}
+	public enum CollisionEgg {
+		IN, OUT
+	};
+
+	public static CollisionEgg scored1(EggDofus egg, Bonhomme bonhomme) {
+
+		if (bonhomme.square.overlaps(egg.square)) {
+			return CollisionEgg.IN;
+		}
+		return CollisionEgg.OUT;
+
+	}
 	
 	public enum CollisionBonus {
 		IN, OUT

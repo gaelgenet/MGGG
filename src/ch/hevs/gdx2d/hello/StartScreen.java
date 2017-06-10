@@ -16,6 +16,7 @@ public class StartScreen extends RenderingScreen {
 
 	public BitmapFont startTitle, textTitle;
 	BitmapImage startbackground;
+	BitmapImage startDofusBack;
 	FileHandle titleFont;
 
 	@Override
@@ -27,10 +28,15 @@ public class StartScreen extends RenderingScreen {
 		parameter.color = Color.WHITE;
 
 		startbackground = new BitmapImage("data/images/startBackground.jpg");
+		
+		
 		startTitle = generator.generateFont(parameter);
 
 		parameter.size = generator.scaleForPixelHeight(20);
 		textTitle = generator.generateFont(parameter);
+	}
+	public void onInit2(){
+		startDofusBack = new BitmapImage("data/images/fonddofus.fpg");
 	}
 
 	@Override
@@ -39,10 +45,12 @@ public class StartScreen extends RenderingScreen {
 		g.resetCamera();
 
 		// Display start screen
+		
+		
 		g.drawTransformedPicture(HelloWorld.WINDOWS_WIDTH / 2, HelloWorld.WINDOWS_HEIGHT / 2, 0, 0.6f, startbackground);
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 2 + 100, "MGGG", startTitle);
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 2, "Mister Good Game Gold", textTitle);
-		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 3, "press 1 to be a man \n\n press 2 to be a woman",
+		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 3, "press 1 to be a man \n\n press 2 to be a woman \n\n press 4 to a Dofus mode",
 				textTitle);
 		g.drawStringCentered(20, "Press enter to play");
 
@@ -54,6 +62,9 @@ public class StartScreen extends RenderingScreen {
 
 		case 2:
 			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to be Marco ");
+			break;
+		case 4: 
+			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to a dofus mode ");
 			break;
 		default:
 			break;
@@ -77,6 +88,11 @@ public class StartScreen extends RenderingScreen {
 		case Input.Keys.NUM_2:
 			Bonhomme.sex = 2;
 			break;
+		case Input.Keys.NUMPAD_4:
+		case Input.Keys.NUM_4:
+			Bonhomme.sex = 4;
+			break;
+			
 
 		default:
 			break;
