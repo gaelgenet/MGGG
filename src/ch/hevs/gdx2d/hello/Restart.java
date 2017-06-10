@@ -1,5 +1,7 @@
 package ch.hevs.gdx2d.hello;
 
+import java.io.StreamTokenizer;
+
 public class Restart {
 
 	static void restart() {
@@ -12,6 +14,7 @@ public class Restart {
 		Bonhomme.SPRITE_HEIGHT = 68;
 		Bonhomme.SPRITE_WIDTH = 64;
 		Bonhomme.offset = 10;
+		StartScreen.world = 0;
 		DragonBonusManager.activeDragonBonus = false;
 		DragonBonusManager.dragon = false;
 		Screens.getInstance().s.activateScreen(0);

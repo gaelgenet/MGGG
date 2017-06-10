@@ -20,8 +20,16 @@ public class Cube implements DrawableObject {
 	
 	public Cube(int initX, int initY, int initWidth, int initHeight, Color col) {
 		this.c = col;
-		if(img == null)
+		switch (StartScreen.world){
+		
+		default:
+		case 0:
 			img = new BitmapImage("data/images/bricks2.jpg");
+			break;
+			
+		case 1:
+			img = new BitmapImage("data/images/colorfulBrickSmall.jpg");
+		}
 		rectangle = new Rectangle(initX, initY, initWidth, initHeight);
 		offX = r.nextInt(200);
 		offY = r.nextInt(200);
@@ -40,7 +48,6 @@ public class Cube implements DrawableObject {
 	public void draw(GdxGraphics g) {
 		float x = rectangle.x;
 		float y = rectangle.y;
-		g.drawFilledRectangle(rectangle.x, rectangle.y, rectangle.width, rectangle.height, 0, c); 
 		g.draw(img.getImage(), x-rectangle.width/2, y, rectangle.width, rectangle.height/2, offX, offY, (int)rectangle.width, (int)rectangle.height/3, false, false);
 		//update();
 	}
