@@ -15,7 +15,6 @@ public class InGameScreen extends RenderingScreen {
 	// parameter for the physique of the screen
 	Bonhomme bonhomme;
 	CubeManager cManager;
-	KeyListener keyListener;
 	Collision collision;
 	IngotManager ingots;
 	EggDofusManager eggs;

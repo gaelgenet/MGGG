@@ -91,9 +91,10 @@ public class Bonhomme implements DrawableObject {
 			break;
 			
 		case 4:
-		//dofus spritesheet:
+		//dofus spritesheet:-----------------------------------------------------------------------
 			sprites = new Spritesheet("data/images/womanSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
+			//--------------------------------------------------------------------------------------
 			
 		default:
 			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);

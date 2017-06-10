@@ -32,6 +32,8 @@ public class StorageBonhomme {
 					Bonhomme.SPRITE_HEIGHT);
 			break;
 			
+			
+			// dragodinde spritesheet------------------------------------------------
 		case 4:
 			Bonhomme.offset = 20;
 			Bonhomme.SPRITE_WIDTH = 64;
@@ -39,6 +41,7 @@ public class StorageBonhomme {
 			Bonhomme.sprites = new Spritesheet("data/images/womanSmall.png", Bonhomme.SPRITE_WIDTH,
 					Bonhomme.SPRITE_HEIGHT);
 			break;
+			//--------------------------------------------------------------------------
 
 		}
 	}

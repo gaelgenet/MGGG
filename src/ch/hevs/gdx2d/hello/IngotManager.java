@@ -57,7 +57,7 @@ public class IngotManager {
 		
 		if (nbreIngot % 6 == 0 && Bonhomme.sex == 3) {
 			Logger.log("salut");
-			if (CubeManager.position < 285 && CubeManager.position > 280) {
+			if (CubeManager.position < 300 && CubeManager.position > 295) {
 				DragonBonusManager.dragon = false;
 				Bonhomme.sex = StartScreen.playerChoise;
 				// Bonhomme.SPRITE_HEIGHT = DragonBonusManager.lastHeight;

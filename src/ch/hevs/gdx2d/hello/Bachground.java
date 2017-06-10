@@ -15,7 +15,7 @@ public class Bachground implements DrawableObject {
 	float posXseconddofusground;
 	int scaleBG = 3;
 	double scaleBDG = 2.5;
-	StartScreen s;
+
 
 	public void onInit() {
 		
@@ -56,7 +56,7 @@ public class Bachground implements DrawableObject {
 			
 		}
 		
-		switch (s.world){
+		switch (StartScreen.world){
 		
 		default:
 		case 0:
