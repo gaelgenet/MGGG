@@ -4,17 +4,17 @@ import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
-public class Bachground implements DrawableObject {
+public class Background implements DrawableObject {
 
-	BitmapImage background;
-	BitmapImage backdofus;
+	static BitmapImage background;
+	static BitmapImage backdofus;
 	int i = 0;
-	float posXfirstbackground;
-	float posXfirstdofusground;
-	float posXsecondbackground;
-	float posXseconddofusground;
-	int scaleBG = 3;
-	double scaleBDG = 2.5;
+	static float posXfirstbackground;
+	static float posXfirstdofusground;
+	static float posXsecondbackground;
+	static float posXseconddofusground;
+	static int scaleBG = 3;
+	static float scaleBDG = 2.5f;
 
 
 	public void onInit() {
@@ -66,8 +66,8 @@ public class Bachground implements DrawableObject {
 			break;
 			
 		case 1:
-			g.drawTransformedPicture(posXfirstdofusground, HelloWorld.WINDOWS_HEIGHT / 2, 0, (float) scaleBDG, backdofus);
-			g.drawTransformedPicture(posXseconddofusground, HelloWorld.WINDOWS_HEIGHT / 2, 0, (float) scaleBDG, backdofus);
+			g.drawTransformedPicture(posXfirstdofusground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBDG, backdofus);
+			g.drawTransformedPicture(posXseconddofusground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBDG, backdofus);
 			posXfirstdofusground-=3;
 			posXseconddofusground-=3;
 			break;

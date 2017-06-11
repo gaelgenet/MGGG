@@ -1,8 +1,10 @@
 package ch.hevs.gdx2d.hello;
 
+import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
 
 public class StorageBonhomme {
+	
 
 	public void storage() {
 
@@ -31,9 +33,7 @@ public class StorageBonhomme {
 			Bonhomme.sprites = new Spritesheet("data/images/dragon1.png", Bonhomme.SPRITE_WIDTH,
 					Bonhomme.SPRITE_HEIGHT);
 			break;
-			
-			
-			
+
 		case 4:
 			Bonhomme.offset = 20;
 			Bonhomme.SPRITE_WIDTH = 126;
@@ -41,8 +41,22 @@ public class StorageBonhomme {
 			Bonhomme.sprites = new Spritesheet("data/images/dragodindeSmall.png", Bonhomme.SPRITE_WIDTH,
 					Bonhomme.SPRITE_HEIGHT);
 			break;
-			
 
+		}
+		
+		switch (StartScreen.world){
+		default:
+		case 0:
+			Background.background = new BitmapImage("data/images/background.jpg");
+			Background.posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
+			Background.posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + Background.background.getImage().getWidth() * Background.scaleBG);
+			break;
+			
+		case 1:
+			Background.backdofus = new BitmapImage("data/images/background doffus.jpg");
+			Background.posXseconddofusground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + Background.backdofus.getImage().getWidth() * Background.scaleBDG);
+			Background.posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
+			break;
 		}
 	}
 

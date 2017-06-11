@@ -22,7 +22,7 @@ public class InGameScreen extends RenderingScreen {
 	IngotManager ingots;
 	EggDofusManager eggs;
 	BirdManager bird;
-	Bachground background;
+	Background background;
 	DragonBonusManager dragonManager;
 	StorageBonhomme storageBonhomme;
 	Zaap zaap;
@@ -41,7 +41,7 @@ public class InGameScreen extends RenderingScreen {
 		ingots = new IngotManager();
 		eggs = new EggDofusManager();
 		bird = new BirdManager();
-		background = new Bachground();
+		background = new Background();
 		dragonManager = new DragonBonusManager();
 		storageBonhomme = new StorageBonhomme();
 		zaap = new Zaap();
@@ -72,8 +72,8 @@ public class InGameScreen extends RenderingScreen {
 		dragonManager.moveBonus(g);
 		dragonManager.Destroy(Collision.bonus(dragonManager.bonus.lastElement(), bonhomme));
 		fear.loop();
-
 		zaap.createZaap(bonhomme);
+		
 		switch (StartScreen.world) {
 
 		default:
@@ -101,18 +101,18 @@ public class InGameScreen extends RenderingScreen {
 		keycode = 0;
 
 		storageBonhomme.storage();
+		
 		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.OUT && zaap.zaapy == true) {
 			zaap.moveZaap();
 			zaap.updateSquarre();
 			zaap.draw(g);
 
 		}
-
-		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.IN && zaap.zaapy == true) {
+		else if (Collision.zaap(zaap, bonhomme) == CollisionZaap.IN && zaap.zaapy == true) {
 
 			if (bonhomme.sex != 4 ) {
 
-				//StartScreen.world = 1;
+				StartScreen.world = 1;
 				bonhomme.sex = 4;
 				zaap.updatePos();
 				zaap.zaapy = false;
@@ -123,7 +123,7 @@ public class InGameScreen extends RenderingScreen {
 					bonhomme.sex = 2;
 				}
 				
-//				StartScreen.world = 0;
+				StartScreen.world = 0;
 				zaap.updatePos();
 				zaap.zaapy = false;
 			}
