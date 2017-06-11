@@ -99,7 +99,7 @@ public class StartScreen extends RenderingScreen {
 		case Input.Keys.NUM_3:
 			Bonhomme.sex = 4;
 			world = 1;
-			playerDofus = 1;
+			playerChoise = 4;
 			break;
 			
 

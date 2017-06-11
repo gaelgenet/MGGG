@@ -72,7 +72,7 @@ public class InGameScreen extends RenderingScreen {
 		dragonManager.moveBonus(g);
 		dragonManager.Destroy(Collision.bonus(dragonManager.bonus.lastElement(), bonhomme));
 		fear.loop();
-		zaap.createZaap(bonhomme);
+		
 		
 		switch (StartScreen.world) {
 
@@ -102,33 +102,6 @@ public class InGameScreen extends RenderingScreen {
 
 		storageBonhomme.storage();
 		
-		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.OUT && zaap.zaapy == true) {
-			zaap.moveZaap();
-			zaap.updateSquarre();
-			zaap.draw(g);
-
-		}
-		else if (Collision.zaap(zaap, bonhomme) == CollisionZaap.IN && zaap.zaapy == true) {
-
-			if (bonhomme.sex != 4 ) {
-
-				StartScreen.world = 1;
-				bonhomme.sex = 4;
-				zaap.updatePos();
-				zaap.zaapy = false;
-			} else {
-				if (StartScreen.playerChoise == 1) {
-					bonhomme.sex = 1;
-				} else if(StartScreen.playerChoise ==2){
-					bonhomme.sex = 2;
-				}
-				
-				StartScreen.world = 0;
-				zaap.updatePos();
-				zaap.zaapy = false;
-			}
-
-		}
 
 		g.drawString(700, 700, "score : " + bonhomme.score);
 

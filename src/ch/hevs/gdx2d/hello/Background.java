@@ -15,13 +15,16 @@ public class Background implements DrawableObject {
 	static float posXseconddofusground;
 	static int scaleBG = 3;
 	static float scaleBDG = 2.5f;
+	StartScreen s;
 
 
 	public void onInit() {
 		
-		switch (StartScreen.world){
+		switch (s.world){
 		default:
 		case 0:
+		
+			
 			background = new BitmapImage("data/images/background.jpg");
 			posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
 			posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + background.getImage().getWidth() * scaleBG);
@@ -40,7 +43,7 @@ public class Background implements DrawableObject {
 	@Override
 	public void draw(GdxGraphics g) {
 		// TODO Auto-generated method stub
-
+ 
 		if (posXfirstbackground < -HelloWorld.WINDOWS_WIDTH) {
 			posXfirstbackground = posXsecondbackground + background.getImage().getWidth() * scaleBG;
 		}
@@ -56,7 +59,7 @@ public class Background implements DrawableObject {
 			
 		}
 		
-		switch (StartScreen.world){
+		switch (s.world){
 		
 		case 0:
 			g.drawTransformedPicture(posXfirstbackground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBG, background);
