@@ -16,6 +16,7 @@ public class EndScreen extends RenderingScreen {
 	public BitmapFont endTitle;
 	FileHandle titleFont;
 	Explosion explose = new Explosion();
+	InGameScreen i;
 	
 
 	@Override
@@ -33,7 +34,7 @@ public class EndScreen extends RenderingScreen {
 	public void onGraphicRender(GdxGraphics g) {
 		g.clear();
 		g.resetCamera();
-		
+		i.fear.dispose();
 		// Display ending screen
 		explose.draw(g);
 		explose.moveSprite();

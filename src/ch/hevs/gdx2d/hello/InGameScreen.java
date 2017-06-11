@@ -1,11 +1,14 @@
 package ch.hevs.gdx2d.hello;
 
 import com.badlogic.gdx.Input;
+
+import ch.hevs.gdx2d.components.audio.MusicPlayer;
 import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
 import ch.hevs.gdx2d.components.physics.utils.PhysicsScreenBoundaries;
 import ch.hevs.gdx2d.components.screen_management.RenderingScreen;
 import ch.hevs.gdx2d.hello.Collision.CollisionType;
+import ch.hevs.gdx2d.hello.Collision.CollisionZaap;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
@@ -22,7 +25,9 @@ public class InGameScreen extends RenderingScreen {
 	Bachground background;
 	DragonBonusManager dragonManager;
 	StorageBonhomme storageBonhomme;
-
+	Zaap zaap;
+	static MusicPlayer fear = new MusicPlayer("data/musiques/peur2.mp3");
+	MusicPlayer crydragon = new MusicPlayer("data/musiques/Cri-du-dragon.mp3");
 
 	int keycode;
 	public boolean move = false;
@@ -39,7 +44,7 @@ public class InGameScreen extends RenderingScreen {
 		background = new Bachground();
 		dragonManager = new DragonBonusManager();
 		storageBonhomme = new StorageBonhomme();
-
+		zaap = new Zaap();
 		bonhomme.onInit();
 		cManager.generateInitialCubes();
 		bird.generatefirstbird();
@@ -47,6 +52,7 @@ public class InGameScreen extends RenderingScreen {
 		eggs.generatefirstegg();
 		background.onInit();
 		dragonManager.generatefirstBonus();
+		zaap.onInit();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
 
 	}
@@ -62,11 +68,12 @@ public class InGameScreen extends RenderingScreen {
 		cManager.speedCube(g);
 		cManager.generatecube();
 		cManager.distroyCube();
-
 		dragonManager.generateBonus();
 		dragonManager.moveBonus(g);
 		dragonManager.Destroy(Collision.bonus(dragonManager.bonus.lastElement(), bonhomme));
+		fear.loop();
 
+		zaap.createZaap(bonhomme);
 		switch (StartScreen.world) {
 
 		default:
@@ -87,13 +94,41 @@ public class InGameScreen extends RenderingScreen {
 
 		if (DragonBonusManager.dragon == false) {
 			bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme, cManager.speed), cManager);
+
 		}
 
 		bonhomme.moveBonhomme();
 		keycode = 0;
-		// Logger.log("salut : " + Bonhomme.sex);
 
 		storageBonhomme.storage();
+		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.OUT && zaap.zaapy == true) {
+			zaap.moveZaap();
+			zaap.updateSquarre();
+			zaap.draw(g);
+
+		}
+
+		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.IN && zaap.zaapy == true) {
+
+			if (bonhomme.sex != 4 ) {
+
+				//StartScreen.world = 1;
+				bonhomme.sex = 4;
+				zaap.updatePos();
+				zaap.zaapy = false;
+			} else {
+				if (StartScreen.playerChoise == 1) {
+					bonhomme.sex = 1;
+				} else if(StartScreen.playerChoise ==2){
+					bonhomme.sex = 2;
+				}
+				
+//				StartScreen.world = 0;
+				zaap.updatePos();
+				zaap.zaapy = false;
+			}
+
+		}
 
 		g.drawString(700, 700, "score : " + bonhomme.score);
 

@@ -70,13 +70,7 @@ public class Bonhomme implements DrawableObject {
 			dt = 0;
 
 			currentFrame = (currentFrame + 1) % nFrames;
-			// System.out.println("c :" + currentFrame);
-
-//			if (currentFrame % 4 == 0) {
-//				textureY = (textureY + 1) % 4;
-			}
-			// System.out.println(textureY);
-		//}
+		}
 	}
 
 	public void onInit() {
@@ -91,10 +85,10 @@ public class Bonhomme implements DrawableObject {
 			break;
 			
 		case 4:
-		//dofus spritesheet:-----------------------------------------------------------------------
-			sprites = new Spritesheet("data/images/womanSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+		
+			sprites = new Spritesheet("data/images/dragodindeSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
-			//--------------------------------------------------------------------------------------
+			
 			
 		default:
 			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
@@ -116,7 +110,7 @@ public class Bonhomme implements DrawableObject {
 			move = false;
 			Logger.log("tu es mort");
 			Vsquarre = 0;
-			//dead = true;
+			
 			Screens.getInstance().s.activateNextScreen();
 			
 		}
@@ -151,7 +145,7 @@ public class Bonhomme implements DrawableObject {
 	@Override
 	public void draw(GdxGraphics g) {
 
-		//g.drawRectangle(square.x, square.y, square.width, square.height,0);
+		
 		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2));
 	}
 

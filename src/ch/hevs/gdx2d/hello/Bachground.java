@@ -47,18 +47,17 @@ public class Bachground implements DrawableObject {
 		if (posXsecondbackground < -HelloWorld.WINDOWS_WIDTH) {
 			posXsecondbackground = posXfirstbackground + background.getImage().getWidth() * scaleBG;
 		}
-		if(posXseconddofusground < -HelloWorld.WINDOWS_WIDTH-400){
+		if(posXseconddofusground < -HelloWorld.WINDOWS_WIDTH-500){
 			posXseconddofusground = (float) (posXfirstdofusground + backdofus.getImage().getWidth() * scaleBDG);
 			
 		}
-		if(posXfirstdofusground < -HelloWorld.WINDOWS_WIDTH-400){
+		if(posXfirstdofusground < -HelloWorld.WINDOWS_WIDTH-500){
 			posXfirstdofusground = (float) (posXseconddofusground + backdofus.getImage().getWidth() * scaleBDG);
 			
 		}
 		
 		switch (StartScreen.world){
 		
-		default:
 		case 0:
 			g.drawTransformedPicture(posXfirstbackground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBG, background);
 			g.drawTransformedPicture(posXsecondbackground, HelloWorld.WINDOWS_HEIGHT / 2, 0, scaleBG, background);
@@ -71,6 +70,8 @@ public class Bachground implements DrawableObject {
 			g.drawTransformedPicture(posXseconddofusground, HelloWorld.WINDOWS_HEIGHT / 2, 0, (float) scaleBDG, backdofus);
 			posXfirstdofusground-=3;
 			posXseconddofusground-=3;
+			break;
+		default:
 			break;
 		}
 

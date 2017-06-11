@@ -20,7 +20,8 @@ public class StartScreen extends RenderingScreen {
 	BitmapImage startDofusBack;
 	FileHandle titleFont;
 	
-	public static int playerChoise = 0 ;
+	public static int playerChoise = 1 ;
+	public static int playerDofus = 0;
 	public static int world = 0;
 
 	@Override
@@ -98,7 +99,7 @@ public class StartScreen extends RenderingScreen {
 		case Input.Keys.NUM_3:
 			Bonhomme.sex = 4;
 			world = 1;
-			playerChoise = 4;
+			playerDofus = 1;
 			break;
 			
 

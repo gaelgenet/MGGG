@@ -4,7 +4,8 @@ import ch.hevs.gdx2d.components.geometry.Point;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 /**
- * The class used to check the collision between the different object of the game
+ * The class used to check the collision between the different object of the
+ * game
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG
@@ -13,8 +14,8 @@ import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class Collision {
 
-	//collision between the man and the platform
-	
+	// collision between the man and the platform
+
 	public enum CollisionType {
 		NONE, TOP, LEFT, END
 	};
@@ -46,8 +47,8 @@ public class Collision {
 
 	}
 
-	//collision between the man and the ingot
-	
+	// collision between the man and the ingot
+
 	public enum CollisionGold {
 		IN, OUT
 	};
@@ -57,13 +58,13 @@ public class Collision {
 		if (bonhomme.square.overlaps(ingot.square)) {
 			Logger.log("Collision Gold");
 			return CollisionGold.IN;
-			
+
 		}
 		return CollisionGold.OUT;
 
 	}
-	
-	//collision between the man and the eggs
+
+	// collision between the man and the eggs
 
 	public enum CollisionEgg {
 		IN, OUT
@@ -79,8 +80,8 @@ public class Collision {
 
 	}
 
-	//collision between the man and the dragon bonus
-	
+	// collision between the man and the dragon bonus
+
 	public enum CollisionBonus {
 		IN, OUT
 	};
@@ -93,5 +94,22 @@ public class Collision {
 		}
 		return CollisionBonus.OUT;
 
+	};
+	
+	// collision between the man and the zaap
+	
+	public enum CollisionZaap {
+		IN, OUT
 	}
+
+	public static CollisionZaap zaap(Zaap zaap, Bonhomme bonhomme) {
+
+		if (bonhomme.square.overlaps(zaap.square)) {
+
+			return CollisionZaap.IN;
+		}
+		return CollisionZaap.OUT;
+
+	};
+
 }
