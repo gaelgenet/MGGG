@@ -39,7 +39,7 @@ public class EggDofus implements DrawableObject {
 
 	public void moveEgg(float speed) {
 
-		if (ale % 30 == 0) {
+		if (ale % 40 == 0) {
 			increment *= -1;
 		}
 		posX += speed;

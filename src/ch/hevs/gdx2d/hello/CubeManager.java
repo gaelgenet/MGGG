@@ -61,7 +61,7 @@ public class CubeManager {
 	public void speedCube(GdxGraphics g) {
 		
 		position =  cubes.get(0).rectangle.x + (cubes.get(0).rectangle.width/2);
-		Logger.log("position: " +position);
+	//	Logger.log("position: " +position);
 		
 //		speedTime += Gdx.graphics.getDeltaTime();
 //		// Logger.log("pouet" + speedTime);

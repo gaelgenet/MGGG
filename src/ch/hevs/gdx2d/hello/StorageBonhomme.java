@@ -44,20 +44,20 @@ public class StorageBonhomme {
 
 		}
 		
-		switch (StartScreen.world){
-		default:
-		case 0:
-			Background.background = new BitmapImage("data/images/background.jpg");
-			Background.posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
-			Background.posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + Background.background.getImage().getWidth() * Background.scaleBG);
-			break;
-			
-		case 1:
-			Background.backdofus = new BitmapImage("data/images/background doffus.jpg");
-			Background.posXseconddofusground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + Background.backdofus.getImage().getWidth() * Background.scaleBDG);
-			Background.posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
-			break;
-		}
+//		switch (StartScreen.world){
+//		default:
+//		case 0:
+//			Background.background = new BitmapImage("data/images/background.jpg");
+//			Background.posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
+//			Background.posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + Background.background.getImage().getWidth() * Background.scaleBG);
+//			break;
+//			
+//		case 1:
+//			Background.backdofus = new BitmapImage("data/images/background doffus.jpg");
+//			Background.posXseconddofusground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + Background.backdofus.getImage().getWidth() * Background.scaleBDG);
+//			Background.posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
+//			break;
+//		}
 	}
 
 }

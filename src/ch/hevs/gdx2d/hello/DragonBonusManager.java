@@ -15,7 +15,7 @@ public class DragonBonusManager {
 	Vector<DragonBonus> bonus = new Vector<DragonBonus>();
 
 	int posx = 1000;
-	int posy = 550;
+	int posy = 525;
 
 	float speed = -4f;
 	static boolean dragon = false;

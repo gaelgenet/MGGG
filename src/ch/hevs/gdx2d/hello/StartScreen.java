@@ -55,8 +55,9 @@ public class StartScreen extends RenderingScreen {
 		g.drawTransformedPicture(HelloWorld.WINDOWS_WIDTH / 2, HelloWorld.WINDOWS_HEIGHT / 2, 0, 0.6f, startbackground);
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 2 + 100, "MGGG", startTitle);
 		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 2, "Mister Good Game Gold", textTitle);
-		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 3, "press 1 to be a man \n\n press 2 to be a woman \n\n press 3 to play in the Dofus World",
+		g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 3, "press 1 to be a man \n\n press 2 to be a woman",
 				textTitle);
+		g.drawStringCentered(40, "Press space to jump");
 		g.drawStringCentered(20, "Press enter to play");
 
 		switch (Bonhomme.sex) {
@@ -68,9 +69,9 @@ public class StartScreen extends RenderingScreen {
 		case 2:
 			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to be a woman ");
 			break;
-		case 4: 
-			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to play in the dofus World ");
-			break;
+//		case 4: 
+//			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to play in the dofus World ");
+//			break;
 		default:
 			break;
 		}
@@ -89,19 +90,20 @@ public class StartScreen extends RenderingScreen {
 		case Input.Keys.NUM_1:
 			Bonhomme.sex = 1;
 			playerChoise = 1;
+			world = 0;
 			break;
 		case Input.Keys.NUMPAD_2:
 		case Input.Keys.NUM_2:
 			Bonhomme.sex = 2;
 			playerChoise = 2;
+			world = 0;
 			break;
 		case Input.Keys.NUMPAD_3:
 		case Input.Keys.NUM_3:
 			Bonhomme.sex = 4;
 			world = 1;
 			playerChoise = 4;
-			break;
-			
+			break;			
 
 		default:
 			break;

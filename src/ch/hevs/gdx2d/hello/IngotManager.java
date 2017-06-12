@@ -19,7 +19,7 @@ public class IngotManager {
 
 	float speed = -4f;
 	float variablespeed = 2f;
-	public static int nbreIngot = 19;
+	public static int nbreIngot = 0;
 	int a = 0;
 
 	void generateIngot() {
@@ -40,7 +40,7 @@ public class IngotManager {
 	public void comptableIngotAndDestroy(Collision.CollisionGold collide) {
 		// float difference= CubeManager.position-Bonhomme.positionBonhomme;
 		// Logger.log("difference " + difference );
-		Logger.log("lingot: " + nbreIngot);
+		//Logger.log("lingot: " + nbreIngot);
 
 		if (collide == CollisionGold.IN) {
 
@@ -49,20 +49,20 @@ public class IngotManager {
 			
 			if (nbreIngot % 20 == 0) {
 				DragonBonusManager.activeDragonBonus = true;
-				Logger.log("dragon bonus activated");
+				//Logger.log("dragon bonus activated");
 				// DragonBonusManager.activeBonus =true;
 				// Bonhomme.sex = 3;
 			}
 		}
 		
-		if (nbreIngot % 6 == 0 && Bonhomme.sex == 3) {
-			Logger.log("salut");
-			if (CubeManager.position < 300 && CubeManager.position > 295) {
+		if (nbreIngot % 8 == 0 && Bonhomme.sex == 3) {
+			//Logger.log("salut");
+			if (CubeManager.position < 305 && CubeManager.position > 300) {
 				DragonBonusManager.dragon = false;
 				Bonhomme.sex = StartScreen.playerChoise;
 				// Bonhomme.SPRITE_HEIGHT = DragonBonusManager.lastHeight;
 				// Bonhomme.SPRITE_WIDTH = DragonBonusManager.lastWidth;
-				Logger.log("sex " + Bonhomme.sex + Bonhomme.SPRITE_HEIGHT);
+				//Logger.log("sex " + Bonhomme.sex + Bonhomme.SPRITE_HEIGHT);
 			}
 		}
 

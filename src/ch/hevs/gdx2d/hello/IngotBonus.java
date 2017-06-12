@@ -43,7 +43,7 @@ public class IngotBonus implements DrawableObject {
 
 	public void moveIngot(float speed) {
 
-		if (ale % 30 == 0) {
+		if (ale % 35 == 0) {
 			increment *= -1;
 		}
 		posX += speed;

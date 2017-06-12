@@ -1,5 +1,7 @@
 package ch.hevs.gdx2d.hello;
 
+import javax.sound.midi.Track;
+
 import com.badlogic.gdx.Input;
 
 import ch.hevs.gdx2d.components.audio.MusicPlayer;
@@ -60,6 +62,7 @@ public class InGameScreen extends RenderingScreen {
 	@Override
 	public void onGraphicRender(GdxGraphics g) {
 		g.clear();
+		g.drawFPS();
 		background.draw(g);
 		bonhomme.draw(g);
 		bird.generateBird();
@@ -72,12 +75,15 @@ public class InGameScreen extends RenderingScreen {
 		dragonManager.moveBonus(g);
 		dragonManager.Destroy(Collision.bonus(dragonManager.bonus.lastElement(), bonhomme));
 		fear.loop();
-		
-		
+
+		zaap.createZaap(bonhomme);
+
+
 		switch (StartScreen.world) {
 
 		default:
 		case 0:
+			Logger.log("0");
 			ingots.generateIngot();
 			ingots.moveingot(g);
 			ingots.comptableIngotAndDestroy(Collision.scored(ingots.ingot.elementAt(0), bonhomme));
@@ -85,6 +91,7 @@ public class InGameScreen extends RenderingScreen {
 			break;
 
 		case 1:
+			Logger.log(" 1");
 			eggs.generateEgg();
 			eggs.moveegg(g);
 			eggs.comptableEggAndDestroy(Collision.scored1(eggs.eggs.elementAt(0), bonhomme));
@@ -101,7 +108,33 @@ public class InGameScreen extends RenderingScreen {
 		keycode = 0;
 
 		storageBonhomme.storage();
-		
+
+		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.OUT && zaap.zaapy == true && Bonhomme.sex != 3) {
+			zaap.moveZaap();
+			zaap.updateSquarre();
+			zaap.draw(g);
+
+		} else if (Collision.zaap(zaap, bonhomme) == CollisionZaap.IN && zaap.zaapy == true) {
+
+			if (bonhomme.sex != 4) {
+				Logger.log("monde :" + StartScreen.world);
+				StartScreen.world = 1;
+				Logger.log("tcho " + StartScreen.world);
+				bonhomme.sex = 4;
+				zaap.updatePos();
+				zaap.zaapy = false;
+			} else {
+				if (StartScreen.playerChoise == 1) {
+					bonhomme.sex = 1;
+				} else if (StartScreen.playerChoise == 2) {
+					bonhomme.sex = 2;
+				}
+
+				StartScreen.world = 0;
+				zaap.updatePos();
+				zaap.zaapy = false;
+			}
+		}
 
 		g.drawString(700, 700, "score : " + bonhomme.score);
 

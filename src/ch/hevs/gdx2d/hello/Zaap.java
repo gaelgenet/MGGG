@@ -52,7 +52,7 @@ public class Zaap implements DrawableObject {
 	}
 
 	public void createZaap(Bonhomme b) {
-		if ((b.score + 1) % 6 == 0) {
+		if ((b.score + 1) % 30 == 0) {
 			zaapy = true;
 			updatePos();
 		}
