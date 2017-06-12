@@ -6,19 +6,31 @@ import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
-public class Zaap implements DrawableObject {
+/**
+ * cette class permet la creation d'un portail, pour changer de monde
+ * 
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG)
+ * @version 1.0
+ */
 
+
+public class Zaap implements DrawableObject {
+    
+	// instance class
+	Bonhomme b = new Bonhomme();
+	Rectangle square;
 	static BitmapImage zaap = new BitmapImage("data/images/Zaap.png");
 
-	Rectangle square;
-	Bonhomme b = new Bonhomme();
-	static Boolean zaapy = false;
-
+	//variable class
+	int heightVariation = 1;
+	int direction = 1;
 	int posX;
 	int posY;
-	int ale = 1;;
-	int increment = 1;
+	static Boolean zaapy = false;
 
+	// 
 	public void onInit() {
 		posX = 1000;
 		posY = 500;
@@ -31,13 +43,13 @@ public class Zaap implements DrawableObject {
 	}
 
 	public void moveZaap() {
-		if (ale % 30 == 0) {
-			increment *= -1;
+		if (heightVariation % 30 == 0) {
+			direction *= -1;
 		}
 		posX -= 3;
 
-		posY += increment * 2;
-		ale++;
+		posY += direction * 2;
+		heightVariation++;
 	}
 
 	public void updatePos() {
@@ -50,7 +62,7 @@ public class Zaap implements DrawableObject {
 		square.x = posX;
 		square.y = posY;
 	}
-
+/
 	public void createZaap(Bonhomme b) {
 		if ((b.score + 1) % 30 == 0) {
 			zaapy = true;

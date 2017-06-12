@@ -56,22 +56,22 @@ public class EggDofus implements DrawableObject {
 
 	@Override
 	public void draw(GdxGraphics g) {
-		if(b.score >= 50){
+		if(EggDofusManager.nbreEgg >= 60){
 			g.drawTransformedPicture(posX, posY, 0, 0.3f, egg6);
 		}
-		else if (b.score >= 40 && b.score < 50) {
+		else if (EggDofusManager.nbreEgg >= 60 && EggDofusManager.nbreEgg < 60) {
 			g.drawTransformedPicture(posX, posY, 0, 0.32f, egg5);
 		}
-		else if (b.score >= 30 && b.score < 40) {
+		else if (EggDofusManager.nbreEgg >= 40 && EggDofusManager.nbreEgg < 50) {
 			g.drawTransformedPicture(posX, posY, 0, 0.35f, egg4);
 		}
-		else if (b.score >= 20 && b.score < 30) {
+		else if (EggDofusManager.nbreEgg >= 30 && EggDofusManager.nbreEgg < 40) {
 			g.drawTransformedPicture(posX, posY, 0, 0.45f, egg3);
 		}
-		else if (b.score >= 10 && b.score < 20) {
+		else if (EggDofusManager.nbreEgg >= 15 && EggDofusManager.nbreEgg < 30) {
 			g.drawTransformedPicture(posX, posY, 0, 0.35f, egg2);
 		}
-		else if (b.score < 10) {
+		else if (EggDofusManager.nbreEgg < 15) {
 			g.drawTransformedPicture(posX, posY, 0, 0.3f, egg1);
 		}
 

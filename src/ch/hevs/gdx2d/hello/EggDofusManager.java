@@ -19,7 +19,7 @@ public class EggDofusManager {
 
 	float speed = -4f;
 	float variablespeed = 2f;
-	public static int nbreEgg = 19;
+	public static int nbreEgg = 0;
 
 	void generateEgg() {
 		dt += Gdx.graphics.getDeltaTime();
