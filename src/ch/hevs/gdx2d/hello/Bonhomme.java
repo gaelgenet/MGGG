@@ -14,56 +14,57 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
+/**
+ * This class is used to manage the creation of the character
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG
+ * @version 1.0
+ */
+
 public class Bonhomme implements DrawableObject {
 
-	Vector2 position;
-	String name;
-	HelloWorld hello;
+	// Class' instances
 	CubeManager cube = new CubeManager();
+	protected Rectangle square;
+	static Spritesheet sprites;
 
-	/**
-	 * The size of each sprite in the sheet
-	 */
+	// The size of each sprite in the sheet
 	static int SPRITE_WIDTH = 64;
 	static int SPRITE_HEIGHT = 68;
 
-	protected Rectangle square;
-
-	/**
-	 * The currently selected sprite for animation
-	 */
-	int textureX = 0;
+	// The currently selected sprite for animation
 	int textureY = 0;
 
-	/**
-	 * Animation related parameters
-	 */
-
+	// Animation related parameters
 	float dt = 0;
 	int currentFrame = 0;
 	static int nFrames = 4;
 	double FRAME_TIME = 0.1; // Duration of each frame
-	static Spritesheet sprites;
-	static boolean move = false;
-	boolean dead = false;
-	int cubeHeigh = 234;
-	int cubeNewHeight;
-	public static int score= 0;
-	public static int sex = 0;
+
+	// boolean used to jump or not
+	static boolean jump = false;
+
+	// the position of the character
+	int posX = 234;
+	int newPosX;
 	public static int offset = 20;
-	public static float positionBonhomme = 0;
+
+	public static int score = 0;
+
+	// choose the sex of the character
+	public static int sexCharacter = 0;
+
+	// physic of the square
+	private final int initSpeed = 90, Gravity = -10;
+	float DT = 0.25f; // delta time used to slow the jump
+	private int squareSpeed = initSpeed, deltaPosY;
 
 	/**
-	 * physic of the squarre
+	 * move the spriteSheet
 	 */
-	private final int Vinit = 90, Gravity = -10, V_boost = 5;
-	float DT = 0.25f;
-	private int Vsquarre = Vinit, deltaPosY;
-
 	public void moveBonhomme() {
-		
-		positionBonhomme = square.x + (square.width/2);
-		
+
 		dt += Gdx.graphics.getDeltaTime();
 
 		if (dt > FRAME_TIME) {
@@ -73,79 +74,87 @@ public class Bonhomme implements DrawableObject {
 		}
 	}
 
+	/**
+	 * load the different pictures
+	 */
 	public void onInit() {
-		switch (sex){
-		
+		switch (sexCharacter) {
+
 		case 1:
 			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
-			
+
 		case 2:
 			sprites = new Spritesheet("data/images/womanSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
-			
+
 		case 4:
-		
+
 			sprites = new Spritesheet("data/images/dragodindeSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 			break;
-			
-			
+
 		default:
 			sprites = new Spritesheet("data/images/manSmall.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-			break;}
-		
-		square = new Rectangle((SPRITE_WIDTH / 2) + offset, cubeHeigh, SPRITE_WIDTH, SPRITE_HEIGHT);
+			break;
+		}
+
+		square = new Rectangle((SPRITE_WIDTH / 2) + offset, posX, SPRITE_WIDTH, SPRITE_HEIGHT);
 
 	}
 
+	/**
+	 * allow to jump only if the collision is not left
+	 * 
+	 * @param collide
+	 */
 	public void jump(Collision.CollisionType collide) {
 		if (collide != CollisionType.LEFT) {
-			move = true;
+			jump = true;
 		}
 	}
 
+	/**
+	 * go to the next screen when you die
+	 */
 	public void dead() {
-			Cube.play = false;
-			CubeManager.play = false;
-			move = false;
-			Logger.log("tu es mort");
-			Vsquarre = 0;
-			
-			Screens.getInstance().s.activateNextScreen();
-			
-		}
+		jump = false;
+		Screens.getInstance().s.activateNextScreen();
+	}
 
+	/**
+	 * 
+	 * @param collide
+	 * @param cube
+	 */
 	public void physics_update(Collision.CollisionType collide, CubeManager cube) {
 
-		cubeNewHeight = (int) cube.cubes.get(0).rectangle.height / 2 + (SPRITE_HEIGHT / 2);
+		newPosX = (int) cube.cubes.get(0).rectangle.height / 2 + (SPRITE_HEIGHT / 2);
 
-		if (move == true) {
-			Vsquarre = (int) (Vsquarre + (DT * Gravity));
-			deltaPosY = (int) (DT * Vsquarre);
+		if (jump == true) {
+			squareSpeed = (int) (squareSpeed + (DT * Gravity));
+			deltaPosY = (int) (DT * squareSpeed);
 			square.y = square.y + deltaPosY;
-
 		}
 
 		if (collide == CollisionType.TOP) {
-			square.y = cubeNewHeight;
-			Vsquarre = Vinit;
+			square.y = newPosX;
+			squareSpeed = initSpeed;
 			score++;
-			move = false;
+			jump = false;
 		}
 		if (collide == CollisionType.END) {
-			Vsquarre = -(Vinit / 2);
-			move = true;
+			squareSpeed = -(initSpeed / 2);
+			jump = true;
 		}
 		if ((collide == CollisionType.LEFT || square.y <= 100)) {
 			dead();
-			
+
 		}
 	}
 
 	@Override
 	public void draw(GdxGraphics g) {
 
-		
 		g.draw(sprites.sprites[textureY][currentFrame], square.x - (SPRITE_WIDTH / 2), square.y - (SPRITE_HEIGHT / 2));
 	}
 
