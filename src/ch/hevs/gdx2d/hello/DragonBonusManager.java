@@ -37,6 +37,7 @@ public class DragonBonusManager {
 		if (collide == CollisionBonus.IN) {
 			bonus.remove(bonus.lastElement());
 			Bonhomme.sex = 3;
+			Bonhomme.score += 10;
 		}
 
 //		if (bonus.get(0).posX < -1000) {

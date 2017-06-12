@@ -24,7 +24,7 @@ public class Cube implements DrawableObject {
 		
 		default:
 		case 0:
-			img = new BitmapImage("data/images/bricks2.jpg");
+			img = new BitmapImage("data/images/rockSmall.jpg");
 			break;
 			
 		case 1:

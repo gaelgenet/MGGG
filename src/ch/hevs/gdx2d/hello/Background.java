@@ -14,12 +14,12 @@ public class Background implements DrawableObject {
 	static float posXfirstdofusground;
 	static float posXsecondbackground;
 	static float posXseconddofusground;
-	static int scaleBG = 3;
+	static float scaleBG = 1.5f;
 	static float scaleBDG = 2.5f;
 
 	public void onInit() {
 
-			background = new BitmapImage("data/images/background.jpg");
+			background = new BitmapImage("data/images/Cave.png");
 			posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
 			posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + background.getImage().getWidth() * scaleBG);
 //			break;
