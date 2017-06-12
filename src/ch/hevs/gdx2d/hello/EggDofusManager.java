@@ -5,78 +5,90 @@ import java.util.Vector;
 import com.badlogic.gdx.Gdx;
 
 import ch.hevs.gdx2d.hello.Collision.CollisionEgg;
-import ch.hevs.gdx2d.hello.Collision.CollisionGold;
 import ch.hevs.gdx2d.lib.GdxGraphics;
-import ch.hevs.gdx2d.lib.utils.Logger;
+
+
+/**
+ * cette class gere la creation des oeufs et leurs déplacements
+ * 
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG)
+ * @version 1.0
+ */
 
 public class EggDofusManager {
+
+	// vector
 	Vector<EggDofus> eggs = new Vector<EggDofus>();
 
+	// paramter of time
 	float dt;
 	float speedTime;
+	float speed = -4f;
+	float variablespeed = 2f;
+
+	// parameter positions
 	int posx = 1150;
 	int posy = 500;
 
-	float speed = -4f;
-	float variablespeed = 2f;
+	// variable compte egg
 	public static int nbreEgg = 0;
 
+	/**
+	 * generate egg
+	 */
 	void generateEgg() {
 		dt += Gdx.graphics.getDeltaTime();
 
 		if (dt > variablespeed) {
-
 			dt = 0;
-
 			eggs.add(new EggDofus(posx, posy));
-
 		}
-
 	}
 
+	/**
+	 * comptable score egg and destroy this
+	 * 
+	 * @param collide
+	 */
 	public void comptableEggAndDestroy(Collision.CollisionEgg collide) {
-		
+
+		// comptable and destroy during collision
 		if (collide == CollisionEgg.IN) {
 			nbreEgg++;
 			eggs.remove(0);
-			
-		if (nbreEgg % 20 == 0) {
+			if (nbreEgg % 20 == 0) {
 				DragonBonusManager.activeDragonBonus = true;
-				Logger.log("dragon bonus activated");
-				// DragonBonusManager.activeBonus =true;
-				// Bonhomme.sex = 3;
 			}
 		}
 
-	if(nbreEgg% 6 == 0 && Bonhomme.sexCharacter==3)	{
-		Logger.log("salut");
-		if (CubeManager.position < 275 && CubeManager.position > 270) {
-			DragonBonusManager.dragon = false;
-			Bonhomme.sexCharacter = StartScreen.playerChoise;
-			// Bonhomme.SPRITE_HEIGHT = DragonBonusManager.lastHeight;
-			// Bonhomme.SPRITE_WIDTH = DragonBonusManager.lastWidth;
-			Logger.log("sex " + Bonhomme.sexCharacter + Bonhomme.SPRITE_HEIGHT);
+		// reinitialize player afther dragonbonus
+		if (nbreEgg % 6 == 0 && Bonhomme.sexCharacter == 3) {
+			if (CubeManager.position < 275 && CubeManager.position > 270) {
+				DragonBonusManager.dragon = false;
+				Bonhomme.sexCharacter = StartScreen.playerChoise;
+			}
 		}
+
+		// destroy of the bird when he is not any more visible
+		if (eggs.get(0).posX < -15) {
+			eggs.remove(0);
+		}
+
 	}
 
-	
-	if(eggs.get(0).posX<-15){
-		eggs.remove(0);}
-
-	}
-
+	/**
+	 * movement of egg and drawing
+	 * 
+	 * @param g
+	 */
 	public void moveegg(GdxGraphics g) {
-
-		// speedTime += Gdx.graphics.getDeltaTime();
-
-		// Logger.log("pouet" + speedTime);
 
 		if (CubeManager.speedTime > 7) {
 			speed -= 0.2;
-			// variablespeed -= 0.1;
 			speedTime = 0;
 		}
-
 		for (EggDofus i : eggs) {
 			i.draw(g);
 			i.updateSquarre();
@@ -84,10 +96,12 @@ public class EggDofusManager {
 		}
 	}
 
+	/**
+	 * generate first eggs
+	 */
 	public void generatefirstegg() {
 		eggs.add(new EggDofus(500, 400));
 		eggs.add(new EggDofus(1200, 500));
-
 	}
 
 }

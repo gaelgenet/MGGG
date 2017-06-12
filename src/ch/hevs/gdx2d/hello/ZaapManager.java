@@ -2,7 +2,7 @@ package ch.hevs.gdx2d.hello;
 
 import ch.hevs.gdx2d.hello.Collision.CollisionZaap;
 import ch.hevs.gdx2d.lib.GdxGraphics;
-import ch.hevs.gdx2d.lib.utils.Logger;
+
 
 public class ZaapManager {
 	// class' instance

@@ -6,24 +6,40 @@ import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
-public class EggDofus implements DrawableObject {
+/**
+ * cette class créé les différents oeufs pour le world 2
+ * 
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG)
+ * @version 1.0
+ */
 
+public class EggDofus implements DrawableObject {
+	
+	//class' instances 
 	static BitmapImage egg1 = new BitmapImage("data/images/dofusemeraude.png");
 	static BitmapImage egg2 = new BitmapImage("data/images/o1.png");
 	static BitmapImage egg3 = new BitmapImage("data/images/o3.png");
 	static BitmapImage egg4 = new BitmapImage("data/images/o3.png");
 	static BitmapImage egg5 = new BitmapImage("data/images/o4.png");
 	static BitmapImage egg6 = new BitmapImage("data/images/o5.png");
-
 	Rectangle square;
 	Bonhomme b = new Bonhomme();
-	;
-
+	
+	//parameter positions
 	int posX;
 	int posY;
-	int ale = 1;;
-	int increment = 1;
+	
+	//parameter movement 
+	int heightVariation = 1;;
+	int direction = 1;
 
+	/**
+	 * constructor
+	 * @param posX
+	 * @param posY
+	 */
 	public EggDofus(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
@@ -31,29 +47,36 @@ public class EggDofus implements DrawableObject {
 		square = new Rectangle();
 
 		square.height = 25;
-
 		square.width = 25;
 	}
 
 	
-
+	/**
+	 * movement of egg
+	 * @param speed
+	 */
 	public void moveEgg(float speed) {
 
-		if (ale % 40 == 0) {
-			increment *= -1;
+		if (heightVariation % 40 == 0) {
+			direction *= -1;
 		}
 		posX += speed;
-
-		posY += increment * 2;
-		ale++;
+		posY += direction * 2;
+		heightVariation++;
 	}
 
+	/**
+	 * sychronize positions
+	 */
 	public void updateSquarre() {
 
 		square.x = posX;
 		square.y = posY;
 	}
 
+	/**
+	 * drawing eggs in function of numbre's eggs
+	 */
 	@Override
 	public void draw(GdxGraphics g) {
 		if(EggDofusManager.nbreEgg >= 60){

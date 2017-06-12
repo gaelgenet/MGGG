@@ -1,38 +1,43 @@
 package ch.hevs.gdx2d.hello;
 
-import java.util.Random;
+
 import java.util.Vector;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
-public class BirdManager {
-	Vector<Bird> birdes = new Vector<Bird>();
-	
+/**
+ * cette class gere l'aller et venu des oiseaux
+ * 
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG)
+ * @version 1.0
+ */
 
+public class BirdManager {
+	
+	//Vector
+	Vector<Bird> birdes = new Vector<Bird>();
+
+	// parameter of the random generate
 	float dt;
-	float speedTime;
+	float speed = -4;
+	float variablespeed = 3f;
+
+	// parameter positions
 	int posx = 1000;
 	int posy = 0;
 
-	float speed = -4;
-	float variablespeed = 3f;
-	
-
-	
-
-	Random r = new Random();
-
-	
-	
-	void generateBird(){
+	/**
+	 * generate random position of bird
+	 */
+	void generateBird() {
 		dt += Gdx.graphics.getDeltaTime();
 
-		
-		if ( dt > variablespeed) {
-			
+		if (dt > variablespeed) {
+
 			dt = 0;
 			posx = (int) (Math.random() * 7000);
 			if (posx < 800 || posx > 2500) {
@@ -45,25 +50,38 @@ public class BirdManager {
 			}
 
 			birdes.add(new Bird(posx, posy));
-			
+
 		}
 
 	}
 
+	/**
+	 * destruction of the bird when he is not any more visible
+	 */
 	void distroyBird() {
-		if (birdes.get(0).posX< -100) {
+		if (birdes.get(0).posX < -100) {
 			birdes.remove(0);
 		}
 	}
+
+	/**
+	 * movement of bird and drawing
+	 * @param g
+	 */
 	public void moveTotalBird(GdxGraphics g) {
-	for (Bird b : birdes) {
-		b.draw(g);
-		b.moveBird();
-	}}
-	public void generatefirstbird(){
-		birdes.add(new Bird(1200,300));
-		birdes.add(new Bird(1800,300));
-		
+		for (Bird b : birdes) {
+			b.draw(g);
+			b.moveBird();
+		}
 	}
-	
+
+	/**
+	 * generate first bird
+	 */
+	public void generatefirstbird() {
+		birdes.add(new Bird(1200, 300));
+		birdes.add(new Bird(1800, 300));
+
+	}
+
 }
