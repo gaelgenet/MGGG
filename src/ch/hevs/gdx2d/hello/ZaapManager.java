@@ -17,7 +17,6 @@ public class ZaapManager {
 
 	/**
 	 * manager zaap
-	 * 
 	 * @param bonhomme
 	 * @param g
 	 */
@@ -25,10 +24,8 @@ public class ZaapManager {
 
 		zaap.createZaap();
 
-		/**
-		 * condition to move the zaap and condition to change the sex and the
-		 * world
-		 */
+		//condition to move the zaap and condition to change the sex and the world
+		
 		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.OUT && zaap.createZaap == true && Bonhomme.sexCharacter != 3) {
 			zaap.moveZaap();
 			zaap.updateSquarre();

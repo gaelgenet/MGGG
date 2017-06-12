@@ -33,7 +33,6 @@ public class Background implements DrawableObject {
 	/**
 	 * initialize background
 	 */
-	
 	public void onInit() {
 		
 			background = new BitmapImage("data/images/Cave.png");
@@ -45,16 +44,14 @@ public class Background implements DrawableObject {
 			posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
 	}
 
-	@Override
+	
 	/**
 	 * draw background
 	 */
-	
+	@Override
 	public void draw(GdxGraphics g) {
-		/**
-		 * re-initialize the position of the bottom at the end of displacement
-		 */
-
+		
+		// re-initialize the position of the bottom at the end of displacement
 		if (posXfirstbackground < -HelloWorld.WINDOWS_WIDTH) {
 			posXfirstbackground = posXsecondbackground + background.getImage().getWidth() * scaleBG;
 		}
@@ -70,10 +67,7 @@ public class Background implements DrawableObject {
 
 		}
 
-		/**
-		 * exchange rate of the world according to StartScreen.world
-		 */
-		
+		// exchange rate of the world according to StartScreen.world
 		switch (StartScreen.world) {
 
 		case 0:

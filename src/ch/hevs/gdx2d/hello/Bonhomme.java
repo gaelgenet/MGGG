@@ -122,7 +122,7 @@ public class Bonhomme implements DrawableObject {
 	}
 
 	/**
-	 * 
+	 * update the physic of the character
 	 * @param collide
 	 * @param cube
 	 */
@@ -130,6 +130,9 @@ public class Bonhomme implements DrawableObject {
 
 		newPosX = (int) cube.cubes.get(0).rectangle.height / 2 + (SPRITE_HEIGHT / 2);
 
+		/**
+		 * 
+		 */
 		if (jump == true) {
 			squareSpeed = (int) (squareSpeed + (DT * Gravity));
 			deltaPosY = (int) (DT * squareSpeed);
