@@ -1,18 +1,10 @@
 package ch.hevs.gdx2d.hello;
-
-import java.awt.Frame;
-
 import com.badlogic.gdx.Gdx;
-
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-
 import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
-
 import ch.hevs.gdx2d.hello.Collision.CollisionType;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
-import ch.hevs.gdx2d.lib.utils.Logger;
 
 /**
  * This class is used to manage the creation of the character
@@ -47,7 +39,7 @@ public class Bonhomme implements DrawableObject {
 
 	// the position of the character
 	int posX = 234;
-	int newPosX;
+	int newPosY;
 	public static int offset = 20;
 
 	public static int score = 0;
@@ -128,33 +120,39 @@ public class Bonhomme implements DrawableObject {
 	 */
 	public void physics_update(Collision.CollisionType collide, CubeManager cube) {
 
-		newPosX = (int) cube.cubes.get(0).rectangle.height / 2 + (SPRITE_HEIGHT / 2);
+		newPosY = (int) cube.cubes.get(0).rectangle.height / 2 + (SPRITE_HEIGHT / 2);
 
-		/**
-		 * 
-		 */
+		//simulate the gravity when the character jump
 		if (jump == true) {
 			squareSpeed = (int) (squareSpeed + (DT * Gravity));
 			deltaPosY = (int) (DT * squareSpeed);
 			square.y = square.y + deltaPosY;
 		}
 
+		//when the character touch the platform -> update the position Y
 		if (collide == CollisionType.TOP) {
-			square.y = newPosX;
+			square.y = newPosY;
 			squareSpeed = initSpeed;
 			score++;
 			jump = false;
 		}
+		
+		//When the collision is END. Let the character fall
 		if (collide == CollisionType.END) {
 			squareSpeed = -(initSpeed / 2);
 			jump = true;
 		}
+		
+		//When the character touch the left side of the platform, he dies
 		if ((collide == CollisionType.LEFT || square.y <= 100)) {
 			dead();
 
 		}
 	}
 
+	/**
+	 * draw the sprite sheet
+	 */
 	@Override
 	public void draw(GdxGraphics g) {
 

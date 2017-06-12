@@ -3,7 +3,7 @@ package ch.hevs.gdx2d.hello;
 import java.io.StreamTokenizer;
 
 public class Restart {
-
+//moi
 	static void restart() {
 		Cube.play = true;
 		CubeManager.play = true;

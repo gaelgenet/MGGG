@@ -2,7 +2,7 @@ package ch.hevs.gdx2d.hello;
 
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.desktop.PortableApplication;
-
+//moi
 /**
  * Hello World demo.
  *

@@ -5,7 +5,7 @@ import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
 
 public class StorageBonhomme {
 	
-
+//moi
 	public void storage() {
 
 		switch (Bonhomme.sexCharacter) {

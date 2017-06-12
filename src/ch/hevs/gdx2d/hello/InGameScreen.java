@@ -15,7 +15,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class InGameScreen extends RenderingScreen {
-
+//moi
 	// Attributes
 	// parameter for the physique of the screen
 	Bonhomme bonhomme;

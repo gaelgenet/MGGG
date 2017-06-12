@@ -11,7 +11,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class DragonBonusManager {
-
+//moi
 	Vector<DragonBonus> bonus = new Vector<DragonBonus>();
 
 	int posx = 1000;

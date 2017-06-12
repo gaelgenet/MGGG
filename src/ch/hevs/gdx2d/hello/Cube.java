@@ -10,7 +10,7 @@ import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
-
+//moi
 public class Cube implements DrawableObject {
 	Color c = Color.WHITE;
 	Rectangle rectangle;

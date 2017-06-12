@@ -12,7 +12,7 @@ import ch.hevs.gdx2d.components.screen_management.RenderingScreen;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class EndScreen extends RenderingScreen {
-	
+	//moi
 	public BitmapFont endTitle;
 	FileHandle titleFont;
 	Explosion explose = new Explosion();

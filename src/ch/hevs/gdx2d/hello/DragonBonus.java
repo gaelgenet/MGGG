@@ -7,7 +7,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class DragonBonus implements DrawableObject {
-
+//moi
 	static BitmapImage dragonBonus = new BitmapImage("data/images/dragonEgg.png");
 
 	Rectangle square;

@@ -3,7 +3,7 @@ package ch.hevs.gdx2d.hello;
 import ch.hevs.gdx2d.lib.ScreenManager;
 
 public class Screens {
-	
+	//moi
 	// Attributes
 	private static Screens instance;
 	public ScreenManager s = new ScreenManager();

@@ -10,7 +10,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class CubeManager {
-
+//moi
 	Vector<Cube> cubes = new Vector<Cube>();
 
 	float dt;
