@@ -25,7 +25,7 @@ public class Collision {
 		if ((bonhomme.square.x - (Bonhomme.SPRITE_WIDTH / 4)) <= (cube.rectangle.x + (cube.rectangle.width / 2))
 				&& (bonhomme.square.x - (Bonhomme.SPRITE_WIDTH / 4))
 						- bonhommeSpeedX > (cube.rectangle.x + (cube.rectangle.width / 2))) {
-			if (!bonhomme.move) {
+			if (!bonhomme.jump) {
 				Logger.log("Collision end");
 				return CollisionType.END;
 			}

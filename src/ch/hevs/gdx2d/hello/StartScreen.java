@@ -60,7 +60,7 @@ public class StartScreen extends RenderingScreen {
 		g.drawStringCentered(40, "Press space to jump");
 		g.drawStringCentered(20, "Press enter to play");
 
-		switch (Bonhomme.sex) {
+		switch (Bonhomme.sexCharacter) {
 	
 		case 1:
 			g.drawStringCentered(HelloWorld.WINDOWS_HEIGHT / 5, "you choose to be man");
@@ -88,19 +88,19 @@ public class StartScreen extends RenderingScreen {
 
 		case Input.Keys.NUMPAD_1:
 		case Input.Keys.NUM_1:
-			Bonhomme.sex = 1;
+			Bonhomme.sexCharacter = 1;
 			playerChoise = 1;
 			world = 0;
 			break;
 		case Input.Keys.NUMPAD_2:
 		case Input.Keys.NUM_2:
-			Bonhomme.sex = 2;
+			Bonhomme.sexCharacter = 2;
 			playerChoise = 2;
 			world = 0;
 			break;
 		case Input.Keys.NUMPAD_3:
 		case Input.Keys.NUM_3:
-			Bonhomme.sex = 4;
+			Bonhomme.sexCharacter = 4;
 			world = 1;
 			playerChoise = 4;
 			break;			

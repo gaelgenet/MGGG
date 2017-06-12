@@ -55,11 +55,11 @@ public class IngotManager {
 			}
 		}
 		
-		if (nbreIngot % 8 == 0 && Bonhomme.sex == 3) {
+		if (nbreIngot % 8 == 0 && Bonhomme.sexCharacter == 3) {
 			//Logger.log("salut");
 			if (CubeManager.position < 305 && CubeManager.position > 300) {
 				DragonBonusManager.dragon = false;
-				Bonhomme.sex = StartScreen.playerChoise;
+				Bonhomme.sexCharacter = StartScreen.playerChoise;
 				// Bonhomme.SPRITE_HEIGHT = DragonBonusManager.lastHeight;
 				// Bonhomme.SPRITE_WIDTH = DragonBonusManager.lastWidth;
 				//Logger.log("sex " + Bonhomme.sex + Bonhomme.SPRITE_HEIGHT);

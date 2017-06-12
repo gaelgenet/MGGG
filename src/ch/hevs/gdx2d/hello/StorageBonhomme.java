@@ -8,7 +8,7 @@ public class StorageBonhomme {
 
 	public void storage() {
 
-		switch (Bonhomme.sex) {
+		switch (Bonhomme.sexCharacter) {
 		default:
 		case 1:
 			Bonhomme.offset = 20;
