@@ -5,10 +5,22 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
-public class Background implements DrawableObject {
+/**
+ * cette class genere le fond d'écran et gere son déplacement
+ * 
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG)
+ * @version 1.0
+ */ 
 
-	static BitmapImage background;
-	static BitmapImage backdofus;
+public class Background implements DrawableObject {
+	
+	//class' instances
+	static BitmapImage background; 	//background world 1
+	static BitmapImage backdofus;	//background world 2
+	
+	//class' variables
 	int i = 0;
 	static float posXfirstbackground;
 	static float posXfirstdofusground;
@@ -17,25 +29,31 @@ public class Background implements DrawableObject {
 	static float scaleBG = 1.5f;
 	static float scaleBDG = 2.5f;
 
+	
+	/**
+	 * initialize background
+	 */
+	
 	public void onInit() {
-
+		
 			background = new BitmapImage("data/images/Cave.png");
 			posXfirstbackground = HelloWorld.WINDOWS_WIDTH / 2;
 			posXsecondbackground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + background.getImage().getWidth() * scaleBG);
-//			break;
-			
-//		case 1:
+
 			backdofus = new BitmapImage("data/images/background doffus.jpg");
 			posXseconddofusground = (float) (HelloWorld.WINDOWS_WIDTH / 2 + backdofus.getImage().getWidth() * scaleBDG);
 			posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
-//			break;
-//		}
-		
 	}
 
 	@Override
+	/**
+	 * draw background
+	 */
+	
 	public void draw(GdxGraphics g) {
-		// TODO Auto-generated method stub
+		/**
+		 * re-initialize the position of the bottom at the end of displacement
+		 */
 
 		if (posXfirstbackground < -HelloWorld.WINDOWS_WIDTH) {
 			posXfirstbackground = posXsecondbackground + background.getImage().getWidth() * scaleBG;
@@ -52,6 +70,10 @@ public class Background implements DrawableObject {
 
 		}
 
+		/**
+		 * exchange rate of the world according to StartScreen.world
+		 */
+		
 		switch (StartScreen.world) {
 
 		case 0:
@@ -68,6 +90,7 @@ public class Background implements DrawableObject {
 			posXfirstdofusground -= 3;
 			posXseconddofusground -= 3;
 			break;
+			
 		default:
 			break;
 		}

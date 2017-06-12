@@ -27,7 +27,8 @@ public class InGameScreen extends RenderingScreen {
 	Background background;
 	DragonBonusManager dragonManager;
 	StorageBonhomme storageBonhomme;
-	Zaap zaap;
+	ZaapManager zaapManager;
+	
 	static MusicPlayer fear = new MusicPlayer("data/musiques/peur2.mp3");
 	MusicPlayer crydragon = new MusicPlayer("data/musiques/Cri-du-dragon.mp3");
 
@@ -46,7 +47,7 @@ public class InGameScreen extends RenderingScreen {
 		background = new Background();
 		dragonManager = new DragonBonusManager();
 		storageBonhomme = new StorageBonhomme();
-		zaap = new Zaap();
+		zaapManager = new ZaapManager();
 		bonhomme.onInit();
 		cManager.generateInitialCubes();
 		bird.generatefirstbird();
@@ -54,7 +55,7 @@ public class InGameScreen extends RenderingScreen {
 		eggs.generatefirstegg();
 		background.onInit();
 		dragonManager.generatefirstBonus();
-		zaap.onInit();
+		zaapManager.instanceZaap();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
 
 	}
@@ -76,7 +77,7 @@ public class InGameScreen extends RenderingScreen {
 		dragonManager.Destroy(Collision.bonus(dragonManager.bonus.lastElement(), bonhomme));
 		fear.loop();
 
-		zaap.createZaap(bonhomme);
+
 
 
 		switch (StartScreen.world) {
@@ -108,33 +109,8 @@ public class InGameScreen extends RenderingScreen {
 		keycode = 0;
 
 		storageBonhomme.storage();
+		zaapManager.Manager(bonhomme, g);
 
-		if (Collision.zaap(zaap, bonhomme) == CollisionZaap.OUT && zaap.zaapy == true && Bonhomme.sex != 3) {
-			zaap.moveZaap();
-			zaap.updateSquarre();
-			zaap.draw(g);
-
-		} else if (Collision.zaap(zaap, bonhomme) == CollisionZaap.IN && zaap.zaapy == true) {
-
-			if (bonhomme.sex != 4) {
-				Logger.log("monde :" + StartScreen.world);
-				StartScreen.world = 1;
-				Logger.log("tcho " + StartScreen.world);
-				bonhomme.sex = 4;
-				zaap.updatePos();
-				zaap.zaapy = false;
-			} else {
-				if (StartScreen.playerChoise == 1) {
-					bonhomme.sex = 1;
-				} else if (StartScreen.playerChoise == 2) {
-					bonhomme.sex = 2;
-				}
-
-				StartScreen.world = 0;
-				zaap.updatePos();
-				zaap.zaapy = false;
-			}
-		}
 
 		g.drawString(700, 700, "score : " + bonhomme.score);
 
