@@ -29,7 +29,6 @@ public class StorageBonhomme {
 			Bonhomme.offset = 200;
 			Bonhomme.SPRITE_WIDTH = 150;
 			Bonhomme.SPRITE_HEIGHT = 147;
-			DragonBonusManager.dragon = true;
 			Bonhomme.sprites = new Spritesheet("data/images/dragon1.png", Bonhomme.SPRITE_WIDTH,
 					Bonhomme.SPRITE_HEIGHT);
 			break;

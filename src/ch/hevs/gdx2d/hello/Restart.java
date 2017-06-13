@@ -15,8 +15,6 @@ public class Restart {
 		Bonhomme.SPRITE_WIDTH = 64;
 		Bonhomme.offset = 10;
 		StartScreen.world = 0;
-		DragonBonusManager.activeDragonBonus = false;
-		DragonBonusManager.dragon = false;
 		Screens.getInstance().s.activateScreen(0);
 	}
 

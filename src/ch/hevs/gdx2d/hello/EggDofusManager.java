@@ -58,17 +58,6 @@ public class EggDofusManager {
 		if (collide == CollisionEgg.IN) {
 			nbreEgg++;
 			eggs.remove(0);
-			if (nbreEgg % 20 == 0) {
-				DragonBonusManager.activeDragonBonus = true;
-			}
-		}
-
-		// reinitialize player afther dragonbonus
-		if (nbreEgg % 6 == 0 && Bonhomme.sexCharacter == 3) {
-			if (CubeManager.position < 275 && CubeManager.position > 270) {
-				DragonBonusManager.dragon = false;
-				Bonhomme.sexCharacter = StartScreen.playerChoise;
-			}
 		}
 
 		// destroy of the bird when he is not any more visible

@@ -28,7 +28,7 @@ public class IngotManager {
 	float variablespeed = 2f;
 
 	// variable compte ingot
-	public static int nbreIngot = 0;
+	public static int nbreIngot = 19;
 
 	// parameter positions
 	int posx = 1150;
@@ -58,19 +58,6 @@ public class IngotManager {
 		if (collide == CollisionGold.IN) {
 			nbreIngot++;
 			ingot.remove(0);
-
-			if (nbreIngot % 20 == 0) {
-				DragonBonusManager.activeDragonBonus = true;
-			}
-		}
-
-		// reinitialize player afther dragonbonus
-		if (nbreIngot % 8 == 0 && Bonhomme.sexCharacter == 3) {
-
-			if (CubeManager.position < 305 && CubeManager.position > 300) {
-				DragonBonusManager.dragon = false;
-				Bonhomme.sexCharacter = StartScreen.playerChoise;
-			}
 		}
 		
 		// destroy of the bird when he is not any more visible

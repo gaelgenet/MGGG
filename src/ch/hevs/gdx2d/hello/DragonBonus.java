@@ -5,51 +5,87 @@ import com.badlogic.gdx.math.Rectangle;
 import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
+import ch.hevs.gdx2d.lib.utils.Logger;
 
+/**
+ * this class is used to create a dragon bonus
+ * 
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG
+ * @version 1.0
+ */
 public class DragonBonus implements DrawableObject {
-//moi
-	static BitmapImage dragonBonus = new BitmapImage("data/images/dragonEgg.png");
 
+	// class' instance
 	Rectangle square;
 
-	int posX;
-	int posY;
-	int ale = 1;;
-	int increment = 1;
+	// picture
+	static BitmapImage dragonEggBonus = new BitmapImage("data/images/dragonEgg.png");
 
-	public DragonBonus(int posX, int posY) {
+	// the position of the bonus
+	int posX = 1000;
+	int posY = 600;
 
-		this.posX = posX;
-		this.posY = posY;
+	// the movment of the bonus
+	int heightVariation = 1;;
+	int direction = 1;
+	boolean activeBonus = false;
 
+	/**
+	 * constructor
+	 * 
+	 * @param posX
+	 * @param posY
+	 */
+	public DragonBonus() {
 		square = new Rectangle();
-
 		square.height = 25;
-
 		square.width = 25;
-
 	}
 
+	/**
+	 * move up and down move the bonus to the left
+	 * 
+	 * @param speed
+	 */
 	public void moveDragonBonus(float speed) {
-
-		if (ale % 15 == 0) {
-			increment *= -1;
+		if (heightVariation % 15 == 0) {
+			direction *= -1;
 		}
 		posX += speed;
-
-		posY += increment * 2;
-		ale++;
+		posY += direction * 2;
+		heightVariation++;
 	}
 
-	public void updateSquarre() {
+	public void updatePos() {
+		posX = 1000;
+		posY = 500;
+	}
 
+	/**
+	 * update the position of the bonus
+	 */
+	public void updateSquarre() {
 		square.x = posX;
 		square.y = posY;
 	}
 
-	@Override
-	public void draw(GdxGraphics g) {
-		g.drawTransformedPicture(posX, posY, 0, 0.3f, dragonBonus);
+	/**
+	 * create a dragon bonus
+	 */
+	public void createBonus() {
+		if ((IngotManager.nbreIngot +1) % 20 == 0) {
+			activeBonus = true;
+			Logger.log("bonus creer");
+			updatePos();
+		}
 	}
 
+	/**
+	 * draw the bonus
+	 */
+	@Override
+	public void draw(GdxGraphics g) {
+		g.drawTransformedPicture(posX, posY, 0, 0.3f, dragonEggBonus);
+	}
 }

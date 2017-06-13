@@ -19,7 +19,6 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 public class Zaap implements DrawableObject {
     
 	//class' instances
-	Bonhomme b = new Bonhomme();
 	Rectangle square;
 	static BitmapImage zaap = new BitmapImage("data/images/Zaap.png");
 
@@ -28,13 +27,13 @@ public class Zaap implements DrawableObject {
 	int direction = 1;
 	int posX= 1000;
 	int posY= 500;
-	static Boolean createZaap = false;
+	
+	Boolean createZaap = false;
 
 	/**
 	 * initialize parametre 
 	 */
 	public Zaap() {
-		
 		square = new Rectangle();
 		square.height = 25;
 		square.width = 25;
@@ -48,7 +47,6 @@ public class Zaap implements DrawableObject {
 			direction *= -1;
 		}
 		posX -= 3;
-
 		posY += direction * 2;
 		heightVariation++;
 	}
@@ -66,17 +64,15 @@ public class Zaap implements DrawableObject {
 		square.x = posX;
 		square.y = posY;
 	}
-
+	
 	/**
 	 * moment to create zaap
-	 * @param b for score
 	 */
 	public void createZaap() {
 		if ((Bonhomme.score + 1) % 30 == 0) {
 			createZaap = true;
 			updatePos();
 		}
-
 	}
 
 	@Override

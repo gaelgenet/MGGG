@@ -22,23 +22,13 @@ public class Bird implements DrawableObject {
 	static Spritesheet sprites;
 
 	// The size of each sprite in the sheet
-	/**
-	 * 
-	static int SPRITE_WIDTH = 109;
-	static int SPRITE_HEIGHT = 100;
-	 * 
+
 	static int SPRITE_WIDTH = 64;
 	static int SPRITE_HEIGHT = 64;
 
-	 */
-	
-	static int SPRITE_WIDTH = 96;
-	static int SPRITE_HEIGHT = 96;
-	
-
 	// The currently selected sprite for animation
 	int currentFrame = 0;
-	int textureY = 1;
+	int textureY = 3;
 
 	// Animation related parameters
 	float dt = 0;
@@ -62,9 +52,8 @@ public class Bird implements DrawableObject {
 	public Bird(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
-		sprites = new Spritesheet("data/images/batD.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-//		sprites = new Spritesheet("data/images/bat2.png", SPRITE_WIDTH, SPRITE_HEIGHT);
-//		sprites = new Spritesheet("data/images/spritbird.png", SPRITE_WIDTH, SPRITE_HEIGHT);
+
+		sprites = new Spritesheet("data/images/bat2.png", SPRITE_WIDTH, SPRITE_HEIGHT);
 	}
 
 	/**
@@ -87,11 +76,7 @@ public class Bird implements DrawableObject {
 				}
 			}
 
-//			if (textureY == 2 && currentFrame == 2) {
-//				textureY = 0;
-//				currentFrame = 0;
-//
-//			}
+
 		}
 		if (posX < -580) {
 			posX = 980;

@@ -1,67 +1,65 @@
 package ch.hevs.gdx2d.hello;
 
 import java.util.Vector;
-
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g3d.decals.PluggableGroupStrategy;
-
 import ch.hevs.gdx2d.hello.Collision.CollisionBonus;
-import ch.hevs.gdx2d.hello.Collision.CollisionGold;
+import ch.hevs.gdx2d.hello.Collision.CollisionZaap;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
-public class DragonBonusManager {
-//moi
-	Vector<DragonBonus> bonus = new Vector<DragonBonus>();
+/**
+ * this class is used to manage the creation of the dragon bonus
+ * 
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG
+ * @version 1.0
+ */
 
-	int posx = 1000;
-	int posy = 525;
+public class DragonBonusManager {
+
+	DragonBonus dragonBonus;
 
 	float speed = -4f;
-	static boolean dragon = false;
-	static boolean activeDragonBonus = false;
-	static int lastWidth = 0;
-	static int lastHeight = 0;
 
-	void generateBonus() {
-
-		if (activeDragonBonus == true) {
-			bonus.add(new DragonBonus(posx, posy));
-			activeDragonBonus = false;
-		}
-
+	/**
+	 * instance a class
+	 */
+	public void instanceDragonBonus() {
+		dragonBonus = new DragonBonus();
+		
 	}
 
-	public void Destroy(Collision.CollisionBonus collide) {
+	public void Manager(Bonhomme bonhomme, GdxGraphics g) {
+		
+		dragonBonus.createBonus();
 
-		if (collide == CollisionBonus.IN) {
-			bonus.remove(bonus.lastElement());
-			Bonhomme.sexCharacter = 3;
-			Bonhomme.score += 10;
+		// condition to move the zaap and condition to change the sex and the
+		// world
+
+		if (Collision.bonus(dragonBonus, bonhomme) == CollisionBonus.OUT && dragonBonus.activeBonus == true) {
+			dragonBonus.moveDragonBonus(speed);
+			dragonBonus.updateSquarre();
+			dragonBonus.draw(g);
+
+		} else if (Collision.bonus(dragonBonus, bonhomme) == CollisionBonus.IN && dragonBonus.activeBonus == true) {
+			bonhomme.sexCharacter = 3;
+			dragonBonus.updatePos();
+			dragonBonus.activeBonus = false;
+			
 		}
+		
+		if (IngotManager.nbreIngot % 8 == 0 && Bonhomme.sexCharacter == 3 && StartScreen.world == 0) {
 
-//		if (bonus.get(0).posX < -1000) {
-//			bonus.remove(0);
-//		}
+			if (CubeManager.position < 305 && CubeManager.position > 300) {
+				Bonhomme.sexCharacter = StartScreen.playerChoise;
+			}
+		}
+		
+		if (EggDofusManager.nbreEgg % 6 == 0 && Bonhomme.sexCharacter == 3 && StartScreen.world == 1){
+			if (CubeManager.position < 305 && CubeManager.position > 300) {
+				Bonhomme.sexCharacter = StartScreen.playerChoise;
+			}
+		}
 	}
 
-	public void moveBonus(GdxGraphics g) {
-
-		if (CubeManager.speedTime > 7) {
-			speed -= 0.2;
-		}
-
-		for (DragonBonus i : bonus) {
-			i.draw(g);
-			i.updateSquarre();
-			i.moveDragonBonus(speed);
-		}
-	}
-
-	public void generatefirstBonus() {
-
-		bonus.add(new DragonBonus(-20, 500));
-
-	}
 
 }

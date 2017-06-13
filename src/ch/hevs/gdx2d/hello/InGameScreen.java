@@ -54,8 +54,8 @@ public class InGameScreen extends RenderingScreen {
 		ingots.generatefirstingot();
 		eggs.generatefirstegg();
 		background.onInit();
-		dragonManager.generatefirstBonus();
 		zaapManager.instanceZaap();
+		dragonManager.instanceDragonBonus();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
 
 	}
@@ -72,9 +72,8 @@ public class InGameScreen extends RenderingScreen {
 		cManager.speedCube(g);
 		cManager.generatecube();
 		cManager.distroyCube();
-		dragonManager.generateBonus();
-		dragonManager.moveBonus(g);
-		dragonManager.Destroy(Collision.bonus(dragonManager.bonus.lastElement(), bonhomme));
+		dragonManager.Manager(bonhomme, g);
+		zaapManager.Manager(bonhomme, g);
 		fear.loop();
 
 
@@ -84,7 +83,7 @@ public class InGameScreen extends RenderingScreen {
 
 		default:
 		case 0:
-			Logger.log("0");
+			
 			ingots.generateIngot();
 			ingots.moveingot(g);
 			ingots.comptableIngotAndDestroy(Collision.scored(ingots.ingot.elementAt(0), bonhomme));
@@ -92,7 +91,7 @@ public class InGameScreen extends RenderingScreen {
 			break;
 
 		case 1:
-			Logger.log(" 1");
+			
 			eggs.generateEgg();
 			eggs.moveegg(g);
 			eggs.comptableEggAndDestroy(Collision.scored1(eggs.eggs.elementAt(0), bonhomme));
@@ -100,7 +99,7 @@ public class InGameScreen extends RenderingScreen {
 			break;
 		}
 
-		if (DragonBonusManager.dragon == false) {
+		if (bonhomme.sexCharacter != 3) {
 			bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme, cManager.speed), cManager);
 
 		}
@@ -109,7 +108,7 @@ public class InGameScreen extends RenderingScreen {
 		keycode = 0;
 
 		storageBonhomme.storage();
-		zaapManager.Manager(bonhomme, g);
+		
 
 
 		g.drawString(700, 700, "score : " + bonhomme.score);
