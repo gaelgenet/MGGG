@@ -1,6 +1,8 @@
 package ch.hevs.gdx2d.hello;
 
 import java.util.Vector;
+
+import ch.hevs.gdx2d.components.audio.MusicPlayer;
 import ch.hevs.gdx2d.hello.Collision.CollisionBonus;
 import ch.hevs.gdx2d.hello.Collision.CollisionZaap;
 import ch.hevs.gdx2d.lib.GdxGraphics;
@@ -17,7 +19,7 @@ import ch.hevs.gdx2d.lib.utils.Logger;
 public class DragonBonusManager {
 
 	DragonBonus dragonBonus;
-
+	MusicPlayer crydragon = new MusicPlayer("data/musiques/Cri-du-dragon.mp3");
 	float speed = -4f;
 
 	/**
@@ -41,6 +43,7 @@ public class DragonBonusManager {
 			dragonBonus.draw(g);
 
 		} else if (Collision.bonus(dragonBonus, bonhomme) == CollisionBonus.IN && dragonBonus.activeBonus == true) {
+			crydragon.play();
 			bonhomme.sexCharacter = 3;
 			dragonBonus.updatePos();
 			dragonBonus.activeBonus = false;

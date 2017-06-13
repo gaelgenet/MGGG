@@ -74,7 +74,7 @@ public class DragonBonus implements DrawableObject {
 	 * create a dragon bonus
 	 */
 	public void createBonus() {
-		if ((IngotManager.nbreIngot +1) % 20 == 0) {
+		if ((IngotManager.nbreIngot +1) % 10 == 0) {
 			activeBonus = true;
 			Logger.log("bonus creer");
 			updatePos();

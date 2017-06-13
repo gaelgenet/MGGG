@@ -30,7 +30,7 @@ public class InGameScreen extends RenderingScreen {
 	ZaapManager zaapManager;
 	
 	static MusicPlayer fear = new MusicPlayer("data/musiques/peur2.mp3");
-	MusicPlayer crydragon = new MusicPlayer("data/musiques/Cri-du-dragon.mp3");
+	
 
 	int keycode;
 	public boolean move = false;
