@@ -28,7 +28,7 @@ public class IngotManager {
 	float variablespeed = 2f;
 
 	// variable compte ingot
-	public static int nbreIngot = 19;
+	public static int nbreIngot = 0;
 
 	// parameter positions
 	int posx = 1150;
