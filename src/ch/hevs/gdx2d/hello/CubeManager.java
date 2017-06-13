@@ -89,7 +89,7 @@ public class CubeManager {
 		 speedTime += Gdx.graphics.getDeltaTime();
 		 if (play == true && speedTime > 7) {
 		 speed -= 0.1;
-		 variablespeed += 0.025;
+		 variablespeed += 0.005;
 		 speedTime = 0;
 		 }
 
