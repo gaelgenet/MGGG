@@ -86,13 +86,12 @@ public class CubeManager {
 
 		// accelerating speed-----------------------------------------
 
-		// speedTime += Gdx.graphics.getDeltaTime();
-
-		// if (play == true && speedTime > 7) {
-		// speed -= 0.2;
-		// variablespeed -= 0.1;
-		// speedTime = 0;
-		// }
+		 speedTime += Gdx.graphics.getDeltaTime();
+		 if (play == true && speedTime > 7) {
+		 speed -= 0.1;
+		 variablespeed += 0.025;
+		 speedTime = 0;
+		 }
 
 		// -------------------------------------------------------------
 

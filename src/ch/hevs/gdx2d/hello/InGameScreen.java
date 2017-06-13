@@ -75,6 +75,10 @@ public class InGameScreen extends RenderingScreen {
 		dragonManager.Manager(bonhomme, g);
 		zaapManager.Manager(bonhomme, g);
 		fear.loop();
+		bonhomme.moveBonhomme();
+		keycode = 0;
+		storageBonhomme.storage();
+		g.drawString(700, 700, "score : " + bonhomme.score);
 
 
 
@@ -103,15 +107,7 @@ public class InGameScreen extends RenderingScreen {
 			bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme, cManager.speed), cManager);
 
 		}
-
-		bonhomme.moveBonhomme();
-		keycode = 0;
-
-		storageBonhomme.storage();
 		
-
-
-		g.drawString(700, 700, "score : " + bonhomme.score);
 
 	}
 

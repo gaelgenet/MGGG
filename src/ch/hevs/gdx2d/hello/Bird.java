@@ -23,12 +23,12 @@ public class Bird implements DrawableObject {
 
 	// The size of each sprite in the sheet
 
-	static int SPRITE_WIDTH = 64;
-	static int SPRITE_HEIGHT = 64;
+	static int SPRITE_WIDTH = 75;
+	static int SPRITE_HEIGHT = 77;
 
 	// The currently selected sprite for animation
 	int currentFrame = 0;
-	int textureY = 3;
+	int textureY = 0;
 
 	// Animation related parameters
 	float dt = 0;

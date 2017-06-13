@@ -78,11 +78,11 @@ public class IngotBonus implements DrawableObject {
 	 */
 	@Override
 	public void draw(GdxGraphics g) {
-		if (b.score >= 50) {
+		if (IngotManager.nbreIngot >= 50) {
 			g.drawTransformedPicture(posX, posY, 0, 0.25f, saphir);
-		} else if (b.score >= 20 && b.score < 50) {
+		} else if (IngotManager.nbreIngot>= 20 && IngotManager.nbreIngot < 50) {
 			g.drawTransformedPicture(posX, posY, 0, 0.25f, silver);
-		} else if (b.score < 20) {
+		} else if (IngotManager.nbreIngot < 20) {
 			g.drawTransformedPicture(posX, posY, 0, 0.25f, ingot);
 		}
 
