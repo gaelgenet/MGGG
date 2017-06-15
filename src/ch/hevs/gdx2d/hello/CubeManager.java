@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.Color;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
 /**
- * this class manage all the different platforms.
+ * this class generate random platforms.
  * 
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG
@@ -19,10 +19,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class CubeManager {
 
-	// class' instances
-	Color c = Color.WHITE;
-	Random r = new Random();
-
+	// Attribbutes
 	Vector<Cube> cubes = new Vector<Cube>();
 
 	// variables for the creation of the platform
@@ -62,7 +59,7 @@ public class CubeManager {
 				heigh = 500;
 			}
 
-			cubes.add(new Cube(posx, posy, width, heigh, new Color(r.nextInt())));
+			cubes.add(new Cube(posx, posy, width, heigh));
 
 		}
 
@@ -86,12 +83,12 @@ public class CubeManager {
 
 		// accelerating speed-----------------------------------------
 
-//		 speedTime += Gdx.graphics.getDeltaTime();
-//		 if (play == true && speedTime > 7) {
-//		 speed -= 0.1;
-//		 variablespeed += 0.0005;
-//		 speedTime = 0;
-//		 }
+		// speedTime += Gdx.graphics.getDeltaTime();
+		// if (play == true && speedTime > 7) {
+		// speed -= 0.1;
+		// variablespeed += 0.0005;
+		// speedTime = 0;
+		// }
 
 		// -------------------------------------------------------------
 
@@ -105,9 +102,9 @@ public class CubeManager {
 	 * generate the first three platforms
 	 */
 	public void generateInitialCubes() {
-		cubes.add(new Cube(200, posy, 400, 400, new Color(Color.YELLOW)));
-		cubes.add(new Cube(650, posy, 200, 400, new Color(Color.YELLOW)));
-		cubes.add(new Cube(posx, posy, 200, 400, new Color(Color.YELLOW)));
+		cubes.add(new Cube(200, posy, 400, 400));
+		cubes.add(new Cube(650, posy, 200, 400));
+		cubes.add(new Cube(posx, posy, 200, 400));
 
 	}
 

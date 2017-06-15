@@ -8,8 +8,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 /**
- * cette class créé un oiseau ppour figuration dans le jeu
- * 
+ * This class create a bird 
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -18,7 +17,7 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class Bird implements DrawableObject {
 
-	// class' instance
+	// Attributes
 	static Spritesheet sprites;
 
 	// The size of each sprite in the sheet
@@ -57,7 +56,7 @@ public class Bird implements DrawableObject {
 	}
 
 	/**
-	 * movement of bird
+	 * movement of the bird
 	 */
 
 	public void moveBird() {

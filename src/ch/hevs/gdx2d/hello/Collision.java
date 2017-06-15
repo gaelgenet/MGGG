@@ -1,10 +1,7 @@
 package ch.hevs.gdx2d.hello;
 
-import ch.hevs.gdx2d.components.geometry.Point;
-import ch.hevs.gdx2d.lib.utils.Logger;
-
 /**
- * The class is used to check the collision between the different object of the
+ * This class is used to check the collision between the different object of the
  * game
  *
  * @author Marco Goncalves (MG)
@@ -125,7 +122,7 @@ public class Collision {
 	
 	// different type of collision between the man and the Zaap (portal)
 	
-	public enum CollisionZaap {
+	public enum CollisionPortal {
 		IN, OUT
 	}
 
@@ -135,12 +132,12 @@ public class Collision {
 	 * @param bonhomme
 	 * @return
 	 */
-	public static CollisionZaap zaap(Zaap zaap, Bonhomme bonhomme) {
+	public static CollisionPortal portal(Portal zaap, Bonhomme bonhomme) {
 
 		if (bonhomme.square.overlaps(zaap.square)) {
-			return CollisionZaap.IN;
+			return CollisionPortal.IN;
 		}
-		return CollisionZaap.OUT;
+		return CollisionPortal.OUT;
 
 	};
 

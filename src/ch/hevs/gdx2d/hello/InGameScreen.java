@@ -1,7 +1,7 @@
 package ch.hevs.gdx2d.hello;
+
 import com.badlogic.gdx.Input;
 import ch.hevs.gdx2d.components.audio.MusicPlayer;
-import ch.hevs.gdx2d.components.physics.utils.PhysicsScreenBoundaries;
 import ch.hevs.gdx2d.components.screen_management.RenderingScreen;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
@@ -14,7 +14,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
  */
 
 public class InGameScreen extends RenderingScreen {
-	
+
 	// Class' attributs
 	Bonhomme bonhomme;
 	CubeManager cManager;
@@ -25,12 +25,15 @@ public class InGameScreen extends RenderingScreen {
 	Background background;
 	DragonBonusManager dragonManager;
 	StorageBonhomme storageBonhomme;
-	ZaapManager zaapManager;
-	
+	PortalManager zaapManager;
+
 	static MusicPlayer fear = new MusicPlayer("data/musiques/peur2.mp3");
 
 	static boolean change = true;
 
+	/**
+	 * initialize the instances
+	 */
 	@Override
 	public void onInit() {
 		bonhomme = new Bonhomme();
@@ -42,17 +45,18 @@ public class InGameScreen extends RenderingScreen {
 		background = new Background();
 		dragonManager = new DragonBonusManager();
 		storageBonhomme = new StorageBonhomme();
-		zaapManager = new ZaapManager();
+		zaapManager = new PortalManager();
 		bonhomme.onInit();
 		cManager.generateInitialCubes();
 		bird.generatefirstbird();
 		ingots.generatefirstingot();
 		eggs.generatefirstegg();
 		background.onInit();
-		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
-
 	}
 
+	/**
+	 * load the differente methode which the game need
+	 */
 	@Override
 	public void onGraphicRender(GdxGraphics g) {
 		g.clear();
@@ -70,16 +74,14 @@ public class InGameScreen extends RenderingScreen {
 		fear.loop();
 		bonhomme.moveBonhomme();
 		storageBonhomme.storage();
-		g.drawString(700, 700, "score : " + bonhomme.score);
+		g.drawString(700, 700, "score : " + Bonhomme.score);
 
-
-
-
+		// switch between the eggs and the ingot
 		switch (StartScreen.world) {
 
 		default:
 		case 0:
-			
+
 			ingots.generateIngot();
 			ingots.moveingot(g);
 			ingots.comptableIngotAndDestroy(Collision.scored(ingots.ingot.elementAt(0), bonhomme));
@@ -87,7 +89,7 @@ public class InGameScreen extends RenderingScreen {
 			break;
 
 		case 1:
-			
+
 			eggs.generateEgg();
 			eggs.moveegg(g);
 			eggs.comptableEggAndDestroy(Collision.scored1(eggs.eggs.elementAt(0), bonhomme));
@@ -95,14 +97,16 @@ public class InGameScreen extends RenderingScreen {
 			break;
 		}
 
-		if (bonhomme.sexCharacter != 3) {
+		//remove the physic of the game if the character is the dragon flying
+		if (Bonhomme.sexCharacter != 3) {
 			bonhomme.physics_update(Collision.collides(cManager.cubes.get(0), bonhomme, cManager.speed), cManager);
 
 		}
-		
 
 	}
-
+/**
+ * space to jump and shift-right to make a break
+ */
 	@Override
 	public void onKeyDown(int keycode) {
 		super.onKeyDown(keycode);

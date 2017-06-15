@@ -7,8 +7,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 /**
- * cette class créé les différents lingots pour le world 1
- * 
+ * this class create the different ingots for the world 1
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -17,7 +16,7 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class IngotBonus implements DrawableObject {
 
-	// class' instance
+	// Attributes
 	static BitmapImage ingot;
 	static BitmapImage silver;
 	static BitmapImage saphir;
@@ -74,7 +73,7 @@ public class IngotBonus implements DrawableObject {
 	}
 
 	/**
-	 * drawing eggs in function of numbre's score
+	 * drawing eggs in function of number's score
 	 */
 	@Override
 	public void draw(GdxGraphics g) {

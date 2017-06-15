@@ -8,8 +8,7 @@ import com.badlogic.gdx.Gdx;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
 /**
- * cette class gere l'aller et venu des oiseaux
- * 
+ * this class generate random birds and make them move
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -18,20 +17,20 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class BirdManager {
 	
-	//Vector
+	//Attributes
 	Vector<Bird> birdes = new Vector<Bird>();
 
-	// parameter of the random generate
+	// parameter of the random generator
 	float dt;
 	float speed = -4;
 	float variablespeed = 3f;
 
-	// parameter positions
+	// position of the birds
 	int posx = 1000;
 	int posy = 0;
 
 	/**
-	 * generate random position of bird
+	 * generate random position of the birds
 	 */
 	void generateBird() {
 		dt += Gdx.graphics.getDeltaTime();
@@ -56,7 +55,7 @@ public class BirdManager {
 	}
 
 	/**
-	 * destruction of the bird when he is not any more visible
+	 * remove the birds when they are no longer visible
 	 */
 	void distroyBird() {
 		if (birdes.get(0).posX < -100) {
@@ -65,7 +64,7 @@ public class BirdManager {
 	}
 
 	/**
-	 * movement of bird and drawing
+	 * movement of the birds and draw them
 	 * @param g
 	 */
 	public void moveTotalBird(GdxGraphics g) {
@@ -76,7 +75,7 @@ public class BirdManager {
 	}
 
 	/**
-	 * generate first bird
+	 * generate first birds
 	 */
 	public void generatefirstbird() {
 		birdes.add(new Bird(1200, 300));

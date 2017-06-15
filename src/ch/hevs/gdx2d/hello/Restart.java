@@ -1,9 +1,18 @@
 package ch.hevs.gdx2d.hello;
 
-import java.io.StreamTokenizer;
-
+/**
+ * this class is used to re-initialize some attributes after losing
+ * and to go the first screen
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG)
+ * @version 1.0
+ */
 public class Restart {
-//moi
+
+	/**
+	 * Attributes to restart
+	 */
 	static void restart() {
 		Cube.play = true;
 		CubeManager.play = true;
@@ -15,7 +24,7 @@ public class Restart {
 		Bonhomme.SPRITE_WIDTH = 64;
 		Bonhomme.offset = 10;
 		StartScreen.world = 0;
-		Screens.getInstance().s.activateScreen(0);
+		Screens.getInstance().s.activateScreen(0);//go to the first screen
 	}
 
 }

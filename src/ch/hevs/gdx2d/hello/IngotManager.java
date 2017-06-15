@@ -9,8 +9,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 /**
- * cette class gere la creation des lingots et leurs déplacements
- * 
+ * this class manage the creation of random ingots and their movement
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -18,7 +17,7 @@ import ch.hevs.gdx2d.lib.utils.Logger;
  */
 public class IngotManager {
 
-	// vector
+	// Attributes
 	Vector<IngotBonus> ingot = new Vector<IngotBonus>();
 
 	// paramter of time
@@ -27,7 +26,7 @@ public class IngotManager {
 	float speed = -4f;
 	float variablespeed = 2f;
 
-	// variable compte ingot
+	// number of ingot recolted
 	public static int nbreIngot = 0;
 
 	// parameter positions
@@ -35,7 +34,7 @@ public class IngotManager {
 	int posy = 0;
 
 	/**
-	 * generate ingot
+	 * generate ingots
 	 */
 	void generateIngot() {
 		dt += Gdx.graphics.getDeltaTime();
@@ -49,18 +48,18 @@ public class IngotManager {
 	}
 
 	/**
-	 * comptable score ingot and destroy this
+	 * count the number of ingot recolted and destroy them if need it.
 	 * @param collide
 	 */
 	public void comptableIngotAndDestroy(Collision.CollisionGold collide) {
 		
-		// comptable and destroy during collision
+		// count and remove if their is a collsion between the man and the ingot
 		if (collide == CollisionGold.IN) {
 			nbreIngot++;
 			ingot.remove(0);
 		}
 		
-		// destroy of the bird when he is not any more visible
+		// remove the ingot when hthey are not any more visible
 		if (ingot.get(0).posX < -15)		{
 			ingot.remove(0);
 		}

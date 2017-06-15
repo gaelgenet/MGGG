@@ -7,10 +7,8 @@ import com.badlogic.gdx.Gdx;
 import ch.hevs.gdx2d.hello.Collision.CollisionEgg;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
-
 /**
- * cette class gere la creation des oeufs et leurs déplacements
- * 
+ * this class generate the creation of the eggs and their movement
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -19,7 +17,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class EggDofusManager {
 
-	// vector
+	// vattributes
 	Vector<EggDofus> eggs = new Vector<EggDofus>();
 
 	// paramter of time
@@ -28,11 +26,11 @@ public class EggDofusManager {
 	float speed = -4f;
 	float variablespeed = 2f;
 
-	// parameter positions
+	//positions
 	int posx = 1150;
 	int posy = 500;
 
-	// variable compte egg
+	// the number of eggs taken
 	public static int nbreEgg = 0;
 
 	/**
@@ -48,19 +46,20 @@ public class EggDofusManager {
 	}
 
 	/**
-	 * comptable score egg and destroy this
+	 * count the eggs recolted
+	 * destroy them after a while
 	 * 
 	 * @param collide
 	 */
 	public void comptableEggAndDestroy(Collision.CollisionEgg collide) {
 
-		// comptable and destroy during collision
+		// count and destroy if collision is made
 		if (collide == CollisionEgg.IN) {
 			nbreEgg++;
 			eggs.remove(0);
 		}
 
-		// destroy of the bird when he is not any more visible
+		// destroy the eggs when they are no longer visible
 		if (eggs.get(0).posX < -15) {
 			eggs.remove(0);
 		}

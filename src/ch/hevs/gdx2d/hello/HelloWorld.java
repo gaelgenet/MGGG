@@ -12,7 +12,7 @@ import ch.hevs.gdx2d.desktop.PortableApplication;
  */
 public class HelloWorld extends PortableApplication {
 
-	//class' variables
+	//Attributes
 	public static final int WINDOWS_WIDTH = 800, WINDOWS_HEIGHT = 700;
 
 	/**
@@ -47,7 +47,7 @@ public class HelloWorld extends PortableApplication {
 	}
 
 	/**
-	 * Amara
+	 * read the actual instance
 	 */
 	@Override
 	public void onGraphicRender(GdxGraphics g) {

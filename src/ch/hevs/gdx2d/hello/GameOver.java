@@ -8,8 +8,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 /**
- * cette class gere l'animation du game over
- * 
+ * this class manage the animation of the game over screen
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -18,7 +17,7 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class GameOver implements DrawableObject {
 
-	// class' instance
+	// Attributes
 	static Spritesheet loser;
 	static BitmapImage loser2;
 

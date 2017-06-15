@@ -11,7 +11,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 /**
- * Class is used to create a platform
+ * this class is used to create a platform
  * 
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG
@@ -20,14 +20,13 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class Cube implements DrawableObject {
 
-	// class' instances
+	// Attributes
 	BitmapImage img;
 	Rectangle rectangle;
-	Color c = Color.WHITE;
 	Random r = new Random();
 
-	// class variables
-	static boolean play = true;
+
+	static boolean play = true; //variable to make a break during the game
 	int offX, offY;
 
 	/**
@@ -40,8 +39,7 @@ public class Cube implements DrawableObject {
 	 * @param col
 	 */
 
-	public Cube(int initX, int initY, int initWidth, int initHeight, Color col) {
-		this.c = col;
+	public Cube(int initX, int initY, int initWidth, int initHeight) {
 
 		//use a different picture for each world
 		switch (StartScreen.world) {

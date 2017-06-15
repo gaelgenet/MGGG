@@ -8,7 +8,7 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 /**
- * this class is used to create a dragon bonus
+ * this class is used to create a dragon egg bonus
  * 
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG
@@ -16,7 +16,7 @@ import ch.hevs.gdx2d.lib.utils.Logger;
  */
 public class DragonBonus implements DrawableObject {
 
-	// class' instance
+	// Attributes
 	Rectangle square;
 
 	// picture
@@ -77,9 +77,8 @@ public class DragonBonus implements DrawableObject {
 	 * create a dragon bonus
 	 */
 	public void createBonus() {
-		if ((IngotManager.nbreIngot +1) % 10 == 0 || (EggDofusManager.nbreEgg +1) % 10 ==0) {
+		if ((IngotManager.nbreIngot +1) % 10 == 0) {
 			activeBonus = true;
-			Logger.log("bonus creer");
 			updatePos();
 		}
 	}

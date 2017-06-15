@@ -6,8 +6,7 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 import ch.hevs.gdx2d.lib.utils.Logger;
 
 /**
- * cette class genere le fond d'écran et gere son déplacement
- * 
+ * This class generate the background and make it move
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -16,7 +15,7 @@ import ch.hevs.gdx2d.lib.utils.Logger;
 
 public class Background implements DrawableObject {
 	
-	//class' instances
+	//Attributes
 	static BitmapImage background; 	//background world 1
 	static BitmapImage backdofus;	//background world 2
 	
@@ -28,9 +27,8 @@ public class Background implements DrawableObject {
 	static float scaleBG = 1.5f;
 	static float scaleBDG = 2.5f;
 
-	
 	/**
-	 * initialize background
+	 * initialize backgrounds
 	 */
 	public void onInit() {
 		
@@ -43,14 +41,13 @@ public class Background implements DrawableObject {
 			posXfirstdofusground = HelloWorld.WINDOWS_WIDTH / 2;
 	}
 
-	
 	/**
-	 * draw background
+	 * draw backgrounds
 	 */
 	@Override
 	public void draw(GdxGraphics g) {
 		
-		// re-initialize the position of the bottom at the end of displacement
+		//re-initialize the position of the background
 		if (posXfirstbackground < -HelloWorld.WINDOWS_WIDTH) {
 			posXfirstbackground = posXsecondbackground + background.getImage().getWidth() * scaleBG;
 		}
@@ -66,7 +63,7 @@ public class Background implements DrawableObject {
 
 		}
 
-		// exchange rate of the world according to StartScreen.world
+		//draw one of the backgrounds according to StartScreen.world
 		switch (StartScreen.world) {
 
 		case 0:

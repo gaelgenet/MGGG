@@ -7,8 +7,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 /**
- * cette class créé les différents oeufs pour le world 2
- * 
+ * this class create the eggs for the world 2
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -17,7 +16,7 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 public class EggDofus implements DrawableObject {
 	
-	//class' instances 
+	//Attributes
 	static BitmapImage egg1 = new BitmapImage("data/images/dofusemeraude.png");
 	static BitmapImage egg2 = new BitmapImage("data/images/o1.png");
 	static BitmapImage egg3 = new BitmapImage("data/images/o3.png");
@@ -27,11 +26,11 @@ public class EggDofus implements DrawableObject {
 	Rectangle square;
 	Bonhomme b = new Bonhomme();
 	
-	//parameter positions
+	//positions
 	int posX;
 	int posY;
 	
-	//parameter movement 
+	//movement 
 	int heightVariation = 1;;
 	int direction = 1;
 
@@ -52,7 +51,7 @@ public class EggDofus implements DrawableObject {
 
 	
 	/**
-	 * movement of egg
+	 * movement of the egg
 	 * @param speed
 	 */
 	public void moveEgg(float speed) {
@@ -75,7 +74,7 @@ public class EggDofus implements DrawableObject {
 	}
 
 	/**
-	 * drawing eggs in function of numbre's eggs
+	 * drawing the eggs in function of the number of eggs
 	 */
 	@Override
 	public void draw(GdxGraphics g) {

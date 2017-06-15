@@ -21,7 +21,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class EndScreen extends RenderingScreen {
 	
-	//class' instance
+	//Attributes
 	public BitmapFont endTitle;
 	FileHandle titleFont;
 	GameOver explose = new GameOver();
