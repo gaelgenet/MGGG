@@ -20,7 +20,6 @@ public class Background implements DrawableObject {
 	static BitmapImage background; 	//background world 1
 	static BitmapImage backdofus;	//background world 2
 	
-	//class' variables
 	int i = 0;
 	static float posXfirstbackground;
 	static float posXfirstdofusground;

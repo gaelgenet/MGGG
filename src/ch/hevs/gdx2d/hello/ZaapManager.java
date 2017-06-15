@@ -6,14 +6,7 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 
 public class ZaapManager {
 	// class' instance
-	Zaap zaap;
-
-	/**
-	 * instance a class
-	 */
-	public void instanceZaap() {
-		zaap = new Zaap();
-	}
+	Zaap zaap = new Zaap();
 
 	/**
 	 * manager zaap

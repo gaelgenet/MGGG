@@ -2,9 +2,9 @@ package ch.hevs.gdx2d.hello;
 
 import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.desktop.PortableApplication;
-//moi
+
 /**
- * Hello World demo.
+ * the main class of the project
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
@@ -12,14 +12,20 @@ import ch.hevs.gdx2d.desktop.PortableApplication;
  */
 public class HelloWorld extends PortableApplication {
 
+	//class' variables
 	public static final int WINDOWS_WIDTH = 800, WINDOWS_HEIGHT = 700;
 
+	/**
+	 * constructor
+	 */
 	public HelloWorld() {
 		super(WINDOWS_WIDTH, WINDOWS_HEIGHT);
 	}
 
+	/**
+	 * instance the different screen of the game
+	 */
 	@Override
-
 	public void onInit() {
 
 		setTitle("MGGG");
@@ -31,19 +37,18 @@ public class HelloWorld extends PortableApplication {
 
 	}
 
-	@Override
-	public void onKeyUp(int keycode) {
-		// Delegate to the child class
-		Screens.getInstance().s.getActiveScreen().onKeyUp(keycode);
-
-	}
-
+	/**
+	 * active the screens after touching the keys 
+	 */
 	@Override
 	public void onKeyDown(int keycode) {
 		// Delegate to the child class
 		Screens.getInstance().s.getActiveScreen().onKeyDown(keycode);
 	}
 
+	/**
+	 * Amara
+	 */
 	@Override
 	public void onGraphicRender(GdxGraphics g) {
 		// Delegate to the child class
@@ -51,6 +56,10 @@ public class HelloWorld extends PortableApplication {
 
 	}
 
+	/**
+	 * Main with the instance of the game
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		new HelloWorld();
 	}

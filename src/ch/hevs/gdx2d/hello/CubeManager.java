@@ -69,7 +69,7 @@ public class CubeManager {
 	}
 
 	/**
-	 * When the platform goes to far away, it will be destroy
+	 * When the platform goes too far away, it will be destroy
 	 */
 	void distroyCube() {
 		if (cubes.get(0).rectangle.x <= -(cubes.get(0).rectangle.width / 2) - 10) {
@@ -86,12 +86,12 @@ public class CubeManager {
 
 		// accelerating speed-----------------------------------------
 
-		 speedTime += Gdx.graphics.getDeltaTime();
-		 if (play == true && speedTime > 7) {
-		 speed -= 0.1;
-		 variablespeed += 0.005;
-		 speedTime = 0;
-		 }
+//		 speedTime += Gdx.graphics.getDeltaTime();
+//		 if (play == true && speedTime > 7) {
+//		 speed -= 0.1;
+//		 variablespeed += 0.0005;
+//		 speedTime = 0;
+//		 }
 
 		// -------------------------------------------------------------
 

@@ -44,7 +44,7 @@ public class DragonBonus implements DrawableObject {
 	}
 
 	/**
-	 * move up and down move the bonus to the left
+	 * move up/down and to the left
 	 * 
 	 * @param speed
 	 */
@@ -57,6 +57,9 @@ public class DragonBonus implements DrawableObject {
 		heightVariation++;
 	}
 
+	/**
+	 * when the bonus goes too far on the right, update the position to the left side of the screen.
+	 */
 	public void updatePos() {
 		posX = 1000;
 		posY = 500;
@@ -74,7 +77,7 @@ public class DragonBonus implements DrawableObject {
 	 * create a dragon bonus
 	 */
 	public void createBonus() {
-		if ((IngotManager.nbreIngot +1) % 10 == 0) {
+		if ((IngotManager.nbreIngot +1) % 10 == 0 || (EggDofusManager.nbreEgg +1) % 10 ==0) {
 			activeBonus = true;
 			Logger.log("bonus creer");
 			updatePos();

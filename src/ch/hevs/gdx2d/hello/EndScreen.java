@@ -11,31 +11,44 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
 import ch.hevs.gdx2d.components.screen_management.RenderingScreen;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
+/**
+ * this class manage the last screen when the player die
+ * 
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG
+ * @version 1.0
+ */
+
 public class EndScreen extends RenderingScreen {
-	//moi
+	
+	//class' instance
 	public BitmapFont endTitle;
 	FileHandle titleFont;
 	GameOver explose = new GameOver();
 	
-	
-
+	/**
+	 * load fonts
+	 */
 	@Override
 	public void onInit() {
 		titleFont = Gdx.files.internal("data/fonts/titleFont.ttf");
-		explose.onInit();
 		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(titleFont);
 		parameter.size = generator.scaleForPixelHeight(100);
 		parameter.color = Color.WHITE;
 		endTitle = generator.generateFont(parameter);
+		
+		explose.onInit();
 	}
 
+	/**
+	 * draw the title, the score and the end animation
+	 */
 	@Override
 	public void onGraphicRender(GdxGraphics g) {
 		g.clear();
 		g.resetCamera();
 		InGameScreen.fear.dispose();
-		// Display ending screen
 		explose.draw(g);
 		explose.moveSprite();
 		explose.loser(g);
@@ -44,6 +57,9 @@ public class EndScreen extends RenderingScreen {
 		g.drawStringCentered(20, "presse enter to play again");
 	}
 
+	/**
+	 * when the user press the key enter, the game start
+	 */
 	@Override
 	public void onKeyDown(int keycode) {
 		switch(keycode){

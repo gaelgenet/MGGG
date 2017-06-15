@@ -1,23 +1,21 @@
 package ch.hevs.gdx2d.hello;
-
-import javax.sound.midi.Track;
-
 import com.badlogic.gdx.Input;
-
 import ch.hevs.gdx2d.components.audio.MusicPlayer;
-import ch.hevs.gdx2d.components.bitmaps.BitmapImage;
-import ch.hevs.gdx2d.components.bitmaps.Spritesheet;
 import ch.hevs.gdx2d.components.physics.utils.PhysicsScreenBoundaries;
 import ch.hevs.gdx2d.components.screen_management.RenderingScreen;
-import ch.hevs.gdx2d.hello.Collision.CollisionType;
-import ch.hevs.gdx2d.hello.Collision.CollisionZaap;
 import ch.hevs.gdx2d.lib.GdxGraphics;
-import ch.hevs.gdx2d.lib.utils.Logger;
+
+/**
+ * the seconde screen of the game. The one who manage the game
+ *
+ * @author Marco Goncalves (MG)
+ * @author Gaël Genet (GG)
+ * @version 2.1
+ */
 
 public class InGameScreen extends RenderingScreen {
-//moi
-	// Attributes
-	// parameter for the physique of the screen
+	
+	// Class' attributs
 	Bonhomme bonhomme;
 	CubeManager cManager;
 	Collision collision;
@@ -30,10 +28,7 @@ public class InGameScreen extends RenderingScreen {
 	ZaapManager zaapManager;
 	
 	static MusicPlayer fear = new MusicPlayer("data/musiques/peur2.mp3");
-	
 
-	int keycode;
-	public boolean move = false;
 	static boolean change = true;
 
 	@Override
@@ -54,8 +49,6 @@ public class InGameScreen extends RenderingScreen {
 		ingots.generatefirstingot();
 		eggs.generatefirstegg();
 		background.onInit();
-		zaapManager.instanceZaap();
-		dragonManager.instanceDragonBonus();
 		new PhysicsScreenBoundaries(HelloWorld.WINDOWS_WIDTH, 100);
 
 	}
@@ -76,7 +69,6 @@ public class InGameScreen extends RenderingScreen {
 		zaapManager.Manager(bonhomme, g);
 		fear.loop();
 		bonhomme.moveBonhomme();
-		keycode = 0;
 		storageBonhomme.storage();
 		g.drawString(700, 700, "score : " + bonhomme.score);
 
