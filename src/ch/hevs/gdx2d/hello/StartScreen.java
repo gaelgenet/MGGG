@@ -26,7 +26,6 @@ public class StartScreen extends RenderingScreen {
 	FileHandle titleFont;
 
 	public static int playerChoise = 1;
-	public static int playerDofus = 0;
 	public static int world = 0;
 
 	/**

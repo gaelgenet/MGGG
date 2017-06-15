@@ -18,7 +18,6 @@ import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 public class Bonhomme implements DrawableObject {
 
 	// Attributes
-	CubeManager cube = new CubeManager();
 	protected Rectangle square;
 	static Spritesheet sprites;
 
