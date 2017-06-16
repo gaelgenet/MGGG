@@ -8,17 +8,17 @@ import com.badlogic.gdx.Gdx;
 import ch.hevs.gdx2d.lib.GdxGraphics;
 
 /**
- * this class generate random birds and make them move
+ * this class generate random bats and make them move
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
  * @version 1.0
  */
 
-public class BirdManager {
+public class BatManager {
 	
 	//Attributes
-	Vector<Bird> birdes = new Vector<Bird>();
+	Vector<Bat> bats = new Vector<Bat>();
 
 	// parameter of the random generator
 	float dt;
@@ -30,9 +30,9 @@ public class BirdManager {
 	int posy = 0;
 
 	/**
-	 * generate random position of the birds
+	 * generate random position of the bat
 	 */
-	void generateBird() {
+	void generatebat() {
 		dt += Gdx.graphics.getDeltaTime();
 
 		if (dt > variablespeed) {
@@ -48,38 +48,38 @@ public class BirdManager {
 				posy = 580;
 			}
 
-			birdes.add(new Bird(posx, posy));
+			bats.add(new Bat(posx, posy));
 
 		}
 
 	}
 
 	/**
-	 * remove the birds when they are no longer visible
+	 * remove the bat when they are no longer visible
 	 */
-	void distroyBird() {
-		if (birdes.get(0).posX < -100) {
-			birdes.remove(0);
+	void distroybat() {
+		if (bats.get(0).posX < -100) {
+			bats.remove(0);
 		}
 	}
 
 	/**
-	 * movement of the birds and draw them
+	 * movement of the bat and draw them
 	 * @param g
 	 */
-	public void moveTotalBird(GdxGraphics g) {
-		for (Bird b : birdes) {
+	public void moveTotalBat(GdxGraphics g) {
+		for (Bat b : bats) {
 			b.draw(g);
-			b.moveBird();
+			b.moveBat();
 		}
 	}
 
 	/**
-	 * generate first birds
+	 * generate first bat
 	 */
-	public void generatefirstbird() {
-		birdes.add(new Bird(1200, 300));
-		birdes.add(new Bird(1800, 300));
+	public void generatefirstbat() {
+		bats.add(new Bat(1200, 300));
+		bats.add(new Bat(1800, 300));
 
 	}
 

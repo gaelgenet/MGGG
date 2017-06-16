@@ -8,14 +8,14 @@ import ch.hevs.gdx2d.lib.GdxGraphics;
 import ch.hevs.gdx2d.lib.interfaces.DrawableObject;
 
 /**
- * This class create a bird 
+ * This class create a bat 
  *
  * @author Marco Goncalves (MG)
  * @author Gaël Genet (GG)
  * @version 1.0
  */
 
-public class Bird implements DrawableObject {
+public class Bat implements DrawableObject {
 
 	// Attributes
 	static Spritesheet sprites;
@@ -48,7 +48,7 @@ public class Bird implements DrawableObject {
 	 * @param posY
 	 */
 
-	public Bird(int posX, int posY) {
+	public Bat(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
 
@@ -56,10 +56,10 @@ public class Bird implements DrawableObject {
 	}
 
 	/**
-	 * movement of the bird
+	 * movement of the bat
 	 */
 
-	public void moveBird() {
+	public void moveBat() {
 		dt += Gdx.graphics.getDeltaTime();
 
 		if (dt > FRAME_TIME) {

@@ -21,7 +21,7 @@ public class InGameScreen extends RenderingScreen {
 	Collision collision;
 	IngotManager ingots;
 	EggDofusManager eggs;
-	BirdManager bird;
+	BatManager bird;
 	Background background;
 	DragonBonusManager dragonManager;
 	StorageBonhomme storageBonhomme;
@@ -41,14 +41,14 @@ public class InGameScreen extends RenderingScreen {
 		collision = new Collision();
 		ingots = new IngotManager();
 		eggs = new EggDofusManager();
-		bird = new BirdManager();
+		bird = new BatManager();
 		background = new Background();
 		dragonManager = new DragonBonusManager();
 		storageBonhomme = new StorageBonhomme();
 		zaapManager = new PortalManager();
 		bonhomme.onInit();
 		cManager.generateInitialCubes();
-		bird.generatefirstbird();
+		bird.generatefirstbat();
 		ingots.generatefirstingot();
 		eggs.generatefirstegg();
 		background.onInit();
@@ -63,9 +63,9 @@ public class InGameScreen extends RenderingScreen {
 		g.drawFPS();
 		background.draw(g);
 		bonhomme.draw(g);
-		bird.generateBird();
-		bird.moveTotalBird(g);
-		bird.distroyBird();
+		bird.generatebat();
+		bird.moveTotalBat(g);
+		bird.distroybat();
 		cManager.speedCube(g);
 		cManager.generatecube();
 		cManager.distroyCube();
